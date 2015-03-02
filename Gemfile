@@ -17,12 +17,16 @@ group :development do
 end
 
 group :development, :test do
-  gem 'pry'
   gem 'pry-rails'
   gem 'pry-doc'
   gem 'pry-byebug'
-  gem 'rspec'
   gem 'rspec-rails'
   gem 'spring'
   gem 'web-console', '~> 2.0'
+end
+
+group :test do
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'shoulda-matchers', require: false
 end
