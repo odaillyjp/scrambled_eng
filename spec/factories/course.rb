@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :text_group do
+  factory :course do
     name Faker::Lorem.word
   end
 end

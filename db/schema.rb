@@ -13,20 +13,20 @@
 
 ActiveRecord::Schema.define(version: 20150302100721) do
 
-  create_table "sentences", force: :cascade do |t|
-    t.text     "en_text",       null: false
-    t.text     "ja_text",       null: false
-    t.integer  "text_group_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  add_index "sentences", ["text_group_id"], name: "index_sentences_on_text_group_id"
-
-  create_table "text_groups", force: :cascade do |t|
+  create_table "courses", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "sentences", force: :cascade do |t|
+    t.text     "en_text",      null: false
+    t.text     "ja_text",      null: false
+    t.integer  "course_id_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "sentences", ["course_id_id"], name: "index_sentences_on_course_id_id"
 
 end
