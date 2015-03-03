@@ -20,13 +20,13 @@ ActiveRecord::Schema.define(version: 20150302100721) do
   end
 
   create_table "sentences", force: :cascade do |t|
-    t.text     "en_text",      null: false
-    t.text     "ja_text",      null: false
-    t.integer  "course_id_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.text     "en_text",    null: false
+    t.text     "ja_text",    null: false
+    t.integer  "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "sentences", ["course_id_id"], name: "index_sentences_on_course_id_id"
+  add_index "sentences", ["course_id"], name: "index_sentences_on_course_id"
 
 end

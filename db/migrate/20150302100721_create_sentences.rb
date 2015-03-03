@@ -3,7 +3,7 @@ class CreateSentences < ActiveRecord::Migration
     create_table :sentences do |t|
       t.text       :en_text, null: false
       t.text       :ja_text, null: false
-      t.references :course_id, index: true
+      t.references :course, index: true
 
       t.timestamps null: false
     end
