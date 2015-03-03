@@ -17,6 +17,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'factory_girl_rails'
   gem 'pry-rails'
   gem 'pry-doc'
   gem 'pry-byebug'
@@ -26,7 +27,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'factory_girl_rails'
   gem 'faker'
   gem 'shoulda-matchers', require: false
 end
