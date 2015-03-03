@@ -1,0 +1,8 @@
+%headline
+  hoge
+
+%section.course-list
+  - @courses.each do |course|
+    %article.course-item{ course_id: course.id }
+      .course-name
+        = link_to course.name, course, class: 'course-link'

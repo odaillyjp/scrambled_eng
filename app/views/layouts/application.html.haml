@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %title
+      ScrambledEng
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    %header.header
+      .cell
+        .header-item-brand
+          = link_to root_path, class: 'brand-link' do
+            ScrambledEng
+        .header-item-nav
+          Create course
+    %main
+      = yield
+
+    %footer.footer
