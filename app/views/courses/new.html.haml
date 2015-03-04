@@ -1,0 +1,7 @@
+%h1 Create course
+
+= form_for(@course) do |f|
+  = f.label :name
+  = f.text_field :name
+
+  = f.submit 'Create course', class: 'btn'

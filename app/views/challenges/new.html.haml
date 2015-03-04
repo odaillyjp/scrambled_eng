@@ -1,0 +1,10 @@
+%h1 Create challenge
+
+= form_for @challenge, url: course_challenges_path do |f|
+  = f.label :en_text
+  = f.text_area :en_text
+
+  = f.label :ja_text
+  = f.text_area :ja_text
+
+  = f.submit 'Create course', class: 'btn'
