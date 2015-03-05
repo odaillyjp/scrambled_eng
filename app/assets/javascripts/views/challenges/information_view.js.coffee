@@ -3,8 +3,8 @@
 app = @ScrambledEng
 app.Views.Challenges ?= {}
 
-app.Views.Challenges.IndexView = Backbone.View.extend
-  template: JST['challenges/index']
+app.Views.Challenges.InformationView = Backbone.View.extend
+  template: JST['challenges/information']
 
   initialize: ->
     @listenTo @collection, 'reset', =>
@@ -16,7 +16,4 @@ app.Views.Challenges.IndexView = Backbone.View.extend
     _.extend(context, firstChallengeUrl: firstChallenge.get('url'))
     _.extend(context, courseName: firstChallenge.get('course_name'))
     @$el.html(@template(context))
-    @collection.each (challenge) =>
-      view = new app.Views.Challenges.IndexItemView(model: challenge)
-      @$('.challenge-list').append(view.render().el)
     @

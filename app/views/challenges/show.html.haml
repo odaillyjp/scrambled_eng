@@ -1,14 +1,12 @@
 - content_for :header_item_nav do
   = link_to 'Create challenge', new_course_challenge_path(course_id: @challenge.course)
 
-= render partial: 'shared/course_sidebar', locals: { course: @challenge.course }
+#main-container
+  -#
+    %p= @challenge.hide_en_text
 
-.main-container
-  %h1= @challenge.ja_text
-  %p= @challenge.hide_en_text
-
-  .challenge-panel
-    .content-editer
-      %textarea{ spellcheck: false }
-    %footer
-      = link_to 'Submit text', '#', id: 'manual_submit', class: 'btn'
+    .challenge-panel
+      .content-editer
+        %textarea{ spellcheck: false }
+      %footer
+        = link_to 'Submit text', '#', id: 'manual_submit', class: 'btn'

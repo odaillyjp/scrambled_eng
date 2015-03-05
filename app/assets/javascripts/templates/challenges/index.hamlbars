@@ -1,8 +1,0 @@
-%section#course-sidebar
-  %h1 {{courseName}}
-  %ol.challenge-list
-
-.challenge-area
-  %h1 {{courseName}}
-
-  %a{ href: '{{firstChallengeUrl}}' } Start challenge
