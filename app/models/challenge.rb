@@ -4,8 +4,66 @@ class Challenge < ActiveRecord::Base
   validates :ja_text, presence: true
 
   DELIMITER = '\s\r\n,.:;"()!?'
+  HIDDEN_SYMBOL = '_'
 
-  def hide_en_text(hidden_symbol = '_')
-    en_text.gsub(/[^#{DELIMITER}]/, hidden_symbol)
+  def hide_en_text
+    en_text.gsub(/[^#{DELIMITER}]/, HIDDEN_SYMBOL)
+  end
+
+  def correct?(text)
+    # 注意: 大文字・小文字の区別はしない
+    # 注意: 単語の綴りが合っていれば正解とする
+    correct_words = split_word(en_text.downcase.strip)
+    answer_words = split_word(text.downcase.strip)
+
+    correct_words == answer_words
+  end
+
+  # 誤っている文字だけを隠し文字に変換した文章を返す
+  #
+  # 例:
+  #   正解の文章   => 'She sells seashells by the sheshore.'
+  #   回答者の答え => 'She salls seashalls on the sxxxxxxx.'
+  #   返り値       => 'She s_lls seash_lls __ the s_______.'
+  #
+  def teach_mistake(answer_text)
+    # 注意: 大文字・小文字の区別はしない
+    # 注意: 単語の綴りが合っていれば正解とする
+    correct_words = split_word(en_text.downcase.strip)
+    answer_words = split_word(answer_text.downcase.strip)
+
+    # 回答者の答えのが単語数が多い場合、全て誤りだと扱う
+    return hide_en_text if correct_words.size < answer_words.size
+
+    result_words = correct_words.zip(answer_words).map do |(correct_word, answer_word)|
+      answer_word ||= ''
+      teach_mistake_of_word(correct_word, answer_word)
+    end
+
+    hide_en_text.gsub(/#{HIDDEN_SYMBOL}+/, '%s') % result_words
+  end
+
+  private
+
+  def split_word(text)
+    text.split(/[#{DELIMITER}]+/)
+  end
+
+  # 誤っている文字だけを隠し文字に変換した単語を返す
+  #
+  # 例:
+  #   正解の単語(correct_word)        => 'foo'
+  #   回答者の答えの単語(answer_word) => 'fao'
+  #   返り値                          => 'f_o'
+  #
+  def teach_mistake_of_word(correct_word, answer_word)
+    # 回答者の答えのが文字数が多い場合、その単語は全て誤りだと扱う
+    return correct_word.gsub(/./, HIDDEN_SYMBOL) if correct_word.size < answer_word.size
+
+    correct_word.chars
+      .zip(answer_word.chars)
+      .map { |(correct_char, answer_char)|
+        correct_char == answer_char ? correct_char : HIDDEN_SYMBOL
+      }.join
   end
 end

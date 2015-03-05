@@ -2,13 +2,16 @@ app = @ScrambledEng
 app.Models ?= {}
 
 app.Models.Challenge = Backbone.Model.extend
-  renderText: ->
-    $.ajax("/courses/#{@get('course_id')}/challenges/#{@get('challenge_id')}/resolving",
+  submitRawText: ->
+    $.ajax("#{@url()}/resolving",
       type: 'POST'
       dataType: 'json'
       data: {raw_text: @get('raw_text')}
     ).done (data) =>
-      @set('hidden_text', data.body)
+      if data.correct
+        console.log('正解')
+      else
+        @set('hide_en_text', data.mistake)
 
 app.Collections.ChallengeCollection = Backbone.Collection.extend
   model: app.Models.Challenge

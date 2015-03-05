@@ -40,6 +40,18 @@ class ChallengesController < ApplicationController
     redirect_to root_path
   end
 
+  def resolve
+    @challenge = Challenge.find(params[:id])
+    raw_text = params[:raw_text] || ''
+
+    if @challenge.correct?(raw_text)
+      render json: { correct: true }
+    else
+      mistake = @challenge.teach_mistake(raw_text)
+      render json: { correct: false, mistake: mistake }
+    end
+  end
+
   private
 
   def challenge_params
