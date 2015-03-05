@@ -1,10 +1,4 @@
 - content_for :header_item_nav do
   = link_to 'Create challenge', new_course_challenge_path(course_id: @course)
 
-= render partial: 'shared/course_sidebar', locals: { course: @course }
-
-.main-container
-  %h1= @course.name
-
-  - first_challenge = @course.challenges.first
-  = link_to 'Start challenge', course_challenge_path(first_challenge, course_id: @course)
+#main-container

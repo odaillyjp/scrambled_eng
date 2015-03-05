@@ -1,4 +1,8 @@
 class ChallengesController < ApplicationController
+  def index
+    @challenges = Course.find(params[:course_id]).challenges
+  end
+
   def show
     @challenge = Challenge.find(params[:id])
   end

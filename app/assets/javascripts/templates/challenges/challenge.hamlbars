@@ -1,0 +1,10 @@
+.main-container
+  %h1 {{ja_text}}
+  %p {{hide_en_text}}
+
+  .challenge-panel
+    .content-editer
+      %textarea{ spellcheck: false }
+    %footer
+      %a{ herf: '#', id: 'challenge-submit-button', class: 'btn' }
+        Submit text
