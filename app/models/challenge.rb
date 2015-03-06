@@ -27,10 +27,9 @@ class Challenge < ActiveRecord::Base
   #   返り値       => 'She s_lls seash_lls __ the s_______.'
   #
   def teach_mistake(answer_text)
-    # 注意: 大文字・小文字の区別はしない
     # 注意: 単語の綴りが合っていれば正解とする
-    correct_words = split_word(en_text.downcase.strip)
-    answer_words = split_word(answer_text.downcase.strip)
+    correct_words = split_word(en_text.strip)
+    answer_words = split_word(answer_text.strip)
 
     # 回答者の答えのが単語数が多い場合、全て誤りだと扱う
     return hide_en_text if correct_words.size < answer_words.size
@@ -63,7 +62,8 @@ class Challenge < ActiveRecord::Base
     correct_word.chars
       .zip(answer_word.chars)
       .map { |(correct_char, answer_char)|
-        correct_char == answer_char ? correct_char : HIDDEN_SYMBOL
+        # 注意: 大文字・小文字の区別はしない
+        correct_char.downcase == answer_char.try(:downcase) ? correct_char : HIDDEN_SYMBOL
       }.join
   end
 end
