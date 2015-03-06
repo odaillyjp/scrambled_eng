@@ -7,3 +7,5 @@
   %footer
     %a{ href: '#', class: 'btn challenge-submit-button' }
       Submit text
+
+.challenge-incorrect-modal

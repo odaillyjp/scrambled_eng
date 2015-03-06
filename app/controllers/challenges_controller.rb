@@ -45,7 +45,7 @@ class ChallengesController < ApplicationController
     raw_text = params[:raw_text] || ''
 
     if @challenge.correct?(raw_text)
-      render json: { correct: true }
+      render json: { correct: true, en_text: @challenge.en_text }
     else
       mistake = @challenge.teach_mistake(raw_text)
       render json: { correct: false, mistake: mistake }
