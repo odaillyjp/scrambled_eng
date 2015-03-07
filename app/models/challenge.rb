@@ -39,7 +39,7 @@ class Challenge < ActiveRecord::Base
       teach_mistake_of_word(correct_word, answer_word)
     end
 
-    hide_en_text.gsub(/#{HIDDEN_SYMBOL}+/, '%s') % result_words
+    en_text.gsub(/[^#{DELIMITER}]+/, '%s') % result_words
   end
 
   private
