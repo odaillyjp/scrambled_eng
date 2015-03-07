@@ -1,1 +1,1 @@
-%a{ href: '{{url}}' }{{ja_text}}
+%a{ href: '{{url}}', class: 'challenge-sidebar-link' }{{ja_text}}
