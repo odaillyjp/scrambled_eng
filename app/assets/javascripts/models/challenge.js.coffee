@@ -9,10 +9,10 @@ app.Models.Challenge = Backbone.Model.extend
       data: {raw_text: @get('raw_text')}
     ).done (data) =>
       if data.correct
-        @set('hide_en_text', data.en_text)
+        @set('hidden_text', data.en_text)
         @trigger('correct')
       else
-        @set('hide_en_text', data.mistake)
+        @set('hidden_text', data.mistake)
         @trigger('incorrect')
 
 app.Collections.ChallengeCollection = Backbone.Collection.extend

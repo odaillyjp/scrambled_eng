@@ -1,5 +1,5 @@
 %h1 {{ja_text}}
-%p {{hide_en_text}}
+%p {{hidden_text}}
 
 .challenge-panel
   .content

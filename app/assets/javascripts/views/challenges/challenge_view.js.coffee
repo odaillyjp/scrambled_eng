@@ -17,7 +17,7 @@ app.Views.Challenges.ChallengeView = Backbone.View.extend
     @trigger('submit')
 
   initialize: ->
-    @listenTo @model, 'change:hide_en_text', @render
+    @listenTo @model, 'change:hidden_text', @render
     @listenTo @model, 'correct', @renderCorrectModal
     @listenTo @model, 'incorrect', @renderIncorrectModal
 

@@ -7,9 +7,9 @@ RSpec.describe Challenge, type: :model do
   it { is_expected.to validate_presence_of(:en_text) }
   it { is_expected.to validate_presence_of(:ja_text) }
 
-  describe '#hide_en_text' do
+  describe '#hidden_text' do
     it '区切り文字以外の全ての文字を隠し文字に変換した文字列を返すこと' do
-      expect(challenge.hide_en_text).to eq '___ _____ _________ __ ___ ________.'
+      expect(challenge.hidden_text).to eq '___ _____ _________ __ ___ ________.'
     end
   end
 
@@ -83,7 +83,7 @@ RSpec.describe Challenge, type: :model do
     context '単語数が多い文字列を渡したとき' do
       it '全て誤りだと扱うこと' do
         answer_text = 'She sells a seashell by the seashore.'
-        expect(challenge.teach_mistake(answer_text)).to eq challenge.hide_en_text
+        expect(challenge.teach_mistake(answer_text)).to eq challenge.hidden_text
       end
     end
   end

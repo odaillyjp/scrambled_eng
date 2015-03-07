@@ -6,7 +6,7 @@ class Challenge < ActiveRecord::Base
   DELIMITER = '\s\r\n,.:;"()!?'
   HIDDEN_SYMBOL = '_'
 
-  def hide_en_text
+  def hidden_text
     en_text.gsub(/[^#{DELIMITER}]/, HIDDEN_SYMBOL)
   end
 
@@ -32,7 +32,7 @@ class Challenge < ActiveRecord::Base
     answer_words = split_word(answer_text.strip)
 
     # 回答者の答えのが単語数が多い場合、全て誤りだと扱う
-    return hide_en_text if correct_words.size < answer_words.size
+    return hidden_text if correct_words.size < answer_words.size
 
     result_words = correct_words.zip(answer_words).map do |(correct_word, answer_word)|
       answer_word ||= ''
