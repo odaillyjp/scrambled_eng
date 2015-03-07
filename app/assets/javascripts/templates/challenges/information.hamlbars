@@ -1,3 +1,3 @@
 %h1 {{courseName}}
 
-%a{ href: '{{firstChallengeUrl}}' } Start challenge
+%a{ href: '{{firstChallengeUrl}}', class: 'challenge-start-button' } Start challenge

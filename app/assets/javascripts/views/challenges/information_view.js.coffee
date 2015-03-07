@@ -6,6 +6,9 @@ app.Views.Challenges ?= {}
 app.Views.Challenges.InformationView = Backbone.View.extend
   template: JST['challenges/information']
 
+  events:
+    'click .challenge-start-button': 'navigateToChallenge'
+
   initialize: ->
     @listenTo @collection, 'reset', =>
       @render()
@@ -17,3 +20,7 @@ app.Views.Challenges.InformationView = Backbone.View.extend
     _.extend(context, courseName: firstChallenge.get('course_name'))
     @$el.html(@template(context))
     @
+
+  navigateToChallenge: (e) ->
+    e.preventDefault()
+    Backbone.history.navigate(@collection.first().url(), true)
