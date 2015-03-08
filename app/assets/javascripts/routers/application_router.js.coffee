@@ -11,14 +11,16 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
     @challenges = null
 
   indexChallenge: (course_id) ->
-    @__fetchChallenges(course_id)
-    @__renderSidebarView(course_id)
+    unless @challenges
+      @__fetchChallenges(course_id)
+      @__renderSidebarView(course_id)
     informationView = new app.Views.Challenges.InformationView(collection: @challenges)
     @layout.setMainView(informationView)
 
   showChallenge: (course_id, challenge_id) ->
-    @__fetchChallenges(course_id)
-    @__renderSidebarView(course_id)
+    unless @challenges
+      @__fetchChallenges(course_id)
+      @__renderSidebarView(course_id)
     @challenge = @challenges.get(challenge_id)
     if @challenge
       @__renderChallengeView()
