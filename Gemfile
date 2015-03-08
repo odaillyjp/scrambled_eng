@@ -9,8 +9,10 @@ source 'https://rubygems.org' do
   gem 'jquery-rails'
   gem 'jbuilder', '~> 2.0'
 
+  gem 'hamlbars'
   gem 'haml-rails'
   gem 'handlebars_assets'
+  gem 'order_query'
 
   group :development do
     gem 'better_errors'

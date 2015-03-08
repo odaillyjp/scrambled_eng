@@ -6,6 +6,9 @@ class Challenge < ActiveRecord::Base
   DELIMITER = '\s\r\n,.:;"()!?'
   HIDDEN_SYMBOL = '_'
 
+  include OrderQuery
+  order_query :order_course, [:id, :asc]
+
   def hidden_text
     en_text.gsub(/[^#{DELIMITER}]/, HIDDEN_SYMBOL)
   end

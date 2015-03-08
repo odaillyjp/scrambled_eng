@@ -1,0 +1,13 @@
+.popup
+  .content.success
+    %h1 Congratulations!
+    .success-message
+      = hb 'if next_challenge_url' do
+        %p You've Successfully Completed Challenge 1!
+        %a{ href: '{{next_challenge_url}}', class: 'next-challenge-button btn' }
+          Next Challenge
+
+        = hb 'else'
+        %p Congratulations, You've Completed Level 1!
+        %a{ href: '{{course_information_url}}', class: 'information-button btn' }
+          Course Information

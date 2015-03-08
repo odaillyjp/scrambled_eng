@@ -1,6 +1,7 @@
 class ChallengesController < ApplicationController
+  before_action :fetch_challenges, only: %i(index create resolve)
+
   def index
-    @challenges = Course.find(params[:course_id]).challenges
   end
 
   def show
@@ -16,8 +17,7 @@ class ChallengesController < ApplicationController
   end
 
   def create
-    course = Course.find(params[:course_id])
-    @challenge = course.challenges.new(challenge_params)
+    @challenge = @challenges.new(challenge_params)
 
     if @challenge.save
       redirect_to course, notice: 'Challenge was successfully created.'
@@ -41,11 +41,19 @@ class ChallengesController < ApplicationController
   end
 
   def resolve
-    @challenge = Challenge.find(params[:id])
+    @challenge = @challenges.find(params[:id])
     raw_text = params[:raw_text] || ''
 
     if @challenge.correct?(raw_text)
-      render json: { correct: true, en_text: @challenge.en_text }
+      next_challenge = @challenges.order_course_at(@challenge).next
+      next_challenge_url = next_challenge ? course_challenge_url(next_challenge) : nil
+
+      render json: {
+        correct: true,
+        challenge: @challenge,
+        next_challenge_url: next_challenge_url,
+        course_information_url: course_url(@challenge.course_id)
+      }
     else
       mistake = @challenge.teach_mistake(raw_text)
       render json: { correct: false, mistake: mistake }
@@ -53,6 +61,10 @@ class ChallengesController < ApplicationController
   end
 
   private
+
+  def fetch_challenges
+    @challenges = Course.find(params[:course_id]).challenges
+  end
 
   def challenge_params
     params.require(:challenge).permit(:en_text, :ja_text)

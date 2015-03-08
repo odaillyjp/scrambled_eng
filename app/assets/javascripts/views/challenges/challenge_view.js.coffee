@@ -26,7 +26,11 @@ app.Views.Challenges.ChallengeView = Backbone.View.extend
     @stickit()
     @
 
-  renderCorrectModal: ->
+  renderCorrectModal: (data) ->
+    correctModalView = new app.Views.Challenges.CorrectModalView(data)
+    @$el.append(correctModalView.render().el)
+    @listenTo @, 'submit', ->
+      correctModalView.remove()
 
   renderIncorrectModal: ->
     incorrectModalView = new app.Views.Challenges.IncorrectModalView
