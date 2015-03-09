@@ -8,6 +8,6 @@
           Next Challenge
 
         = hb 'else'
-        %p Congratulations, You've Completed Level 1!
+        %p Congratulations, You've Completed Course 1!
         %a{ href: '{{course_information_url}}', class: 'information-button btn' }
           Course Information
