@@ -11,17 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302100721) do
+ActiveRecord::Schema.define(version: 20150309071411) do
 
   create_table "challenges", force: :cascade do |t|
-    t.text     "en_text",    null: false
-    t.text     "ja_text",    null: false
+    t.text     "en_text",                     null: false
+    t.text     "ja_text",                     null: false
     t.integer  "course_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "sequence_number", default: 1, null: false
   end
 
+  add_index "challenges", ["course_id", "sequence_number"], name: "index_challenges_on_course_id_and_sequence_number", unique: true
   add_index "challenges", ["course_id"], name: "index_challenges_on_course_id"
+  add_index "challenges", ["sequence_number"], name: "index_challenges_on_sequence_number"
 
   create_table "courses", force: :cascade do |t|
     t.string   "name",       null: false

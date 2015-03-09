@@ -18,9 +18,10 @@ class ChallengesController < ApplicationController
 
   def create
     @challenge = @challenges.new(challenge_params)
+    @challenge.sequence_number = @challenges.count + 1
 
     if @challenge.save
-      redirect_to course, notice: 'Challenge was successfully created.'
+      redirect_to @challenge.course, notice: 'Challenge was successfully created.'
     else
       render action: 'new'
     end
@@ -69,6 +70,6 @@ class ChallengesController < ApplicationController
   end
 
   def challenge_params
-    params.require(:challenge).permit(:en_text, :ja_text)
+    params.require(:challenge).permit(:en_text, :ja_text, :sequence_number)
   end
 end

@@ -2,6 +2,7 @@ class Challenge < ActiveRecord::Base
   belongs_to :course
   validates :en_text, presence: true
   validates :ja_text, presence: true
+  validates :sequence_number, presence: true, uniqueness: { scope: :course_id }
 
   DELIMITER = '\s\r\n,.:;"()!?'
   HIDDEN_SYMBOL = '_'

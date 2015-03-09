@@ -6,6 +6,8 @@ RSpec.describe Challenge, type: :model do
 
   it { is_expected.to validate_presence_of(:en_text) }
   it { is_expected.to validate_presence_of(:ja_text) }
+  it { is_expected.to validate_presence_of(:sequence_number) }
+  it { is_expected.to validate_uniqueness_of(:sequence_number).scoped_to(:course_id) }
 
   describe '#hidden_text' do
     it '区切り文字以外の全ての文字を隠し文字に変換した文字列を返すこと' do
