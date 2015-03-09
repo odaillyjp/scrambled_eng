@@ -50,7 +50,7 @@ class ChallengesController < ApplicationController
     raw_text = params[:raw_text] || ''
 
     if @challenge.correct?(raw_text)
-      next_challenge = @challenges.order_course_at(@challenge).next
+      next_challenge = @challenges.order_course_at(@challenge).next(false)
       if next_challenge
         next_challenge_url = course_challenge_url(next_challenge, course_id: params[:course_id])
       end

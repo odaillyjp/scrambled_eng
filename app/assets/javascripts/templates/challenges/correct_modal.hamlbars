@@ -3,11 +3,11 @@
     %h1 Congratulations!
     .success-message
       = hb 'if next_challenge_url' do
-        %p You've Successfully Completed Challenge 1!
+        %p You've Successfully Completed Challenge {{challenge_number}}!
         %a{ href: '{{next_challenge_url}}', class: 'next-challenge-button btn' }
           Next Challenge
 
         = hb 'else'
-        %p Congratulations, You've Completed Course 1!
+        %p Congratulations, You've Completed This Course!
         %a{ href: '{{course_information_url}}', class: 'information-button btn' }
           Course Information

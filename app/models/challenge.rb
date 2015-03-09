@@ -8,7 +8,9 @@ class Challenge < ActiveRecord::Base
   HIDDEN_SYMBOL = '_'
 
   include OrderQuery
-  order_query :order_course, [:id, :asc]
+  order_query :order_course, [:sequence_number, :asc]
+
+  default_scope -> { order(:course_id, :sequence_number) }
 
   def hidden_text
     en_text.gsub(/[^#{DELIMITER}]/, HIDDEN_SYMBOL)
