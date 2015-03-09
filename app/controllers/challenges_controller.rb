@@ -5,7 +5,9 @@ class ChallengesController < ApplicationController
   end
 
   def show
-    @challenge = Challenge.find(params[:id])
+    @challenge = Challenge.find_by!(
+      course_id: params[:course_id],
+      sequence_number: params[:sequence_number])
   end
 
   def new
@@ -13,7 +15,9 @@ class ChallengesController < ApplicationController
   end
 
   def edit
-    @challenge = Challenge.find(params[:id])
+    @challenge = Challenge.find_by!(
+      course_id: params[:course_id],
+      sequence_number: params[:sequence_number])
   end
 
   def create
@@ -36,13 +40,13 @@ class ChallengesController < ApplicationController
   end
 
   def destroy
-    challenge.find(params[:id]).destroy
+    challenge.find_by_sequence_number(params[:sequence_number]).destroy
 
     redirect_to root_path
   end
 
   def resolve
-    @challenge = @challenges.find(params[:id])
+    @challenge = @challenges.find_by!(sequence_number: params[:sequence_number])
     raw_text = params[:raw_text] || ''
 
     if @challenge.correct?(raw_text)
@@ -70,6 +74,6 @@ class ChallengesController < ApplicationController
   end
 
   def challenge_params
-    params.require(:challenge).permit(:en_text, :ja_text, :sequence_number)
+    params.require(:challenge).permit(:en_text, :ja_text)
   end
 end

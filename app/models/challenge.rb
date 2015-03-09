@@ -46,6 +46,10 @@ class Challenge < ActiveRecord::Base
     en_text.gsub(/[^#{DELIMITER}]+/, '%s') % result_words
   end
 
+  def to_param
+    sequence_number
+  end
+
   private
 
   def split_word(text)
