@@ -10,13 +10,16 @@
   %body
     %header.header
       .header__cell
-        .header__logo-area
-          = link_to root_path, class: 'brand-link' do
-            ScrambledEng
-        .header__nav
-          = link_to 'Courses', root_path, class: 'courses_link'
-          = link_to 'Create course', new_course_path, class: 'new_course_link'
-          = yield :header_item_nav
+        .header__logo-box
+          .header__item
+            = link_to root_path, class: 'brand-link' do
+              ScrambledEng
+        .header__nav-box
+          %nav.header__item
+            %ul.header__nav-list
+              = link_to 'Courses', root_path, class: 'courses_link'
+              = link_to 'Create course', new_course_path, class: 'new_course_link'
+              = yield :header_item_nav
 
     %main.main
       = yield
