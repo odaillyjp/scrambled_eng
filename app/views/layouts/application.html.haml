@@ -17,8 +17,10 @@
         .header__nav-box
           %nav.header__item
             %ul.header__nav-list
-              = link_to 'Courses', root_path, class: 'courses_link'
-              = link_to 'Create course', new_course_path, class: 'new_course_link'
+              %li.header__nav-list-item
+                = link_to 'Courses', root_path, class: 'courses_link'
+              %li.header__nav-list-item
+                = link_to 'Create course', new_course_path, class: 'new_course_link'
               = yield :header_item_nav
 
     %main.main
