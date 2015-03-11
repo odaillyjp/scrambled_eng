@@ -1,2 +1,2 @@
-%h1 {{courseName}}
+%h1.sidebar__course-name {{courseName}}
 %ol.challenge-list

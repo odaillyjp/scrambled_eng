@@ -1,11 +1,10 @@
-%h1 {{ja_text}}
-%p {{hidden_text}}
+.challenge-view__challenge-objective
+  %h1.challenge-view__item-title {{ja_text}}
+  %p.challenge-view__item-hidden-text {{hidden_text}}
 
-.challenge-panel
+.challenge-view__challenge-panel
   .content
-    %textarea{ id: 'input-challenge-raw_text', spellcheck: false }
-  %footer
+    %textarea{ id: 'input-challenge-raw_text', class: 'challenge-view__raw-textarea',spellcheck: false }
+  %footer.challenge-panel-footer
     %a{ href: '#', class: 'btn challenge-submit-button' }
       Submit text
-
-.challenge-incorrect-modal
