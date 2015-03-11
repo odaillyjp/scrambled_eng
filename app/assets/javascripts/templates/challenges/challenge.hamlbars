@@ -3,6 +3,14 @@
   %p.challenge__ja-text {{ja_text}}
 
 .challenge-panel
+  %ul.challenge-tab-group
+    %li.challenge-tab-item
+      Answer
+  %ul.challenge-tab-group
+    %li.challenge-tab-item
+      English
+    %li.challenge-tab-item
+      Hints
   .editer-panel
     %textarea{ id: 'input-challenge-raw_text', class: 'editer-panel__raw-textarea', spellcheck: false }
     %footer.editer-panel-footer
