@@ -34,7 +34,7 @@ body {
   height: 100%;
   margin: auto;
   background-color: $main_bg_color;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 a {
@@ -165,18 +165,29 @@ a:focus {
   text-align: center;
   left: 0;
   right: 0;
-  padding: 20px 20px 15px;
+  padding: 12px 12px 18px;
   position: fixed;
   width: 100%;
   z-index: 50;
 
+  h1, p, span {
+    margin: 8px;
+  }
+
   .notification-title {
     font-size: 24px;
     color: #BBAD90;
+    text-transform: uppercase;
   }
 
   .notification-message {
-    font-size: 18px;
+    font-size: 14px;
     color: #F7F3DF;
+  }
+
+  .notification-close {
+    font-size: 14px;
+    color: #bbad90;
+    text-transform: uppercase;
   }
 }
