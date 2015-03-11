@@ -4,13 +4,16 @@
 
 .challenge-panel
   %ul.challenge-tab-group
-    %li.challenge-tab-item
-      Answer
+    %li
+      %a.challenge-tab-item.answer-tab-link.is-current
+        Answer
   %ul.challenge-tab-group
-    %li.challenge-tab-item
-      English
-    %li.challenge-tab-item
-      Hints
+    %li
+      %a.challenge-tab-item.english-tab-link.is-current
+        English
+    %li
+      %a.challenge-tab-item.hints-tab-link
+        Hints
   .editer-panel
     %textarea{ id: 'input-challenge-raw_text', class: 'editer-panel__raw-textarea', spellcheck: false }
     %footer.editer-panel-footer
