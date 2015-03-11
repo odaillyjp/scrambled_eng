@@ -208,15 +208,28 @@ a:focus {
 
 .hidden-text-panel {
   @extend .challenge-panel-block;
-}
 
-.hidden-text-panel__hidden-text {
-  @extend .challenge-panel__raw-textarea;
-  height: 20em;
+  .hidden-text-panel__hidden-text {
+    @extend .challenge-panel__raw-textarea;
+    height: 20em;
+  }
 }
 
 .hints-panel {
   @extend .challenge-panel-block;
+
+  h1, ul {
+    margin: 8px;
+  }
+
+  .hints-panel__headline {
+    font-weight: bold;
+  }
+
+  .hints-panel__word {
+    list-style-type: disc;
+    padding: 2px;
+  }
 }
 
 .challenge-view__notification {

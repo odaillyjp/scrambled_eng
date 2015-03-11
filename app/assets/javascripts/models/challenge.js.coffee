@@ -15,6 +15,14 @@ app.Models.Challenge = Backbone.Model.extend
         @set('hidden_text', data.mistake)
         @trigger('notification')
 
+  getWords: ->
+    $.ajax(@url(),
+      type: 'GET'
+      dataType: 'json'
+      data: {require_words: true}
+    ).done (data) =>
+      @set('words', data.words)
+
 app.Collections.ChallengeCollection = Backbone.Collection.extend
   model: app.Models.Challenge
   initialize: (course_id) ->

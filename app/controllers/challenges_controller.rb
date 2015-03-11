@@ -1,13 +1,11 @@
 class ChallengesController < ApplicationController
   before_action :fetch_challenges, only: %i(index create resolve)
+  before_action :fetch_challenge,  only: %i(show edit update destroy)
 
   def index
   end
 
   def show
-    @challenge = Challenge.find_by!(
-      course_id: params[:course_id],
-      sequence_number: params[:sequence_number])
   end
 
   def new
@@ -40,8 +38,6 @@ class ChallengesController < ApplicationController
   end
 
   def destroy
-    challenge.find_by_sequence_number(params[:sequence_number]).destroy
-
     redirect_to root_path
   end
 
@@ -71,6 +67,12 @@ class ChallengesController < ApplicationController
 
   def fetch_challenges
     @challenges = Course.find(params[:course_id]).challenges
+  end
+
+  def fetch_challenge
+    @challenge = Challenge.find_by!(
+      course_id: params[:course_id],
+      sequence_number: params[:sequence_number])
   end
 
   def challenge_params

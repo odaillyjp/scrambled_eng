@@ -1,1 +1,10 @@
-%p.hint-panel__words {{ja_text}}
+= hb 'if words' do
+  %h1.hints-panel__headline 使わている単語
+  %ul
+    = hb 'each words' do
+      %li.hints-panel__word<
+        {{this}}
+
+  = hb 'else'
+  %a.get-challenge-hint
+    Get hint
