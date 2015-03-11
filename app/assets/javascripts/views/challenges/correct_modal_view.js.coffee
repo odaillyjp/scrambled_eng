@@ -4,8 +4,11 @@ app = @ScrambledEng
 app.Views.Challenges ?= {}
 
 app.Views.Challenges.CorrectModalView = Backbone.View.extend
-  className: 'challenge-correct-modal'
+  className: 'correct-modal'
   template: JST['challenges/correct_modal']
+
+  events:
+    'click .overlay': 'remove'
 
   initialize: (data) ->
     @resultData = _.pick(data, 'next_challenge_url', 'course_information_url')
