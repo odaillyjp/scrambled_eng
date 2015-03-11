@@ -19,7 +19,7 @@ app.Views.Challenges.ChallengeView = Backbone.View.extend
   initialize: ->
     @listenTo @model, 'change:hidden_text', @render
     @listenTo @model, 'correct', @renderCorrectModal
-    @listenTo @model, 'notification', @renderNotificationModal
+    @listenTo @model, 'notification', @renderNotification
 
   render: ->
     @$el.html(@template(@model.toJSON()))
@@ -32,8 +32,8 @@ app.Views.Challenges.ChallengeView = Backbone.View.extend
     @listenTo @, 'submit', ->
       correctModalView.remove()
 
-  renderNotificationModal: ->
+  renderNotification: ->
     notificationView = new app.Views.Challenges.NotificationView
     @$el.append(notificationView.render().el)
     @listenTo @, 'submit', ->
-      notigicationView.remove()
+      notificationView.remove()
