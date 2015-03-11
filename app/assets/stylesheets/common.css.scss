@@ -160,12 +160,14 @@ a:focus {
   background: #361E13;
   border-top: 1px solid #361E13;
   border-bottom: 2px solid #030303;
+  bottom: 0;
   cursor: pointer;
   text-align: center;
-  width: 100%;
-  bottom: 0;
+  left: 0;
+  right: 0;
   padding: 20px 20px 15px;
   position: fixed;
+  width: 100%;
   z-index: 50;
 
   .notification-title {
