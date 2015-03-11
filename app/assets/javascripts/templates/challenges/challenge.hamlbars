@@ -16,7 +16,3 @@
     %footer.editer-panel-footer
       %a{ href: '#', class: 'btn challenge-submit-button' }
         Submit text
-  .hidden-text-panel
-    %textarea{ class: 'hidden-text-panel__hidden-text' }
-      {{hidden_text}}
-  .hint-panel

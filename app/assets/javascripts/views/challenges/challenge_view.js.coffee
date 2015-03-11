@@ -17,12 +17,13 @@ app.Views.Challenges.ChallengeView = Backbone.View.extend
     @trigger('submit')
 
   initialize: ->
-    @listenTo @model, 'change:hidden_text', @render
+    @hiddenTextPanelView = new app.Views.Challenges.HiddenTextPanelView(model: @model)
     @listenTo @model, 'correct', @renderCorrectModal
     @listenTo @model, 'notification', @renderNotification
 
   render: ->
     @$el.html(@template(@model.toJSON()))
+    @$('.challenge-panel').append(@hiddenTextPanelView.render().el)
     @stickit()
     @
 
