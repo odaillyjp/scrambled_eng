@@ -1,10 +1,14 @@
-.challenge-view__challenge-objective
-  %h1.challenge-view__item-title {{ja_text}}
-  %p.challenge-view__item-hidden-text {{hidden_text}}
+.challenge
+  %h1.challenge__title Challenge {{id}}
+  %p.challenge__ja-text {{ja_text}}
 
-.challenge-view__challenge-panel
-  .content
-    %textarea{ id: 'input-challenge-raw_text', class: 'challenge-view__raw-textarea',spellcheck: false }
-  %footer.challenge-panel-footer
-    %a{ href: '#', class: 'btn challenge-submit-button' }
-      Submit text
+.challenge-panel
+  .editer-panel
+    %textarea{ id: 'input-challenge-raw_text', class: 'editer-panel__raw-textarea', spellcheck: false }
+    %footer.editer-panel-footer
+      %a{ href: '#', class: 'btn challenge-submit-button' }
+        Submit text
+  .hidden-text-panel
+    %textarea{ class: 'hidden-text-panel__hidden-text' }
+      {{hidden_text}}
+  .hint-panel
