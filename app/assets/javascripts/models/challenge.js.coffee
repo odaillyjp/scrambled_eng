@@ -13,7 +13,7 @@ app.Models.Challenge = Backbone.Model.extend
         @trigger('correct', data)
       else
         @set('hidden_text', data.mistake)
-        @trigger('incorrect')
+        @trigger('notification')
 
 app.Collections.ChallengeCollection = Backbone.Collection.extend
   model: app.Models.Challenge

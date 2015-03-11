@@ -3,9 +3,9 @@
 app = @ScrambledEng
 app.Views.Challenges ?= {}
 
-app.Views.Challenges.IncorrectModalView = Backbone.View.extend
+app.Views.Challenges.NotificationView = Backbone.View.extend
   className: 'challenge-view__notification'
-  template: JST['challenges/incorrect_modal']
+  template: JST['challenges/notification']
 
   render: ->
     @$el.html(@template())
