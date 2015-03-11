@@ -16,6 +16,10 @@ class Challenge < ActiveRecord::Base
     en_text.gsub(/[^#{DELIMITER}]/, HIDDEN_SYMBOL)
   end
 
+  def words
+    split_word(en_text.downcase.strip)
+  end
+
   def correct?(text)
     # 注意: 大文字・小文字の区別はしない
     # 注意: 単語の綴りが合っていれば正解とする

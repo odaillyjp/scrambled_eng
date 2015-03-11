@@ -15,6 +15,12 @@ RSpec.describe Challenge, type: :model do
     end
   end
 
+  describe '#words' do
+    it '文中に使わている単語を返すこと' do
+      expect(challenge.words).to eq %w(she sells seashells by the seashore)
+    end
+  end
+
   describe '#correct?' do
     context '答えと完全一致している文字列を渡したとき' do
       it { expect(challenge.correct?(challenge.en_text)).to be_truthy }
