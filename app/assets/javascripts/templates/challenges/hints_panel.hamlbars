@@ -1,10 +1,24 @@
 = hb 'if words' do
-  %h1.hints-panel__headline 使わている単語
-  %ul
-    = hb 'each words' do
-      %li.hints-panel__word<
-        {{this}}
+  %article.hint
+    %h1.hint__headline
+      単語一覧
+    %ul
+      = hb 'each words' do
+        %li.hint__word<
+          {{this}}
+    .clearfix
 
   = hb 'else'
-  %a.hints-panel__get-hint-button.btn
+  %a.hints-panel__get-words-button.btn
     Get hint
+
+= hb 'if correct_text' do
+  %article.hint
+    %h1.hint__headline
+      答え
+    %p.hint__correct-text
+      {{correct_text}}
+
+  = hb 'else'
+  %a.hints-panel__get-correct-text-button.btn
+    Get answer

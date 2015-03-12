@@ -31,6 +31,14 @@ app.Models.Challenge = Backbone.Model.extend
     ).done (data) =>
       @set('words', data.words)
 
+  getCorrectText: ->
+    $.ajax(@url(),
+      type: 'GET'
+      dataType: 'json'
+      data: {require_correct_text: true}
+    ).done (data) =>
+      @set('correct_text', data.correct_text)
+
   _resolveRawText: ->
     $.ajax("#{@url()}/resolving",
       type: 'POST'
