@@ -176,7 +176,7 @@ a:focus {
   display: block;
   padding: 20px 20px 10px;
   width: 400px;
-  height: 310px;
+  height: 210px;
 
   &.is-hidden {
     display: none;
@@ -207,7 +207,7 @@ a:focus {
 
 .editer-panel__raw-textarea {
   @extend .challenge-panel__raw-textarea;
-  height: 16em;
+  height: 10em;
 }
 
 .hidden-text-panel {
@@ -215,7 +215,7 @@ a:focus {
 
   .hidden-text-panel__hidden-text {
     @extend .challenge-panel__raw-textarea;
-    height: 20em;
+    height: 14em;
   }
 }
 
