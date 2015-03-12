@@ -4,8 +4,10 @@ class Challenge < ActiveRecord::Base
   validates :ja_text, presence: true
   validates :sequence_number, presence: true, uniqueness: { scope: :course_id }
 
-  DELIMITER = '\s\r\n,.:;"()!?'
-  HIDDEN_SYMBOL = '_'
+  DELIMITER_MARK = '\s\r\n,.:;"()!?'
+  DECIMAL_MARK = ',.'
+  WORD_REGEXP = /(?:[^#{DELIMITER_MARK}]+|(?<=\d)[#{DECIMAL_MARK}](?=\d))+/
+  HIDDEN_MARK = '_'
 
   include OrderQuery
   order_query :order_course, [:sequence_number, :asc]
@@ -13,18 +15,18 @@ class Challenge < ActiveRecord::Base
   default_scope -> { order(:course_id, :sequence_number) }
 
   def hidden_text
-    en_text.gsub(/[^#{DELIMITER}]/, HIDDEN_SYMBOL)
+    en_text.gsub(WORD_REGEXP) { |word| HIDDEN_MARK * word.size }
   end
 
   def words
-    split_word(en_text.downcase.strip)
+    scan_word(en_text.downcase.strip)
   end
 
   def correct?(text)
     # 注意: 大文字・小文字の区別はしない
     # 注意: 単語の綴りが合っていれば正解とする
-    correct_words = split_word(en_text.downcase.strip)
-    answer_words = split_word(text.downcase.strip)
+    correct_words = scan_word(en_text.downcase.strip)
+    answer_words = scan_word(text.downcase.strip)
 
     correct_words == answer_words
   end
@@ -38,8 +40,8 @@ class Challenge < ActiveRecord::Base
   #
   def teach_mistake(answer_text)
     # 注意: 単語の綴りが合っていれば正解とする
-    correct_words = split_word(en_text.strip)
-    answer_words = split_word(answer_text.strip)
+    correct_words = scan_word(en_text.strip)
+    answer_words = scan_word(answer_text.strip)
 
     # 回答者の答えのが単語数が多い場合、全て誤りだと扱う
     return hidden_text if correct_words.size < answer_words.size
@@ -49,7 +51,7 @@ class Challenge < ActiveRecord::Base
       teach_mistake_of_word(correct_word, answer_word)
     end
 
-    en_text.gsub(/[^#{DELIMITER}]+/, '%s') % result_words
+    en_text.gsub(WORD_REGEXP, '%s') % result_words
   end
 
   def to_param
@@ -58,8 +60,8 @@ class Challenge < ActiveRecord::Base
 
   private
 
-  def split_word(text)
-    text.split(/[#{DELIMITER}]+/)
+  def scan_word(text)
+    text.scan(WORD_REGEXP)
   end
 
   # 誤っている文字だけを隠し文字に変換した単語を返す
@@ -71,13 +73,13 @@ class Challenge < ActiveRecord::Base
   #
   def teach_mistake_of_word(correct_word, answer_word)
     # 回答者の答えのが文字数が多い場合、その単語は全て誤りだと扱う
-    return correct_word.gsub(/./, HIDDEN_SYMBOL) if correct_word.size < answer_word.size
+    return correct_word.gsub(/./, HIDDEN_MARK) if correct_word.size < answer_word.size
 
     correct_word.chars
       .zip(answer_word.chars)
       .map { |(correct_char, answer_char)|
         # 注意: 大文字・小文字の区別はしない
-        correct_char.downcase == answer_char.try(:downcase) ? correct_char : HIDDEN_SYMBOL
+        correct_char.downcase == answer_char.try(:downcase) ? correct_char : HIDDEN_MARK
       }.join
   end
 end

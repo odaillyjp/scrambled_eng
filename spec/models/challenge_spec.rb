@@ -98,11 +98,19 @@ RSpec.describe Challenge, type: :model do
 
   # private methods
 
-  describe '#split_word' do
+  describe '#scan_word' do
     context '"foo bar,buzz:hoge\r\npiyo"を渡したとき' do
       it '["foo", "bar", "buzz", "hoge", "piyo"] を返すこと' do
         expect_ary = %w(foo bar buzz hoge piyo)
-        expect(challenge.send(:split_word, "foo bar,buzz:hoge\r\npiyo")).to eq expect_ary
+        expect(challenge.send(:scan_word, "foo bar,buzz:hoge\r\npiyo")).to eq expect_ary
+      end
+    end
+
+    context '"In Tokyo, More than 1,000 people have been lived."を渡したとき' do
+      it '["In", "Tokyo", "More", "than", "1,000", "people", "have", "been", "lived"]を返すこと' do
+        text = 'In Tokyo, More than 1,000 people have been lived.'
+        expect_ary = %w(In Tokyo More than 1,000 people have been lived)
+        expect(challenge.send(:scan_word, text)).to eq expect_ary
       end
     end
   end
