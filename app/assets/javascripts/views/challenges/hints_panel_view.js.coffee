@@ -8,7 +8,7 @@ app.Views.Challenges.HintsPanelView = Backbone.View.extend
   template: JST['challenges/hints_panel']
 
   events:
-    'click .get-challenge-hint': 'getChallengeHint'
+    'click .hints-panel__get-hint-button': 'getChallengeHint'
 
   initialize: ->
     @listenTo @model, 'change:words', @render

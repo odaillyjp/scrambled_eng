@@ -6,5 +6,5 @@
         {{this}}
 
   = hb 'else'
-  %a.get-challenge-hint
+  %a.hints-panel__get-hint-button.btn
     Get hint
