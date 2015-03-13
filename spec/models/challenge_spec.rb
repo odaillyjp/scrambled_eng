@@ -123,10 +123,10 @@ RSpec.describe Challenge, type: :model do
     end
 
     context '単語数は同じだが、文字数が多い単語がある文字列を渡したとき' do
-      let(:mistake) { challenge.teach_mistake('They sells seashells by the seashore.') }
+      let(:mistake) { challenge.teach_mistake('Shee sells seashells by the seashore.') }
 
       it '正解している部分だけを当てはめた文字列を持つオブジェクトを返すこと' do
-        expect(mistake.hidden_text).to eq '_he sells seashells by the seashore.'
+        expect(mistake.hidden_text).to eq 'She sells seashells by the seashore.'
       end
 
       it '"Word is too long."というメッセージを持つオブジェクトを返すこと' do
@@ -204,10 +204,10 @@ RSpec.describe Challenge, type: :model do
     end
 
     context '回答者の答えが正解よりも長いとき' do
-      let(:mistake) { challenge.send(:teach_mistake_of_word, 'foo', 'fxoo') }
+      let(:mistake) { challenge.send(:teach_mistake_of_word, 'foo', 'fooo') }
 
       it '正解している部分だけを当てはめた文字列を持つオブジェクトを返すこと' do
-        expect(mistake.hidden_text).to eq 'f_o'
+        expect(mistake.hidden_text).to eq 'foo'
       end
 
       it '"Word is too long."というメッセージを持つオブジェクトを返すこと' do
@@ -224,6 +224,30 @@ RSpec.describe Challenge, type: :model do
 
       it '"Word is too short."というメッセージを持つオブジェクトを返すこと' do
         expect(mistake.message).to eq 'Word is too short.'
+      end
+    end
+
+    context '回答者の答えが正解よりも長く、途中に誤りもあるとき' do
+      let(:mistake) { challenge.send(:teach_mistake_of_word, 'foo', 'fxoo') }
+
+      it '正解している部分だけを当てはめた文字列を持つオブジェクトを返すこと' do
+        expect(mistake.hidden_text).to eq 'f_o'
+      end
+
+      it '"Incorrectly spelled some word."というメッセージを持つオブジェクトを返すこと' do
+        expect(mistake.message).to eq 'Incorrectly spelled some word.'
+      end
+    end
+
+    context '回答者の答えが正解よりも短く、途中に誤りもあるとき' do
+      let(:mistake) { challenge.send(:teach_mistake_of_word, 'foo', 'fx') }
+
+      it '正解している部分だけを当てはめた文字列を持つオブジェクトを返すこと' do
+        expect(mistake.hidden_text).to eq 'f__'
+      end
+
+      it '"Incorrectly spelled some word."というメッセージを持つオブジェクトを返すこと' do
+        expect(mistake.message).to eq 'Incorrectly spelled some word.'
       end
     end
   end

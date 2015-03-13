@@ -95,10 +95,17 @@ class Challenge < ActiveRecord::Base
       return mistake
     end
 
-    mistake.message = case correct_word.size <=> answer_word.size
-                      when -1 then 'Word is too long.'
-                      when 1  then 'Word is too short.'
-                      when 0  then 'Incorrectly spelled some word.'
+    # 正解の単語・回答者の答えのどちらか短い方に文字数を合わせて、等値を判定する
+    mistake.message = if correct_word[0...answer_word.size] == answer_word[0...correct_word.size]
+                        # 入力途中の回答者の答えに誤りがない場合
+                        case correct_word.size <=> answer_word.size
+                        when -1 then 'Word is too long.'
+                        when 1  then 'Word is too short.'
+                        when 0  then nil
+                        end
+                      else
+                        # 入力途中の回答者の答えに誤りがある場合
+                        'Incorrectly spelled some word.'
                       end
 
     # 間違っている文字だけを隠し文字に変換する
