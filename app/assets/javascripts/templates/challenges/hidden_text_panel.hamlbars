@@ -1,2 +1,2 @@
-%textarea{ class: 'hidden-text-panel__hidden-text' }
+%p.hidden-text-panel__hidden-text
   {{hidden_text}}
