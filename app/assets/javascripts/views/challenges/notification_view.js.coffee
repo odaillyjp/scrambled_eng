@@ -10,6 +10,8 @@ app.Views.Challenges.NotificationView = Backbone.View.extend
   events:
     'click': 'remove'
 
+  initialize: (@message) ->
+
   render: ->
-    @$el.html(@template())
+    @$el.html(@template(message: @message))
     @

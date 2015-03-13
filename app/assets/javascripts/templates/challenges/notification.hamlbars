@@ -1,3 +1,3 @@
 %h1.notification-title Sorry, Try Again
-%p.notification-message スペルに誤りがあります。
+%p.notification-message {{message}}
 %span.notification-close Click to Close

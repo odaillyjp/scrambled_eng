@@ -50,8 +50,8 @@ app.Views.Challenges.ChallengeView = Backbone.View.extend
     @listenTo @, 'submit', ->
       correctModalView.remove()
 
-  renderNotification: ->
-    notificationView = new app.Views.Challenges.NotificationView
+  renderNotification: (message) ->
+    notificationView = new app.Views.Challenges.NotificationView(message)
     @$el.append(notificationView.render().el)
     @listenTo @, 'submit', ->
       notificationView.remove()

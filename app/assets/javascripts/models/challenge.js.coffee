@@ -12,7 +12,7 @@ app.Models.Challenge = Backbone.Model.extend
       if data.correct
         @set('hidden_text', data.challenge.en_text)
       else
-        @set('hidden_text', data.mistake)
+        @set('hidden_text', data.mistake.hidden_text)
 
   submitRawText: ->
     @_resolveRawText().done (data) =>
@@ -20,8 +20,8 @@ app.Models.Challenge = Backbone.Model.extend
         @set('hidden_text', data.challenge.en_text)
         @trigger('correct', data)
       else
-        @set('hidden_text', data.mistake)
-        @trigger('notification')
+        @set('hidden_text', data.mistake.hidden_text)
+        @trigger('notification', data.mistake.message)
 
   getWords: ->
     $.ajax(@url(),
