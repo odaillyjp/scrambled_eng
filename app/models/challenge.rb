@@ -39,19 +39,28 @@ class Challenge < ActiveRecord::Base
   #   返り値       => 'She s_lls seash_lls __ the s_______.'
   #
   def teach_mistake(answer_text)
+    # 注意: 大文字・小文字の区別はしない
     # 注意: 単語の綴りが合っていれば正解とする
     correct_words = scan_word(en_text.strip)
     answer_words = scan_word(answer_text.strip)
 
-    # 回答者の答えのが単語数が多い場合、全て誤りだと扱う
-    return hidden_text if correct_words.size < answer_words.size
+    mistake = Mistake.new
+    mistake.message = case correct_words.size <=> answer_words.size
+                      when -1 then 'Words is too many.'
+                      when 1  then 'Words is very few.'
+                      end
 
     result_words = correct_words.zip(answer_words).map do |(correct_word, answer_word)|
-      answer_word ||= ''
-      teach_mistake_of_word(correct_word, answer_word)
+      word_mistake = teach_mistake_of_word(correct_word, (answer_word || ''))
+
+      # 最初の誤り原因メッセージだけを覚えておく
+      mistake.message ||= word_mistake.message
+
+      word_mistake.hidden_text
     end
 
-    en_text.gsub(WORD_REGEXP, '%s') % result_words
+    mistake.hidden_text = en_text.gsub(WORD_REGEXP, '%s') % result_words
+    mistake
   end
 
   def to_param
@@ -72,14 +81,43 @@ class Challenge < ActiveRecord::Base
   #   返り値                          => 'f_o'
   #
   def teach_mistake_of_word(correct_word, answer_word)
-    # 回答者の答えのが文字数が多い場合、その単語は全て誤りだと扱う
-    return correct_word.gsub(/./, HIDDEN_MARK) if correct_word.size < answer_word.size
+    mistake = Mistake.new
 
-    correct_word.chars
+    # （大文字・小文字を区別せずに）正解の単語と一致した場合は、正解の単語を返す
+    if correct_word.downcase == answer_word.try(:downcase)
+      mistake.hidden_text = correct_word
+      return mistake
+    end
+
+    # 回答者の答えが空文字の場合は、全ての文字を隠し文字に変換した単語を返す
+    if answer_word.blank?
+      mistake.hidden_text = correct_word.gsub(/./, HIDDEN_MARK)
+      return mistake
+    end
+
+    mistake.message = case correct_word.size <=> answer_word.size
+                      when -1 then 'Word is too long.'
+                      when 1  then 'Word is too short.'
+                      when 0  then 'Incorrectly spelled some word.'
+                      end
+
+    # 間違っている文字だけを隠し文字に変換する
+    mistake.hidden_text = correct_word.chars
       .zip(answer_word.chars)
       .map { |(correct_char, answer_char)|
         # 注意: 大文字・小文字の区別はしない
         correct_char.downcase == answer_char.try(:downcase) ? correct_char : HIDDEN_MARK
       }.join
+
+    mistake
+  end
+
+  class Mistake
+    attr_accessor :hidden_text, :message
+
+    def initialize
+      @hidden_text = nil
+      @message = nil
+    end
   end
 end
