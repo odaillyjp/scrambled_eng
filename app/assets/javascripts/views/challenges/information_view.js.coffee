@@ -4,10 +4,11 @@ app = @ScrambledEng
 app.Views.Challenges ?= {}
 
 app.Views.Challenges.InformationView = Backbone.View.extend
+  className: 'information'
   template: JST['challenges/information']
 
   events:
-    'click .challenge-start-button': 'navigateToChallenge'
+    'click .information__start-challenge-button': 'navigateToChallenge'
 
   initialize: ->
     @listenTo @collection, 'reset', =>
