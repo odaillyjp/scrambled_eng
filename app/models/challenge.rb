@@ -43,12 +43,7 @@ class Challenge < ActiveRecord::Base
     # 注意: 単語の綴りが合っていれば正解とする
     correct_words = scan_word(en_text.strip)
     answer_words = scan_word(answer_text.strip)
-
     mistake = Mistake.new
-    mistake.message = case correct_words.size <=> answer_words.size
-                      when -1 then 'Words is too many.'
-                      when 1  then 'Words is very few.'
-                      end
 
     result_words = correct_words.zip(answer_words).map do |(correct_word, answer_word)|
       word_mistake = teach_mistake_of_word(correct_word, (answer_word || ''))
@@ -58,6 +53,11 @@ class Challenge < ActiveRecord::Base
 
       word_mistake.hidden_text
     end
+
+    mistake.message ||= case correct_words.size <=> answer_words.size
+                        when -1 then 'Words is too many.'
+                        when 1  then 'Words is very few.'
+                        end
 
     mistake.hidden_text = en_text.gsub(WORD_REGEXP, '%s') % result_words
     mistake

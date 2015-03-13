@@ -99,10 +99,10 @@ RSpec.describe Challenge, type: :model do
     end
 
     context '単語数が多い文字列を渡したとき' do
-      let(:mistake) { challenge.teach_mistake('She sells a seashell by the seashore.') }
+      let(:mistake) { challenge.teach_mistake('She sells seashells by the seashore in Japan.') }
 
       it '正解している部分だけを当てはめた文字列を持つオブジェクトを返すこと' do
-        expect(mistake.hidden_text).to eq 'She sells _________ __ ___ ________.'
+        expect(mistake.hidden_text).to eq 'She sells seashells by the seashore.'
       end
 
       it '"Words is too many."というメッセージを持つオブジェクトを返すこと' do
@@ -111,7 +111,7 @@ RSpec.describe Challenge, type: :model do
     end
 
     context '単語数が少ない文字列を渡したとき' do
-      let(:mistake) { challenge.teach_mistake('She sells seashells in Japan.') }
+      let(:mistake) { challenge.teach_mistake('She sells seashells') }
 
       it '正解している部分だけを当てはめた文字列を持つオブジェクトを返すこと' do
         expect(mistake.hidden_text).to eq 'She sells seashells __ ___ ________.'
@@ -143,6 +143,30 @@ RSpec.describe Challenge, type: :model do
 
       it '"Word is too short."というメッセージを持つオブジェクトを返すこと' do
         expect(mistake.message).to eq 'Word is too short.'
+      end
+    end
+
+    context '単語数が多く、途中に誤りもある文字列を渡したとき' do
+      let(:mistake) { challenge.teach_mistake('She sells seeshells by the seashore in Japan.') }
+
+      it '正解している部分だけを当てはめた文字列を持つオブジェクトを返すこと' do
+        expect(mistake.hidden_text).to eq 'She sells se_shells by the seashore.'
+      end
+
+      it '"Incorrectly spelled some word."というメッセージを持つオブジェクトを返すこと' do
+        expect(mistake.message).to eq 'Incorrectly spelled some word.'
+      end
+    end
+
+    context '単語数が少なく、途中に誤りもある文字列を渡したとき' do
+      let(:mistake) { challenge.teach_mistake('She sells see') }
+
+      it '正解している部分だけを当てはめた文字列を持つオブジェクトを返すこと' do
+        expect(mistake.hidden_text).to eq 'She sells se_______ __ ___ ________.'
+      end
+
+      it '"Incorrectly spelled some word."というメッセージを持つオブジェクトを返すこと' do
+        expect(mistake.message).to eq 'Incorrectly spelled some word.'
       end
     end
   end
