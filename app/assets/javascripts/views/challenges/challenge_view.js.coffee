@@ -7,7 +7,7 @@ app.Views.Challenges.ChallengeView = Backbone.View.extend
   template: JST['challenges/challenge']
 
   events:
-    'click .challenge-submit-button': 'submitRawText'
+    'click .editer-panel__submit-raw-text-button': 'submitRawText'
     'click .english-tab-link': 'renderHiddenTextPanel'
     'click .hints-tab-link': 'renderHintsPanel'
 
