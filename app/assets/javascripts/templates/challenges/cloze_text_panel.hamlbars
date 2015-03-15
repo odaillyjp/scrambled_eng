@@ -1,0 +1,4 @@
+%p.cloze-text-panel__cloze-text
+  {{cloze_text}}
+%a.cloze-text-panel__get-next-word-button
+  Get Next Word

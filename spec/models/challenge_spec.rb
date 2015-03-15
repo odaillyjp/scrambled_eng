@@ -10,9 +10,9 @@ RSpec.describe Challenge, type: :model do
   it { is_expected.to validate_uniqueness_of(:sequence_number).scoped_to(:course_id) }
   it { is_expected.to respond_to(:to_param) }
 
-  describe '#hidden_text' do
+  describe '#cloze_text' do
     it '区切り文字以外の全ての文字を穴埋め文字に置換した文字列を返すこと' do
-      expect(challenge.hidden_text).to eq '___ _____ _________ __ ___ ________.'
+      expect(challenge.cloze_text).to eq '___ _____ _________ __ ___ ________.'
     end
   end
 
@@ -55,7 +55,7 @@ RSpec.describe Challenge, type: :model do
       let(:mistake) { challenge.teach_mistake(challenge.en_text) }
 
       it '正解の文字列を持つオブジェクトを返すこと' do
-        expect(mistake.hidden_text).to eq challenge.en_text
+        expect(mistake.cloze_text).to eq challenge.en_text
       end
 
       it 'メッサージにNullを持つオブジェクトを返すこと' do
@@ -71,7 +71,7 @@ RSpec.describe Challenge, type: :model do
       let(:mistake) { challenge.teach_mistake('She salls seashalls on the sxxxxxxx.') }
 
       it '誤っている文字を穴埋め文字に置換した文字列を持つオブジェクトを返すこと' do
-        expect(mistake.hidden_text).to eq 'She s_lls seash_lls __ the s_______.'
+        expect(mistake.cloze_text).to eq 'She s_lls seash_lls __ the s_______.'
       end
 
       it '"Incorrectly spelled some word."というメッセージを持つオブジェクトを返すこと' do
@@ -87,7 +87,7 @@ RSpec.describe Challenge, type: :model do
       let(:mistake) { challenge.teach_mistake('she yelll xxxshalls by the seashore.') }
 
       it '大文字と小文字を区別せずに、誤りを教えること' do
-        expect(mistake.hidden_text).to eq 'She _ell_ ___sh_lls by the seashore.'
+        expect(mistake.cloze_text).to eq 'She _ell_ ___sh_lls by the seashore.'
       end
     end
 
@@ -95,7 +95,7 @@ RSpec.describe Challenge, type: :model do
       let(:mistake) { challenge.teach_mistake("\r\nShe   sells  xxxshalls  by  the  seashore. \n") }
 
       it '単語の綴りだけを考慮して、誤りを教えること' do
-        expect(mistake.hidden_text).to eq 'She sells ___sh_lls by the seashore.'
+        expect(mistake.cloze_text).to eq 'She sells ___sh_lls by the seashore.'
       end
     end
 
@@ -103,7 +103,7 @@ RSpec.describe Challenge, type: :model do
       let(:mistake) { challenge.teach_mistake('The sells seashells by the seashore') }
 
       it '単語の綴りだけを考慮して、誤りを教えること' do
-        expect(mistake.hidden_text).to eq '_he sells seashells by the seashore.'
+        expect(mistake.cloze_text).to eq '_he sells seashells by the seashore.'
       end
     end
 
@@ -111,7 +111,7 @@ RSpec.describe Challenge, type: :model do
       let(:mistake) { challenge.teach_mistake('She sells seashells by the seashore in Japan.') }
 
       it '正解している部分だけを当てはめた文字列を持つオブジェクトを返すこと' do
-        expect(mistake.hidden_text).to eq 'She sells seashells by the seashore.'
+        expect(mistake.cloze_text).to eq 'She sells seashells by the seashore.'
       end
 
       it '"Words is too many."というメッセージを持つオブジェクトを返すこと' do
@@ -127,7 +127,7 @@ RSpec.describe Challenge, type: :model do
       let(:mistake) { challenge.teach_mistake('She sells seashells') }
 
       it '正解している部分だけを当てはめた文字列を持つオブジェクトを返すこと' do
-        expect(mistake.hidden_text).to eq 'She sells seashells __ ___ ________.'
+        expect(mistake.cloze_text).to eq 'She sells seashells __ ___ ________.'
       end
 
       it '"Words is very few."というメッセージを持つオブジェクトを返すこと' do
@@ -143,7 +143,7 @@ RSpec.describe Challenge, type: :model do
       let(:mistake) { challenge.teach_mistake('Shee sells seashells by the seashore.') }
 
       it '正解している部分だけを当てはめた文字列を持つオブジェクトを返すこと' do
-        expect(mistake.hidden_text).to eq 'She sells seashells by the seashore.'
+        expect(mistake.cloze_text).to eq 'She sells seashells by the seashore.'
       end
 
       it '"Word is too long."というメッセージを持つオブジェクトを返すこと' do
@@ -159,7 +159,7 @@ RSpec.describe Challenge, type: :model do
       let(:mistake) { challenge.teach_mistake('She sells seashell by the seashore.') }
 
       it '正解している部分だけを当てはめた文字列を持つオブジェクトを返すこと' do
-        expect(mistake.hidden_text).to eq 'She sells seashell_ by the seashore.'
+        expect(mistake.cloze_text).to eq 'She sells seashell_ by the seashore.'
       end
 
       it '"Word is too short."というメッセージを持つオブジェクトを返すこと' do
@@ -175,7 +175,7 @@ RSpec.describe Challenge, type: :model do
       let(:mistake) { challenge.teach_mistake('She sells seeshells by the seashore in Japan.') }
 
       it '正解している部分だけを当てはめた文字列を持つオブジェクトを返すこと' do
-        expect(mistake.hidden_text).to eq 'She sells se_shells by the seashore.'
+        expect(mistake.cloze_text).to eq 'She sells se_shells by the seashore.'
       end
 
       it '"Incorrectly spelled some word."というメッセージを持つオブジェクトを返すこと' do
@@ -191,7 +191,7 @@ RSpec.describe Challenge, type: :model do
       let(:mistake) { challenge.teach_mistake('She sells see') }
 
       it '正解している部分だけを当てはめた文字列を持つオブジェクトを返すこと' do
-        expect(mistake.hidden_text).to eq 'She sells se_______ __ ___ ________.'
+        expect(mistake.cloze_text).to eq 'She sells se_______ __ ___ ________.'
       end
 
       it '"Incorrectly spelled some word."というメッセージを持つオブジェクトを返すこと' do
@@ -256,7 +256,7 @@ RSpec.describe Challenge, type: :model do
       let(:mistake) { challenge.send(:teach_mistake_of_word, 'foo', 'foo') }
 
       it '"foo"という文字列を持つオブジェクトを返すこと' do
-        expect(mistake.hidden_text).to eq 'foo'
+        expect(mistake.cloze_text).to eq 'foo'
       end
 
       it 'メッセージにNullを持つオブジェクトを返すこと' do
@@ -268,7 +268,7 @@ RSpec.describe Challenge, type: :model do
       let(:mistake) { challenge.send(:teach_mistake_of_word, 'foo', 'fxx') }
 
       it '"f__"という文字列を持つオブジェクトを返すこと' do
-        expect(mistake.hidden_text).to eq 'f__'
+        expect(mistake.cloze_text).to eq 'f__'
       end
 
       it '"Incorrectly spelled some word."というメッセージを持つオブジェクトを返すこと' do
@@ -280,7 +280,7 @@ RSpec.describe Challenge, type: :model do
       let(:mistake) { challenge.send(:teach_mistake_of_word, 'FOO', 'foo') }
 
       it '"FOO"という文字列を持つオブジェクトを返すこと' do
-        expect(mistake.hidden_text).to eq 'FOO'
+        expect(mistake.cloze_text).to eq 'FOO'
       end
 
       it 'メッセージにNullを持つオブジェクトを返すこと' do
@@ -292,7 +292,7 @@ RSpec.describe Challenge, type: :model do
       let(:mistake) { challenge.send(:teach_mistake_of_word, 'foo', 'fooo') }
 
       it '正解している部分だけを当てはめた文字列を持つオブジェクトを返すこと' do
-        expect(mistake.hidden_text).to eq 'foo'
+        expect(mistake.cloze_text).to eq 'foo'
       end
 
       it '"Word is too long."というメッセージを持つオブジェクトを返すこと' do
@@ -304,7 +304,7 @@ RSpec.describe Challenge, type: :model do
       let(:mistake) { challenge.send(:teach_mistake_of_word, 'foo', 'fo') }
 
       it '足りない部分は誤りだと扱うこと' do
-        expect(mistake.hidden_text).to eq 'fo_'
+        expect(mistake.cloze_text).to eq 'fo_'
       end
 
       it '"Word is too short."というメッセージを持つオブジェクトを返すこと' do
@@ -316,7 +316,7 @@ RSpec.describe Challenge, type: :model do
       let(:mistake) { challenge.send(:teach_mistake_of_word, 'foo', 'fxoo') }
 
       it '正解している部分だけを当てはめた文字列を持つオブジェクトを返すこと' do
-        expect(mistake.hidden_text).to eq 'f_o'
+        expect(mistake.cloze_text).to eq 'f_o'
       end
 
       it '"Incorrectly spelled some word."というメッセージを持つオブジェクトを返すこと' do
@@ -328,7 +328,7 @@ RSpec.describe Challenge, type: :model do
       let(:mistake) { challenge.send(:teach_mistake_of_word, 'foo', 'fx') }
 
       it '正解している部分だけを当てはめた文字列を持つオブジェクトを返すこと' do
-        expect(mistake.hidden_text).to eq 'f__'
+        expect(mistake.cloze_text).to eq 'f__'
       end
 
       it '"Incorrectly spelled some word."というメッセージを持つオブジェクトを返すこと' do

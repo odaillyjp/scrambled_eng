@@ -20,7 +20,7 @@ class Challenge < ActiveRecord::Base
   DELIMITER_MARK = '\s\r\n,.:;"()!?'
   DECIMAL_MARK = ',.'
   WORD_REGEXP = /(?:[^#{DELIMITER_MARK}]+|(?<=\d)[#{DECIMAL_MARK}](?=\d))+/
-  HIDDEN_MARK = '_'
+  CLOZE_MARK = '_'
 
   include OrderQuery
   order_query :order_course, [:sequence_number, :asc]
@@ -28,8 +28,8 @@ class Challenge < ActiveRecord::Base
   default_scope -> { order(:course_id, :sequence_number) }
 
   # 英文中の全ての文字を穴埋め文字に置換した文字列を返す
-  def hidden_text
-    en_text.gsub(WORD_REGEXP) { |word| HIDDEN_MARK * word.size }
+  def cloze_text
+    en_text.gsub(WORD_REGEXP) { |word| CLOZE_MARK * word.size }
   end
 
   def words
@@ -69,7 +69,7 @@ class Challenge < ActiveRecord::Base
       # 誤りがある最初の単語の位置情報を覚えておく
       mistake.position ||= idx if word_mistake.message.present?
 
-      word_mistake.hidden_text
+      word_mistake.cloze_text
     end
 
     mistake.message ||= case correct_words.size <=> answer_words.size
@@ -77,7 +77,7 @@ class Challenge < ActiveRecord::Base
                         when 1  then 'Words is very few.'
                         end
 
-    mistake.hidden_text = en_text.gsub(WORD_REGEXP, '%s') % result_words
+    mistake.cloze_text = en_text.gsub(WORD_REGEXP, '%s') % result_words
     mistake
   end
 
@@ -131,13 +131,13 @@ class Challenge < ActiveRecord::Base
 
     # （大文字・小文字を区別せずに）正解の単語と一致した場合は、正解の単語を返す
     if correct_word.downcase == answer_word.try(:downcase)
-      mistake.hidden_text = correct_word
+      mistake.cloze_text = correct_word
       return mistake
     end
 
     # 回答者の答えが空文字の場合は、全ての文字を穴埋め文字に置換した単語を返す
     if answer_word.blank?
-      mistake.hidden_text = correct_word.gsub(/./, HIDDEN_MARK)
+      mistake.cloze_text = correct_word.gsub(/./, CLOZE_MARK)
       return mistake
     end
 
@@ -155,21 +155,21 @@ class Challenge < ActiveRecord::Base
                       end
 
     # 間違っている文字だけを穴埋め文字に置換する
-    mistake.hidden_text = correct_word.chars
+    mistake.cloze_text = correct_word.chars
       .zip(answer_word.chars)
       .map { |(correct_char, answer_char)|
         # 注意: 大文字・小文字の区別はしない
-        correct_char.downcase == answer_char.try(:downcase) ? correct_char : HIDDEN_MARK
+        correct_char.downcase == answer_char.try(:downcase) ? correct_char : CLOZE_MARK
       }.join
 
     mistake
   end
 
   class Mistake
-    attr_accessor :hidden_text, :message, :position
+    attr_accessor :cloze_text, :message, :position
 
     def initialize
-      @hidden_text = nil
+      @cloze_text = nil
       @message = nil
       @position = nil
     end

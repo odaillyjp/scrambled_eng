@@ -219,10 +219,10 @@ a:focus {
   height: 10em;
 }
 
-.hidden-text-panel {
+.cloze-text-panel {
   @extend .challenge-panel-block;
 
-  .hidden-text-panel__hidden-text {
+  .cloze-text-panel__cloze-text {
     @extend .challenge-panel__raw-textarea;
     height: 14em;
   }

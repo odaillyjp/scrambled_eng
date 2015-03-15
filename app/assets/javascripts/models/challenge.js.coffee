@@ -10,17 +10,17 @@ app.Models.Challenge = Backbone.Model.extend
   fetchHiddenText: ->
     @_resolveRawText().done (data) =>
       if data.correct
-        @set('hidden_text', data.challenge.en_text)
+        @set('cloze_text', data.challenge.en_text)
       else
-        @set('hidden_text', data.mistake.hidden_text)
+        @set('cloze_text', data.mistake.cloze_text)
 
   submitRawText: ->
     @_resolveRawText().done (data) =>
       if data.correct
-        @set('hidden_text', data.challenge.en_text)
+        @set('cloze_text', data.challenge.en_text)
         @trigger('correct', data)
       else
-        @set('hidden_text', data.mistake.hidden_text)
+        @set('cloze_text', data.mistake.cloze_text)
         @trigger('notification', data.mistake.message)
 
   fetchPartialAnswer: ->
