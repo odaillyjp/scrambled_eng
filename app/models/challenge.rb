@@ -66,24 +66,31 @@ class Challenge < ActiveRecord::Base
     mistake
   end
 
-  # 次の単語か、誤りがある最初の単語の正解を返す
+  # 入力済みの文字列に次の単語を加えた文字列を返す
+  # 入力途中に誤りがある場合は、誤りがあった部分を正した文字列を返す
   #
   # 例1:
   #   正解の文章   => 'She sells seashells by the sheshore.'
-  #   回答者の答え => 'She salls'
-  #   返り値       => 'seashells'
+  #   回答者の答え => 'She sells'
+  #   返り値       => 'She sells seashells'
   #
   # 例2:
   #   正解の文章   => 'She sells seashells by the seashore.'
-  #   回答者の答え => 'She sells sxxx'
-  #   返り値       => 'seashells'
+  #   回答者の答え => 'She sells sxxshells by'
+  #   返り値       => 'She sells seashells by'
   #
-  def teach_next_word(answer_text)
+  def teach_partial_answer(answer_text)
     answer_words = scan_word(answer_text)
-    words.zip(answer_words)
-      .find { |(correct_word, answer_word)|
-        correct_word.downcase != answer_word.try(:downcase)
-      }.try(:first)
+    mistake = teach_mistake(answer_text)
+
+    if mistake.position.present?
+      # 途中に誤りがある場合は、誤りがあった単語の位置に正しい単語を入れる
+      answer_words[mistake.position] = words[mistake.position]
+      answer_text.gsub(WORD_REGEXP, '%s') % answer_words
+    else
+      # 途中に誤りがない場合は、次の単語の加える
+      [answer_text, words[answer_words.size]].reject(&:blank?).join(' ')
+    end
   end
 
   def to_param

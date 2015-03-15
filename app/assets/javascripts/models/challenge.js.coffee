@@ -23,13 +23,13 @@ app.Models.Challenge = Backbone.Model.extend
         @set('hidden_text', data.mistake.hidden_text)
         @trigger('notification', data.mistake.message)
 
-  fetchNextWord: ->
-    $.ajax("#{@url()}/next_word",
+  fetchPartialAnswer: ->
+    $.ajax("#{@url()}/partial_answer",
       type: 'POST'
       dataType: 'json'
       data: {raw_text: @get('raw_text')}
     ).done (data) =>
-      @set('raw_text', [@get('raw_text'), data.next_word].join(' '))
+      @set('raw_text', data.partial_answer)
 
   fetchWords: ->
     $.ajax(@url(),

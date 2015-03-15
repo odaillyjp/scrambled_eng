@@ -8,7 +8,7 @@ app.Views.Challenges.HiddenTextPanelView = Backbone.View.extend
   template: JST['challenges/hidden_text_panel']
 
   events:
-    'click .hidden-text-panel__get-next-word-button': 'getNextWord'
+    'click .hidden-text-panel__get-next-word-button': 'fetchPartialAnswer'
 
   initialize: ->
     @listenTo @model, 'change:hidden_text', @render
@@ -17,5 +17,5 @@ app.Views.Challenges.HiddenTextPanelView = Backbone.View.extend
     @$el.html(@template(@model.toJSON()))
     @
 
-  getNextWord: ->
-    @model.fetchNextWord()
+  fetchPartialAnswer: ->
+    @model.fetchPartialAnswer()
