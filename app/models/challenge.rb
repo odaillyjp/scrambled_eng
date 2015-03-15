@@ -27,7 +27,7 @@ class Challenge < ActiveRecord::Base
 
   default_scope -> { order(:course_id, :sequence_number) }
 
-  # 英文中の全ての文字を穴埋め文字に置換した文字列を返す
+  # 英文中の全ての文字をブランク文字に置換した文字列を返す
   def cloze_text
     en_text.gsub(WORD_REGEXP) { |word| CLOZE_MARK * word.size }
   end
@@ -46,7 +46,7 @@ class Challenge < ActiveRecord::Base
     correct_words == answer_words
   end
 
-  # 誤っている文字だけを穴埋め文字に変換した文章を返す
+  # 誤っている文字だけをブランク文字に変換した文章を返す
   #
   # 例:
   #   正解の文章   => 'She sells seashells by the sheshore.'
@@ -119,7 +119,7 @@ class Challenge < ActiveRecord::Base
     text.strip.scan(WORD_REGEXP)
   end
 
-  # 誤っている文字だけを穴埋め文字に置換した単語を返す
+  # 誤っている文字だけをブランク文字に置換した単語を返す
   #
   # 例:
   #   正解の単語(correct_word)        => 'foo'
@@ -135,7 +135,7 @@ class Challenge < ActiveRecord::Base
       return mistake
     end
 
-    # 回答者の答えが空文字の場合は、全ての文字を穴埋め文字に置換した単語を返す
+    # 回答者の答えが空文字の場合は、全ての文字をブランク文字に置換した単語を返す
     if answer_word.blank?
       mistake.cloze_text = correct_word.gsub(/./, CLOZE_MARK)
       return mistake
@@ -154,7 +154,7 @@ class Challenge < ActiveRecord::Base
                         'Incorrectly spelled some word.'
                       end
 
-    # 間違っている文字だけを穴埋め文字に置換する
+    # 間違っている文字だけをブランク文字に置換する
     mistake.cloze_text = correct_word.chars
       .zip(answer_word.chars)
       .map { |(correct_char, answer_char)|

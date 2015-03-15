@@ -11,7 +11,7 @@ RSpec.describe Challenge, type: :model do
   it { is_expected.to respond_to(:to_param) }
 
   describe '#cloze_text' do
-    it '区切り文字以外の全ての文字を穴埋め文字に置換した文字列を返すこと' do
+    it '区切り文字以外の全ての文字をブランク文字に置換した文字列を返すこと' do
       expect(challenge.cloze_text).to eq '___ _____ _________ __ ___ ________.'
     end
   end
@@ -70,7 +70,7 @@ RSpec.describe Challenge, type: :model do
     context '誤りがある文字列を渡したとき' do
       let(:mistake) { challenge.teach_mistake('She salls seashalls on the sxxxxxxx.') }
 
-      it '誤っている文字を穴埋め文字に置換した文字列を持つオブジェクトを返すこと' do
+      it '誤っている文字をブランク文字に置換した文字列を持つオブジェクトを返すこと' do
         expect(mistake.cloze_text).to eq 'She s_lls seash_lls __ the s_______.'
       end
 
