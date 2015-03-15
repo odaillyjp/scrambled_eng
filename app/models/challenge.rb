@@ -80,16 +80,17 @@ class Challenge < ActiveRecord::Base
   #   返り値       => 'She sells seashells by'
   #
   def teach_partial_answer(answer_text)
+    correct_words = scan_word(en_text)
     answer_words = scan_word(answer_text)
     mistake = teach_mistake(answer_text)
 
     if mistake.position.present?
       # 途中に誤りがある場合は、誤りがあった単語の位置に正しい単語を入れる
-      answer_words[mistake.position] = words[mistake.position]
+      answer_words[mistake.position] = correct_words[mistake.position]
       answer_text.gsub(WORD_REGEXP, '%s') % answer_words
     else
       # 途中に誤りがない場合は、次の単語の加える
-      [answer_text, words[answer_words.size]].reject(&:blank?).join(' ')
+      [answer_text, correct_words[answer_words.size]].reject(&:blank?).join(' ')
     end
   end
 
