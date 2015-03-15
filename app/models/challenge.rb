@@ -43,13 +43,16 @@ class Challenge < ActiveRecord::Base
     # 注意: 単語の綴りが合っていれば正解とする
     correct_words = scan_word(en_text.strip)
     answer_words = scan_word(answer_text.strip)
+    ziped_words = correct_words.zip(answer_words)
     mistake = Mistake.new
 
-    result_words = correct_words.zip(answer_words).map do |(correct_word, answer_word)|
+    result_words = ziped_words.map.with_index do |(correct_word, answer_word), idx|
       word_mistake = teach_mistake_of_word(correct_word, (answer_word || ''))
 
       # 最初の誤り原因メッセージだけを覚えておく
       mistake.message ||= word_mistake.message
+      # 誤りがある最初の単語の位置情報を覚えておく
+      mistake.position ||= idx if word_mistake.message.present?
 
       word_mistake.hidden_text
     end
@@ -120,11 +123,12 @@ class Challenge < ActiveRecord::Base
   end
 
   class Mistake
-    attr_accessor :hidden_text, :message
+    attr_accessor :hidden_text, :message, :position
 
     def initialize
       @hidden_text = nil
       @message = nil
+      @position = nil
     end
   end
 end

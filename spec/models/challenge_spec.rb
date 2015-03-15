@@ -60,17 +60,25 @@ RSpec.describe Challenge, type: :model do
       it 'メッサージにNullを持つオブジェクトを返すこと' do
         expect(mistake.message).to be_nil
       end
+
+      it '誤り位置情報にNullを持つオブジェクトを返すこと' do
+        expect(mistake.position).to be_nil
+      end
     end
 
-    context 'ミススペルがある文字列を渡したとき' do
+    context '誤りがある文字列を渡したとき' do
       let(:mistake) { challenge.teach_mistake('She salls seashalls on the sxxxxxxx.') }
 
-      it 'ミススペルを隠し文字に変換した文字列を持つオブジェクトを返すこと' do
+      it '誤っている文字を隠し文字に変換した文字列を持つオブジェクトを返すこと' do
         expect(mistake.hidden_text).to eq 'She s_lls seash_lls __ the s_______.'
       end
 
       it '"Incorrectly spelled some word."というメッセージを持つオブジェクトを返すこと' do
         expect(mistake.message).to eq 'Incorrectly spelled some word.'
+      end
+
+      it '最初に誤りがあった単語の位置情報を持つオブジェクトを返すこと' do
+        expect(mistake.position).to eq 1
       end
     end
 
@@ -108,6 +116,10 @@ RSpec.describe Challenge, type: :model do
       it '"Words is too many."というメッセージを持つオブジェクトを返すこと' do
         expect(mistake.message).to eq 'Words is too many.'
       end
+
+      it '誤り位置情報にNullを持つオブジェクトを返すこと' do
+        expect(mistake.position).to be_nil
+      end
     end
 
     context '単語数が少ない文字列を渡したとき' do
@@ -119,6 +131,10 @@ RSpec.describe Challenge, type: :model do
 
       it '"Words is very few."というメッセージを持つオブジェクトを返すこと' do
         expect(mistake.message).to eq 'Words is very few.'
+      end
+
+      it '誤り位置情報にNullを持つオブジェクトを返すこと' do
+        expect(mistake.position).to be_nil
       end
     end
 
@@ -132,6 +148,10 @@ RSpec.describe Challenge, type: :model do
       it '"Word is too long."というメッセージを持つオブジェクトを返すこと' do
         expect(mistake.message).to eq 'Word is too long.'
       end
+
+      it '文字数が多い単語の位置情報を持つオブジェクトを返すこと' do
+        expect(mistake.position).to eq 0
+      end
     end
 
     context '単語数は同じだが、文字数が少ない単語がある文字列を渡したとき' do
@@ -143,6 +163,10 @@ RSpec.describe Challenge, type: :model do
 
       it '"Word is too short."というメッセージを持つオブジェクトを返すこと' do
         expect(mistake.message).to eq 'Word is too short.'
+      end
+
+      it '文字数が少ない単語の位置情報を持つオブジェクトを返すこと' do
+        expect(mistake.position).to eq 2
       end
     end
 
@@ -156,6 +180,10 @@ RSpec.describe Challenge, type: :model do
       it '"Incorrectly spelled some word."というメッセージを持つオブジェクトを返すこと' do
         expect(mistake.message).to eq 'Incorrectly spelled some word.'
       end
+
+      it '誤りがある最初の単語の位置情報を持つオブジェクトを返すこと' do
+        expect(mistake.position).to eq 2
+      end
     end
 
     context '単語数が少なく、途中に誤りもある文字列を渡したとき' do
@@ -167,6 +195,10 @@ RSpec.describe Challenge, type: :model do
 
       it '"Incorrectly spelled some word."というメッセージを持つオブジェクトを返すこと' do
         expect(mistake.message).to eq 'Incorrectly spelled some word.'
+      end
+
+      it '誤りがある最初の単語の位置情報を持つオブジェクトを返すこと' do
+        expect(mistake.position).to eq 2
       end
     end
   end
