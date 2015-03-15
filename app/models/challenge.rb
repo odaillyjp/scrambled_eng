@@ -19,14 +19,14 @@ class Challenge < ActiveRecord::Base
   end
 
   def words
-    scan_word(en_text.downcase.strip)
+    scan_word(en_text.downcase)
   end
 
   def correct?(text)
     # 注意: 大文字・小文字の区別はしない
     # 注意: 単語の綴りが合っていれば正解とする
-    correct_words = scan_word(en_text.downcase.strip)
-    answer_words = scan_word(text.downcase.strip)
+    correct_words = scan_word(en_text.downcase)
+    answer_words = scan_word(text.downcase)
 
     correct_words == answer_words
   end
@@ -41,8 +41,8 @@ class Challenge < ActiveRecord::Base
   def teach_mistake(answer_text)
     # 注意: 大文字・小文字の区別はしない
     # 注意: 単語の綴りが合っていれば正解とする
-    correct_words = scan_word(en_text.strip)
-    answer_words = scan_word(answer_text.strip)
+    correct_words = scan_word(en_text)
+    answer_words = scan_word(answer_text)
     ziped_words = correct_words.zip(answer_words)
     mistake = Mistake.new
 
@@ -79,7 +79,7 @@ class Challenge < ActiveRecord::Base
   #   返り値       => 'seashells'
   #
   def teach_next_word(answer_text)
-    answer_words = scan_word(answer_text.strip)
+    answer_words = scan_word(answer_text)
     words.zip(answer_words)
       .find { |(correct_word, answer_word)|
         correct_word.downcase != answer_word.try(:downcase)
@@ -93,7 +93,7 @@ class Challenge < ActiveRecord::Base
   private
 
   def scan_word(text)
-    text.scan(WORD_REGEXP)
+    text.strip.scan(WORD_REGEXP)
   end
 
   # 誤っている文字だけを隠し文字に変換した単語を返す

@@ -239,6 +239,14 @@ RSpec.describe Challenge, type: :model do
         expect(challenge.send(:scan_word, text)).to eq expect_ary
       end
     end
+
+    context '"   In Tokyo, More than 1,000 people have been lived.   "を渡したとき' do
+      it '["In", "Tokyo", "More", "than", "1,000", "people", "have", "been", "lived"]を返すこと' do
+        text = '   In Tokyo, More than 1,000 people have been lived.   '
+        expect_ary = %w(In Tokyo More than 1,000 people have been lived)
+        expect(challenge.send(:scan_word, text)).to eq expect_ary
+      end
+    end
   end
 
   describe '#teach_mistake_of_word' do
