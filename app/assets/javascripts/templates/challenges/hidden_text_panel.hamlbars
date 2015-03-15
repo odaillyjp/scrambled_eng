@@ -1,2 +1,4 @@
 %p.hidden-text-panel__hidden-text
   {{hidden_text}}
+%a.hidden-text-panel__get-next-word-button
+  Get Next Word

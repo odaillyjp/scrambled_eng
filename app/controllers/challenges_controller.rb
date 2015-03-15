@@ -1,6 +1,6 @@
 class ChallengesController < ApplicationController
   before_action :fetch_challenges, only: %i(index create resolve)
-  before_action :fetch_challenge,  only: %i(show edit update destroy)
+  before_action :fetch_challenge,  only: %i(show edit update destroy teach_next_word)
 
   def index
   end
@@ -61,6 +61,12 @@ class ChallengesController < ApplicationController
       mistake = @challenge.teach_mistake(raw_text)
       render json: { correct: false, mistake: mistake }
     end
+  end
+
+  def teach_next_word
+    raw_text = params[:raw_text] || ''
+    next_word = @challenge.teach_next_word(raw_text)
+    render json: { next_word: next_word }
   end
 
   private
