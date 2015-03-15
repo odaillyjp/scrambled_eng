@@ -203,6 +203,24 @@ RSpec.describe Challenge, type: :model do
     end
   end
 
+  describe '#teach_next_word' do
+    context '途中まで正しく入力されている文字列を渡したとき' do
+      it '次の単語を返すこと' do
+        expect(challenge.teach_next_word('She sells')).to eq 'seashells'
+      end
+    end
+
+    context '途中に誤りがある文字列を渡したとき' do
+      it '誤りがある部分の正解の単語を返すこと' do
+        expect(challenge.teach_next_word('She sells sheshells by the ')).to eq 'seashells'
+      end
+    end
+
+    context '最後まで正しく入力されている文字列を渡したとき' do
+      it { expect(challenge.teach_next_word(challenge.en_text)).to be_nil }
+    end
+  end
+
   # private methods
 
   describe '#scan_word' do

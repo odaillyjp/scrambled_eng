@@ -66,6 +66,26 @@ class Challenge < ActiveRecord::Base
     mistake
   end
 
+  # 次の単語か、誤りがある最初の単語の正解を返す
+  #
+  # 例1:
+  #   正解の文章   => 'She sells seashells by the sheshore.'
+  #   回答者の答え => 'She salls'
+  #   返り値       => 'seashells'
+  #
+  # 例2:
+  #   正解の文章   => 'She sells seashells by the seashore.'
+  #   回答者の答え => 'She sells sxxx'
+  #   返り値       => 'seashells'
+  #
+  def teach_next_word(answer_text)
+    answer_words = scan_word(answer_text.strip)
+    words.zip(answer_words)
+      .find { |(correct_word, answer_word)|
+        correct_word.downcase != answer_word.try(:downcase)
+      }.try(:first)
+  end
+
   def to_param
     sequence_number
   end
