@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: challenges
+#
+#  id              :integer          not null, primary key
+#  en_text         :text             not null
+#  ja_text         :text             not null
+#  course_id       :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  sequence_number :integer          default(1), not null
+#
+
 class Challenge < ActiveRecord::Base
   belongs_to :course
   validates :en_text, presence: true
