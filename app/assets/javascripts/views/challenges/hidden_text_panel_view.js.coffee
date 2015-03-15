@@ -18,4 +18,4 @@ app.Views.Challenges.HiddenTextPanelView = Backbone.View.extend
     @
 
   getNextWord: ->
-    @model.getNextWord()
+    @model.fetchNextWord()

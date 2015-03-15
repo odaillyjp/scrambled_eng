@@ -4,10 +4,10 @@ app.Models ?= {}
 app.Models.Challenge = Backbone.Model.extend
   initialize: ->
     @listenTo @, 'change:raw_text', _.debounce =>
-      @renderHiddenText()
+      @fetchHiddenText()
     , 500
 
-  renderHiddenText: ->
+  fetchHiddenText: ->
     @_resolveRawText().done (data) =>
       if data.correct
         @set('hidden_text', data.challenge.en_text)
@@ -23,7 +23,7 @@ app.Models.Challenge = Backbone.Model.extend
         @set('hidden_text', data.mistake.hidden_text)
         @trigger('notification', data.mistake.message)
 
-  getNextWord: ->
+  fetchNextWord: ->
     $.ajax("#{@url()}/next_word",
       type: 'POST'
       dataType: 'json'
@@ -31,7 +31,7 @@ app.Models.Challenge = Backbone.Model.extend
     ).done (data) =>
       @set('raw_text', [@get('raw_text'), data.next_word].join(' '))
 
-  getWords: ->
+  fetchWords: ->
     $.ajax(@url(),
       type: 'GET'
       dataType: 'json'
@@ -39,7 +39,7 @@ app.Models.Challenge = Backbone.Model.extend
     ).done (data) =>
       @set('words', data.words)
 
-  getCorrectText: ->
+  fetchCorrectText: ->
     $.ajax(@url(),
       type: 'GET'
       dataType: 'json'

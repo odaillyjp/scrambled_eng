@@ -8,8 +8,8 @@ app.Views.Challenges.HintsPanelView = Backbone.View.extend
   template: JST['challenges/hints_panel']
 
   events:
-    'click .hints-panel__get-words-button': 'getWords'
-    'click .hints-panel__get-correct-text-button': 'getCorrectText'
+    'click .hints-panel__get-words-button': 'fetchWords'
+    'click .hints-panel__get-correct-text-button': 'fetchCorrectText'
 
   initialize: ->
     @listenTo @model, 'change:words', @render
@@ -19,8 +19,8 @@ app.Views.Challenges.HintsPanelView = Backbone.View.extend
     @$el.html(@template(@model.toJSON()))
     @
 
-  getWords: ->
-    @model.getWords()
+  fetchWords: ->
+    @model.fetchWords()
 
-  getCorrectText: ->
-    @model.getCorrectText()
+  fetchCorrectText: ->
+    @model.fetchCorrectText()
