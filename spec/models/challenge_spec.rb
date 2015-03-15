@@ -11,7 +11,7 @@ RSpec.describe Challenge, type: :model do
   it { is_expected.to respond_to(:to_param) }
 
   describe '#hidden_text' do
-    it '区切り文字以外の全ての文字を隠し文字に変換した文字列を返すこと' do
+    it '区切り文字以外の全ての文字を穴埋め文字に置換した文字列を返すこと' do
       expect(challenge.hidden_text).to eq '___ _____ _________ __ ___ ________.'
     end
   end
@@ -31,7 +31,7 @@ RSpec.describe Challenge, type: :model do
       it { expect(challenge.correct?('foo')).to be_falsy }
     end
 
-    context '答えの文字を全て小文字に変換した文字列を渡したとき' do
+    context '答えの文字を全て小文字に置換した文字列を渡したとき' do
       it '大文字と小文字を区別せずに正解とすること' do
         expect(challenge.correct?(challenge.en_text.downcase)).to be_truthy
       end
@@ -70,7 +70,7 @@ RSpec.describe Challenge, type: :model do
     context '誤りがある文字列を渡したとき' do
       let(:mistake) { challenge.teach_mistake('She salls seashalls on the sxxxxxxx.') }
 
-      it '誤っている文字を隠し文字に変換した文字列を持つオブジェクトを返すこと' do
+      it '誤っている文字を穴埋め文字に置換した文字列を持つオブジェクトを返すこと' do
         expect(mistake.hidden_text).to eq 'She s_lls seash_lls __ the s_______.'
       end
 
@@ -83,7 +83,7 @@ RSpec.describe Challenge, type: :model do
       end
     end
 
-    context '答えの文字を全て小文字に変換した文字列を渡したとき' do
+    context '答えの文字を全て小文字に置換した文字列を渡したとき' do
       let(:mistake) { challenge.teach_mistake('she yelll xxxshalls by the seashore.') }
 
       it '大文字と小文字を区別せずに、誤りを教えること' do

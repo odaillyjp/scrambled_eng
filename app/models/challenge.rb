@@ -27,11 +27,13 @@ class Challenge < ActiveRecord::Base
 
   default_scope -> { order(:course_id, :sequence_number) }
 
+  # 英文中の全ての文字を穴埋め文字に置換した文字列を返す
   def hidden_text
     en_text.gsub(WORD_REGEXP) { |word| HIDDEN_MARK * word.size }
   end
 
   def words
+    # 注意: 小文字に変換した単語を返す
     scan_word(en_text.downcase)
   end
 
@@ -44,7 +46,7 @@ class Challenge < ActiveRecord::Base
     correct_words == answer_words
   end
 
-  # 誤っている文字だけを隠し文字に変換した文章を返す
+  # 誤っている文字だけを穴埋め文字に変換した文章を返す
   #
   # 例:
   #   正解の文章   => 'She sells seashells by the sheshore.'
@@ -80,7 +82,7 @@ class Challenge < ActiveRecord::Base
   end
 
   # 入力済みの文字列に次の単語を加えた文字列を返す
-  # 入力途中に誤りがある場合は、誤りがあった部分を正した文字列を返す
+  # 入力途中に誤りがある場合は、その部分を正した文字列を返す
   #
   # 例1:
   #   正解の文章   => 'She sells seashells by the sheshore.'
@@ -98,11 +100,11 @@ class Challenge < ActiveRecord::Base
     mistake = teach_mistake(answer_text)
 
     if mistake.position.present?
-      # 途中に誤りがある場合は、誤りがあった単語の位置に正しい単語を入れる
+      # 文の途中に誤りがある場合は、誤りがあった単語の位置に正しい単語を入れる
       answer_words[mistake.position] = correct_words[mistake.position]
       answer_text.gsub(WORD_REGEXP, '%s') % answer_words
     else
-      # 途中に誤りがない場合は、次の単語の加える
+      # 文の途中に誤りがない場合は、次の単語の加える
       [answer_text, correct_words[answer_words.size]].reject(&:blank?).join(' ')
     end
   end
@@ -117,7 +119,7 @@ class Challenge < ActiveRecord::Base
     text.strip.scan(WORD_REGEXP)
   end
 
-  # 誤っている文字だけを隠し文字に変換した単語を返す
+  # 誤っている文字だけを穴埋め文字に置換した単語を返す
   #
   # 例:
   #   正解の単語(correct_word)        => 'foo'
@@ -133,7 +135,7 @@ class Challenge < ActiveRecord::Base
       return mistake
     end
 
-    # 回答者の答えが空文字の場合は、全ての文字を隠し文字に変換した単語を返す
+    # 回答者の答えが空文字の場合は、全ての文字を穴埋め文字に置換した単語を返す
     if answer_word.blank?
       mistake.hidden_text = correct_word.gsub(/./, HIDDEN_MARK)
       return mistake
@@ -152,7 +154,7 @@ class Challenge < ActiveRecord::Base
                         'Incorrectly spelled some word.'
                       end
 
-    # 間違っている文字だけを隠し文字に変換する
+    # 間違っている文字だけを穴埋め文字に置換する
     mistake.hidden_text = correct_word.chars
       .zip(answer_word.chars)
       .map { |(correct_char, answer_char)|
