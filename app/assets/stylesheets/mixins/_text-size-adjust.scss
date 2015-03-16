@@ -1,0 +1,7 @@
+@mixin text-size-adjust($size) {
+  text-size-adjust: $size;
+  -moz-text-size-adjust: $size;
+  -ms-text-size-adjust: $size;
+  -o-text-size-adjust: $size;
+  -webkit-text-size-adjust: $size;
+}

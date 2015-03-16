@@ -1,0 +1,39 @@
+.header {
+  width: 100%;
+  @include rem('height', 40);
+  background: $main_high_light_color;
+}
+
+.header__cell {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 75em;
+  position: relative;
+}
+
+.header__box {
+  float: left;
+}
+
+.header__logo-box {
+  @extend .header__box;
+  width: 25%;
+}
+
+.header__nav-box {
+  @extend .header__box;
+  width: 75%;
+}
+
+.header__item {
+  line-height: 40px;
+}
+
+.header__nav-list {
+  float: right;
+}
+
+.header__nav-list-item {
+  float: left;
+  margin-right: 2.5em;
+}

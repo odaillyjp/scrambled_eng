@@ -1,0 +1,4 @@
+@mixin rem($property, $size, $base: 10) {
+  #{$property}: $size + px;
+  #{$property}: ($size / $base) + rem;
+}

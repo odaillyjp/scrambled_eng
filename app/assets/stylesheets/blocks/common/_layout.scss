@@ -1,0 +1,26 @@
+html {
+  line-height: 1;
+  font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+  font-size: 62.5%;
+  @include text-size-adjust(100%);
+}
+
+body {
+  display: block;
+  min-width: 960px;
+  height: 100%;
+  margin: auto;
+  background-color: $main_high_light_color;
+  @include rem('font-size', 16);
+}
+
+a {
+  color: $link_color;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: $link_color;
+  text-decoration: underline;
+}

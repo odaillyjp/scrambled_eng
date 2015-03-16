@@ -8,6 +8,7 @@ source 'https://rubygems.org' do
   gem 'jquery-rails'
   gem 'jbuilder', '~> 2.0'
 
+  gem 'compass-rails'
   gem 'hamlbars'
   gem 'haml-rails'
   gem 'handlebars_assets'
