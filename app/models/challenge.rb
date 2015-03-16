@@ -33,25 +33,27 @@ class Challenge < ActiveRecord::Base
   end
 
   def words
-    # 注意: 小文字に変換した単語を返す
-    scan_word(en_text.downcase)
+    scan_word(en_text)
   end
 
-  def correct?(text)
+  def correct?(answer_text)
     # 注意: 大文字・小文字の区別はしない
     # 注意: 単語の綴りが合っていれば正解とする
-    correct_words = scan_word(en_text.downcase)
-    answer_words = scan_word(text.downcase)
-
-    correct_words == answer_words
+    scan_word(en_text.downcase) == scan_word(answer_text.downcase)
   end
 
-  # 誤っている文字だけをブランク文字に変換した文章を返す
+  # 正しい英文(self.en_text)と回答者の答え(answer_text)を比べて
+  # 誤り情報を記憶したオブジェクトを返す
   #
   # 例:
-  #   正解の文章   => 'She sells seashells by the sheshore.'
-  #   回答者の答え => 'She salls seashalls on the sxxxxxxx.'
-  #   返り値       => 'She s_lls seash_lls __ the s_______.'
+  #   challenge = Challenge.new(en_text: 'She sells seashells by the seashore.')
+  #   mistake = challenge.teach_mistake('She salls seashalls on the sxxxxxxx.')
+  #   puts mistake.cloze_text
+  #   # => She s_lls seash_lls __ the s_______.
+  #   puts mistake.message
+  #   # => Incorrectly spelled some word.
+  #   puts mistake.position
+  #   # => 1
   #
   def teach_mistake(answer_text)
     # 注意: 大文字・小文字の区別はしない
@@ -76,23 +78,22 @@ class Challenge < ActiveRecord::Base
                         when -1 then 'Words is too many.'
                         when 1  then 'Words is very few.'
                         end
-
     mistake.cloze_text = en_text.gsub(WORD_REGEXP, '%s') % result_words
     mistake
   end
 
-  # 入力済みの文字列に次の単語を加えた文字列を返す
+  # 回答者の答え(answer_text)に次の正しい単語を加えた文字列を返す
   # 入力途中に誤りがある場合は、その部分を正した文字列を返す
   #
   # 例1:
-  #   正解の文章   => 'She sells seashells by the sheshore.'
-  #   回答者の答え => 'She sells'
-  #   返り値       => 'She sells seashells'
+  #   challenge = Challenge.new(en_text: 'She sells seashells by the sheshore.')
+  #   puts challenge.teach_partial_answer('She sells')
+  #   # => 'She sells seashells'
   #
   # 例2:
-  #   正解の文章   => 'She sells seashells by the seashore.'
-  #   回答者の答え => 'She sells sxxshells by'
-  #   返り値       => 'She sells seashells by'
+  #   challenge = Challenge.new('She sells seashells by the seashore.')
+  #   puts challenge.teach_partial_answer('She sells sxxshells by')
+  #   # => 'She sells seashells by'
   #
   def teach_partial_answer(answer_text)
     correct_words = scan_word(en_text)
@@ -104,8 +105,9 @@ class Challenge < ActiveRecord::Base
       answer_words[mistake.position] = correct_words[mistake.position]
       answer_text.gsub(WORD_REGEXP, '%s') % answer_words
     else
-      # 文の途中に誤りがない場合は、次の単語の加える
-      [answer_text, correct_words[answer_words.size]].reject(&:blank?).join(' ')
+      # 文の途中に誤りがない場合は、次の正しい単語を加える
+      next_correct_word = correct_words[answer_words.size]
+      [answer_text, next_correct_word].reject(&:blank?).join(' ')
     end
   end
 
@@ -119,38 +121,43 @@ class Challenge < ActiveRecord::Base
     text.strip.scan(WORD_REGEXP)
   end
 
-  # 誤っている文字だけをブランク文字に置換した単語を返す
+  # 正しい単語(correct_word)と回答者の答えの単語(answer_word)を比べて
+  # 誤り情報を記憶したオブジェクトを返す
   #
   # 例:
-  #   正解の単語(correct_word)        => 'foo'
-  #   回答者の答えの単語(answer_word) => 'fao'
-  #   返り値                          => 'f_o'
+  #   mistake = challenge.send(:teach_mistake_of_word,
+  #               'seashells',
+  #               'sxxshexxs')
+  #   puts mistake.cloze_text
+  #   # => s__she__s
+  #   puts mistake.message
+  #   # => Incorrectly spelled some word.
   #
   def teach_mistake_of_word(correct_word, answer_word)
     mistake = Mistake.new
 
-    # （大文字・小文字を区別せずに）正解の単語と一致した場合は、正解の単語を返す
+    # （大文字・小文字を区別せずに）正しい単語と一致した場合は、正しい単語を返す
     if correct_word.downcase == answer_word.try(:downcase)
       mistake.cloze_text = correct_word
       return mistake
     end
 
-    # 回答者の答えが空文字の場合は、全ての文字をブランク文字に置換した単語を返す
+    # 回答者の答えの単語が空文字の場合は、全ての文字をブランク文字に置換した単語を返す
     if answer_word.blank?
       mistake.cloze_text = correct_word.gsub(/./, CLOZE_MARK)
       return mistake
     end
 
-    # 正解の単語・回答者の答えのどちらか短い方に文字数を合わせて、等値を判定する
+    # 正しい単語・回答者の答えの単語のどちらか短い方に文字数を合わせて、等値を判定する
     mistake.message = if correct_word[0...answer_word.size] == answer_word[0...correct_word.size]
-                        # 回答者の答えに誤りがない場合
+                        # 回答者の答えの単語に誤りがない場合
                         case correct_word.size <=> answer_word.size
                         when -1 then 'Word is too long.'
                         when 1  then 'Word is too short.'
                         when 0  then nil
                         end
                       else
-                        # 回答者の答えに誤りがある場合
+                        # 回答者の答えの単語に誤りがある場合
                         'Incorrectly spelled some word.'
                       end
 
@@ -165,6 +172,7 @@ class Challenge < ActiveRecord::Base
     mistake
   end
 
+  # 誤り情報を扱うオブジェクト
   class Mistake
     attr_accessor :cloze_text, :message, :position
 

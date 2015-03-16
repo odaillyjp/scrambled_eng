@@ -18,7 +18,7 @@ RSpec.describe Challenge, type: :model do
 
   describe '#words' do
     it '文中に使わている単語を返すこと' do
-      expect(challenge.words).to eq %w(she sells seashells by the seashore)
+      expect(challenge.words).to eq %w(She sells seashells by the seashore)
     end
   end
 
