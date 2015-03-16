@@ -1,0 +1,35 @@
+.sidebar {
+  border-right: 1px solid $main_medium_color;
+  float: left;
+  @include rem('width', $sidebar_width);
+  height: 100%;
+  display: block;
+}
+
+.sidebar__course-name {
+  background: $main_high_dark_color;
+  color: $main_high_light_color;
+  @include rem('font-size', 20);
+  font-weight: bold;
+  @include rem('line-height', 32);
+  @include rem('padding', 8);
+  text-align: center;
+}
+
+.sidebar__item-link {
+  background: $main_low_dark_color;
+  border: 1px solid $main_medium_color;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  color: $main_high_light_color;
+  display: block;
+  @include rem('font-size', 14);
+  @include rem('padding-top', 10);
+  @include rem('padding-bottom', 10);
+  @include rem('padding-left', 14);
+  @include rem('padding-right', 14);
+
+  &:hover {
+    color: $main_high_light_color;
+    text-decoration: none;
+  }
+}

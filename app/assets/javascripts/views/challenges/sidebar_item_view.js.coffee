@@ -13,7 +13,9 @@ app.Views.Challenges.SidebarItemView = Backbone.View.extend
     'click .challenge-sidebar-link': 'navigateToChallenge'
 
   render: ->
-    @$el.html(@template(@model.toJSON()))
+    content = @model.toJSON()
+    _.extend(content, lead: @model.textToLead())
+    @$el.html(@template(content))
     @
 
   navigateToChallenge: (e) ->

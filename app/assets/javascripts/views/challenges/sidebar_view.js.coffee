@@ -4,6 +4,7 @@ app = @ScrambledEng
 app.Views.Challenges ?= {}
 
 app.Views.Challenges.SidebarView = Backbone.View.extend
+  className: 'sidebar'
   template: JST['challenges/sidebar']
 
   initialize: ->
