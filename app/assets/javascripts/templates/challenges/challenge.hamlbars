@@ -4,15 +4,15 @@
 
 .challenge-panel
   %ul.challenge-tab-group
-    %li
-      %a.challenge-tab-item.answer-tab-link.is-current
+    %li.challenge-tab-item
+      %a.challenge-tab-item__answer-link.is-current
         Answer
   %ul.challenge-tab-group
-    %li
-      %a.challenge-tab-item.english-tab-link.is-current
-        English
-    %li
-      %a.challenge-tab-item.hints-tab-link
+    %li.challenge-tab-item
+      %a.challenge-tab-item__cloze-text-link.is-current
+        Cloze Text
+    %li.challenge-tab-item
+      %a.challenge-tab-item__hints-link
         Hints
   .editer-panel
     %textarea{ id: 'input-challenge-raw_text', class: 'editer-panel__raw-textarea', spellcheck: false }

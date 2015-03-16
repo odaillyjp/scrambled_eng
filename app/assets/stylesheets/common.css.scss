@@ -173,7 +173,7 @@ a:focus {
   width: 440px;
 }
 
-.challenge-tab-item {
+.challenge-tab-item__link {
   background: #CCCCCC;
   box-shadow: inset 0 1px #fff,0 1px 3px rgba(0,0,0,0.5);
   cursor: pointer;
@@ -185,6 +185,18 @@ a:focus {
   &.is-current {
     background: #DDDDDD;
   }
+}
+
+.challenge-tab-item__answer-link {
+  @extend .challenge-tab-item__link;
+}
+
+.challenge-tab-item__cloze-text-link {
+  @extend .challenge-tab-item__link;
+}
+
+.challenge-tab-item__hints-link {
+  @extend .challenge-tab-item__link;
 }
 
 .challenge-panel-block {
