@@ -5,8 +5,9 @@
   .lp-header__site-read-line
     %h2 For Japanese who learn English.
 
-%section.course-list
+%section.course-index-list
+  %h1
+    Learn where to start.
   - @courses.each do |course|
-    %article.course-item{ course_id: course.id }
-      .course-name
-        = link_to course.name, course, class: 'course-link'
+    %article.course-index-item{ id: "course_#{course.id}" }
+      = link_to course.name, course, class: 'course-index-item__name'

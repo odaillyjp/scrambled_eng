@@ -1,0 +1,17 @@
+.course-index-list {
+  margin: 0 auto;
+  text-align: center;
+  @include rem('max-width', 960);
+}
+
+.course-index-item {
+  background: $white_color;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  float: left;
+  @include rem('height', 100);
+  @include rem('margin-top', 12);
+  @include rem('margin-left', 20);
+  @include rem('padding', 12);
+  @include rem('padding', 12);
+  @include rem('width', 240);
+}
