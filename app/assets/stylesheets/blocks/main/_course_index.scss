@@ -1,17 +1,29 @@
-.course-index-list {
-  margin: 0 auto;
+.course-index {
+  @include rem('margin-top', 20);
+  @include rem('margin-left', 16);
+  @include rem('margin-right', 16);
   text-align: center;
-  @include rem('max-width', 960);
+}
+
+.course-index-list {
+  @include display-flex;
+  @include flex-direction(row);
+  @include flex-wrap(wrap);
+  @include justify-content(center);
+  margin: 0 auto;
+  @include rem('max-width', 900);
+  text-align: center;
 }
 
 .course-index-item {
   background: $white_color;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-  float: left;
+  @include flex-basis(240px);
+  @include flex-basis(24rem);
+  @include flex-grow(1);
   @include rem('height', 100);
   @include rem('margin-top', 12);
-  @include rem('margin-left', 20);
+  @include rem('margin-left', 12);
+  @include rem('margin-right', 12);
   @include rem('padding', 12);
-  @include rem('padding', 12);
-  @include rem('width', 240);
 }
