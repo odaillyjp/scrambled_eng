@@ -10,8 +10,28 @@
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   @include rem('height', 300);
   margin: 0 auto;
+  position: relative;
   text-align: center;
   @include rem('width', 400);
+
+  .information__course-name {
+    @include rem('font-size', 20);
+    font-weight: bold;
+    @include rem('padding-top', 14);
+    @include rem('padding-left', 18);
+    @include rem('padding-right', 18);
+  }
+
+  .information__footer {
+    @include rem('bottom', 14);
+    position: absolute;
+    width: 100%;
+  }
+
+  .information__start-challenge-button {
+    margin: 0 auto;
+    @include rem('width', 300);
+  }
 }
 
 .challenge-view {
