@@ -7,7 +7,7 @@ app.Models.Challenge = Backbone.Model.extend
       @fetchHiddenText()
     , 500
 
-  textToLead: (maxLength = 6) ->
+  textToLead: (maxLength = 8) ->
     ja_text = @get('ja_text')
     "#{ja_text.substr(0, maxLength)}..." if ja_text
 

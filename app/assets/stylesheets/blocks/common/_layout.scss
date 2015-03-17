@@ -1,17 +1,18 @@
 html {
-  line-height: 1;
   font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
   font-size: 62.5%;
+  height: 100%;
+  line-height: 1;
   @include text-size-adjust(100%);
 }
 
 body {
+  background-color: $main_high_light_color;
   display: block;
-  width: 100%;
+  @include rem('font-size', 16);
   height: 100%;
   margin: auto;
-  background-color: $main_high_light_color;
-  @include rem('font-size', 16);
+  width: 100%;
 }
 
 a {

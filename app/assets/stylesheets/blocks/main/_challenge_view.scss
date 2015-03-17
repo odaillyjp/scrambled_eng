@@ -9,44 +9,44 @@
 }
 
 .main-container {
-  background: $main_low_light_color;
+  background: $main_high_light_color;
   @include rem('margin-left', $sidebar_width);
   height: 100%;
   position: relative;
 }
 
 .information {
-  background: #EEEEEE;
-  height: 300px;
+  background: $white_color;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  @include rem('height', 300);
   margin: 0 auto;
   text-align: center;
-  width: 400px;
+  @include rem('width', 400);
 }
 
-.challenge-view__box {
-  margin: 20px 20px 10px;
+.challenge-view {
+  display: block;
+  height: 100%;
+  @include rem('margin-left', 48);
+  @include rem('margin-right', 48);
+  position: relative;
 }
 
 .challenge {
-  @extend .challenge-view__box;
-
   h1, p {
-    margin: 8px;
+    @include rem('padding-top', 12);
+    @include rem('padding-bottom', 12);
+    position: relative;
   }
 
   .challenge__title {
-    font-size: 24px;
+    @include rem('font-size', 24);
     font-weight: bold;
-    padding-bottom: 8px;
   }
 
   .challenge__ja-text {
-    font-size: 18px;
+    @include rem('font-size', 16);
   }
-}
-
-.challenge-panel {
-  @extend .challenge-view__box;
 }
 
 .challenge-tab-group {
@@ -156,7 +156,7 @@
   }
 }
 
-.challenge-view__notification {
+.notification {
   display: block;
   background: #361E13;
   border-top: 1px solid #361E13;

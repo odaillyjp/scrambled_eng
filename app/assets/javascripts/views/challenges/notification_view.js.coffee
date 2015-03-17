@@ -4,7 +4,7 @@ app = @ScrambledEng
 app.Views.Challenges ?= {}
 
 app.Views.Challenges.NotificationView = Backbone.View.extend
-  className: 'challenge-view__notification'
+  className: 'notification'
   template: JST['challenges/notification']
 
   events:
