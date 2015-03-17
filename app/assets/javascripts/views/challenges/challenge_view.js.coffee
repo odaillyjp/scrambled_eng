@@ -34,14 +34,14 @@ app.Views.Challenges.ChallengeView = Backbone.View.extend
     @
 
   renderClozeTextPanel: ->
-    @$('.hints-tab-link').removeClass('is-current')
-    @$('.english-tab-link').addClass('is-current')
+    @$('.challenge-tab-item__hints-link').removeClass('is-current')
+    @$('.challenge-tab-item__cloze-text-link').addClass('is-current')
     @hintsPanelView.$el.addClass('is-hidden')
     @clozeTextPanelView.$el.removeClass('is-hidden')
 
   renderHintsPanel: ->
-    @$('.english-tab-link').removeClass('is-current')
-    @$('.hints-tab-link').addClass('is-current')
+    @$('.challenge-tab-item__cloze-text-link').removeClass('is-current')
+    @$('.challenge-tab-item__hints-link').addClass('is-current')
     @clozeTextPanelView.$el.addClass('is-hidden')
     @hintsPanelView.$el.removeClass('is-hidden')
 
