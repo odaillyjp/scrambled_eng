@@ -1,5 +1,5 @@
 .lp-header {
-  background: $main_high_dark_color;
+  background: $main_medium_color;
   @include rem('height', 240);
   @include rem('padding-top', 144);
   position: relative;
@@ -7,15 +7,16 @@
 
   .lp-header__site-title {
     @include rem('font-size', 42);
+    font-weight: bold;
 
     a {
-      color: $main_low_light_color;
+      color: $main_high_light_color;
       text-decoration: none;
     }
   }
 
   .lp-header__site-read-line {
-    color: $main_high_light_color;
+    color: $main_low_light_color;
     @include rem('font-size', 18);
     @include rem('padding-top', 10);
   }
