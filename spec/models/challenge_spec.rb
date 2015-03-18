@@ -337,6 +337,32 @@ RSpec.describe Challenge, type: :model do
     end
   end
 
+  describe '#mistake_message_of_word' do
+    context '正解の単語に"foo"、回答者の答えに"foo"を渡したとき' do
+      subject { challenge.send(:mistake_message_of_word, 'foo', 'foo') }
+
+      it { is_expected.to be_nil }
+    end
+
+    context '正解の単語に"foo"、回答者の答えに"fxx"を渡したとき' do
+      subject { challenge.send(:mistake_message_of_word, 'foo', 'fxx') }
+
+      it { is_expected.to eq 'Incorrectly spelled some word.' }
+    end
+
+    context '回答者の答えが正解よりも長いとき' do
+      subject { challenge.send(:mistake_message_of_word, 'foo', 'fooo') }
+
+      it { is_expected.to eq 'Word is too long.' }
+    end
+
+    context '回答者の答えが正解よりも短いとき' do
+      subject { challenge.send(:mistake_message_of_word, 'foo', 'fo') }
+
+      it { is_expected.to eq 'Word is too short.' }
+    end
+  end
+
   describe '#replace_incorrect_char_to_cloze_mark' do
     context '正解の単語に"foo"、回答者の答えに"foo"を渡したとき' do
       subject { challenge.send(:replace_incorrect_char_to_cloze_mark, 'foo', 'foo') }

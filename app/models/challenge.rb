@@ -148,21 +148,25 @@ class Challenge < ActiveRecord::Base
       return mistake
     end
 
-    # 正しい単語・回答者の答えの単語のどちらか短い方に文字数を合わせて、等値を判定する
-    mistake.message = if correct_word[0...answer_word.size] == answer_word[0...correct_word.size]
-                        # 回答者の答えの単語に誤りがない場合
-                        case correct_word.size <=> answer_word.size
-                        when -1 then 'Word is too long.'
-                        when 1  then 'Word is too short.'
-                        when 0  then nil
-                        end
-                      else
-                        # 回答者の答えの単語に誤りがある場合
-                        'Incorrectly spelled some word.'
-                      end
-
+    mistake.message = mistake_message_of_word(correct_word, answer_word)
     mistake.cloze_text = replace_incorrect_char_to_cloze_mark(correct_word, answer_word)
     mistake
+  end
+
+  # 正しい単語と回答者の答えの単語を比べて、誤り原因メッセージを取得する
+  def mistake_message_of_word(correct_word, answer_word)
+    # 正しい単語と回答者の答えの単語のどちらか短い方に文字数を合わせて、等値を判定する
+    if correct_word[0...answer_word.size] == answer_word[0...correct_word.size]
+      # 回答者の答えの単語に誤りがない場合
+      case correct_word.size <=> answer_word.size
+      when -1 then 'Word is too long.'
+      when 1  then 'Word is too short.'
+      when 0  then nil
+      end
+    else
+      # 回答者の答えの単語に誤りがある場合
+      'Incorrectly spelled some word.'
+    end
   end
 
   # 間違っている文字だけをブランク文字に置換する
