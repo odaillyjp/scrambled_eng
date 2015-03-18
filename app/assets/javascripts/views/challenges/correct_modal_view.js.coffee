@@ -12,7 +12,10 @@ app.Views.Challenges.CorrectModalView = Backbone.View.extend
 
   initialize: (data) ->
     @resultData = _.pick(data, 'next_challenge_url', 'course_information_url')
-    @resultData.challenge_number = data.challenge.sequence_number
+    if data.challenge.sequence_number
+      @resultData.message = "You've Successfully Completed Challenge #{data.challenge.sequence_number}!"
+    else
+      @resultData.message = "Congratulations, You've Completed This Course!"
 
   render: ->
     @$el.html(@template(@resultData))

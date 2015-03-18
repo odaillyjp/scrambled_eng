@@ -5,35 +5,6 @@
   position: relative;
 }
 
-.information {
-  background: $white_color;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-  @include rem('height', 300);
-  margin: 0 auto;
-  position: relative;
-  text-align: center;
-  @include rem('width', 400);
-
-  .information__course-name {
-    @include rem('font-size', 20);
-    font-weight: bold;
-    @include rem('padding-top', 14);
-    @include rem('padding-left', 18);
-    @include rem('padding-right', 18);
-  }
-
-  .information__footer {
-    @include rem('bottom', 14);
-    position: absolute;
-    width: 100%;
-  }
-
-  .information__start-challenge-button {
-    margin: 0 auto;
-    @include rem('width', 300);
-  }
-}
-
 .challenge-view {
   display: block;
   height: 100%;
@@ -209,46 +180,5 @@
     font-size: 14px;
     text-transform: uppercase;
     font-weight: bold;
-  }
-}
-
-.popup {
-  background: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.6),0 2px 7px rgba(0,0,0,0.2);
-  margin: auto;
-  position: absolute;
-  z-index: 100;
-}
-
-.overlay {
-  background: rgba(0,0,0,0.2);
-  position: fixed;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  z-index: 50;
-}
-
-.correct-view {
-  padding: 5px;
-  width: 500px;
-
-  a, h1, p {
-    margin: 8px;
-    text-align: center;
-  }
-
-  .correct-view__title {
-    border-bottom: 1px solid #B1AFA0;
-    font-size: 24px;
-    font-weight: bold;
-    padding-bottom: 8px;
-    text-transform: uppercase;
-  }
-
-  .correct-view__success-message {
-    font-size: 14px;
-    padding: 8px 0;
   }
 }

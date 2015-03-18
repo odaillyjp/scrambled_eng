@@ -1,0 +1,21 @@
+$information-width: 400;
+
+.information {
+  @extend .article-box;
+  @include rem('height', 300);
+  @include rem('width', $information-width);
+}
+
+.information__course-name {
+  @extend .article-box__title;
+}
+
+.information__footer {
+  @extend .article-box__footer;
+  @include rem('width', $information-width);
+}
+
+.information__start-challenge-button {
+  @extend .article-box__button;
+  @include rem('width', 300);
+}

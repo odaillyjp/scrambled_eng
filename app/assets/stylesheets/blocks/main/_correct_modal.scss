@@ -1,0 +1,55 @@
+.popup {
+  margin: auto;
+  position: absolute;
+  z-index: 100;
+}
+
+.overlay {
+  background: rgba(0,0,0,0.2);
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: 50;
+}
+
+$correct-view-width: 480;
+
+.correct-view {
+  @extend .article-box;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.6),0 2px 7px rgba(0,0,0,0.2);
+  @include rem('height', 160);
+  @include rem('width', $correct-view-width);
+}
+
+.correct-modal__title {
+  @extend .article-box__title;
+  border-bottom: 1px solid #B1AFA0;
+  @include rem('padding-bottom', 8);
+  text-transform: uppercase;
+}
+
+.correct-modal__success-message {
+  @include rem('font-size', 16);
+  @include rem('padding-top', 24);
+  @include rem('padding-bottom', 24);
+}
+
+.correct-modal__footer {
+  @extend .article-box__footer;
+  @include rem('width', $correct-view-width);
+}
+
+.correct-modal__button {
+  @extend .article-box__button;
+  @include rem('width', 400);
+}
+
+.correct-modal__next-challenge-button {
+  @extend .correct-modal__button;
+}
+
+.correct-modal__information-button {
+  @extend .correct-modal__button;
+}

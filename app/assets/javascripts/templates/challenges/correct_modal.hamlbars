@@ -1,14 +1,14 @@
 .popup
   .correct-view
-    %h1.correct-view__title Congratulations!
-    = hb 'if next_challenge_url' do
-      %p.correct-view__success-message You've Successfully Completed Challenge {{challenge_number}}!
-      %a{ href: '{{next_challenge_url}}', class: 'next-challenge-button btn' }
-        Next Challenge
+    %h1.correct-modal__title Congratulations!
+    %p.correct-modal__success-message {{message}}
+    %footer.correct-modal__footer
+      = hb 'if next_challenge_url' do
+        %a{ href: '{{next_challenge_url}}', class: 'correct-modal__next-challenge-button btn' }
+          Next Challenge
 
-      = hb 'else'
-      %p.correct-view__success-message Congratulations, You've Completed This Course!
-      %a{ href: '{{course_information_url}}', class: 'information-button btn' }
-        Course Information
+        = hb 'else'
+        %a{ href: '{{course_information_url}}', class: 'correct-modal__information-button btn' }
+          Course Information
 
 .overlay

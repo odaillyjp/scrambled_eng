@@ -1,0 +1,26 @@
+$article-box-padding-size: 12;
+
+.article-box {
+  background: $white_color;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+  @include rem('padding', $article-box-padding-size);
+  position: relative;
+  text-align: center;
+}
+
+.article-box__title {
+  @include rem('font-size', 20);
+  font-weight: bold;
+  @include rem('padding-left', 12);
+  @include rem('padding-right', 12);
+}
+
+.article-box__footer {
+  @include rem('bottom', $article-box-padding-size);
+  position: absolute;
+}
+
+.article-box__button {
+  margin: 0 auto;
+}
