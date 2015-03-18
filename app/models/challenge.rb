@@ -107,7 +107,7 @@ class Challenge < ActiveRecord::Base
     else
       # 文の途中に誤りがない場合は、次の正しい単語を加える
       next_correct_word = correct_words[answer_words.size]
-      [answer_text, next_correct_word].reject(&:blank?).join(' ')
+      [answer_text.strip, next_correct_word].reject(&:blank?).join(' ')
     end
   end
 
