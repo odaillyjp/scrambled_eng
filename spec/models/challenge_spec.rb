@@ -336,4 +336,24 @@ RSpec.describe Challenge, type: :model do
       end
     end
   end
+
+  describe '#replace_incorrect_char_to_cloze_mark' do
+    context '正解の単語に"foo"、回答者の答えに"foo"を渡したとき' do
+      subject { challenge.send(:replace_incorrect_char_to_cloze_mark, 'foo', 'foo') }
+
+      it { is_expected.to eq 'foo' }
+    end
+
+    context '正解の単語に"foo"、回答者の答えに"fxx"を渡したとき' do
+      subject { challenge.send(:replace_incorrect_char_to_cloze_mark, 'foo', 'fxx') }
+
+      it { is_expected.to eq 'f__' }
+    end
+
+    context '正解の単語に"FOO"、回答者の答えに"foo"を渡したとき' do
+      subject { challenge.send(:replace_incorrect_char_to_cloze_mark, 'FOO', 'foo') }
+
+      it { is_expected.to eq 'FOO' }
+    end
+  end
 end

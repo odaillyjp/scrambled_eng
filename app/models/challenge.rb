@@ -161,15 +161,19 @@ class Challenge < ActiveRecord::Base
                         'Incorrectly spelled some word.'
                       end
 
-    # 間違っている文字だけをブランク文字に置換する
-    mistake.cloze_text = correct_word.chars
-      .zip(answer_word.chars)
-      .map { |(correct_char, answer_char)|
-        # 注意: 大文字・小文字の区別はしない
-        correct_char.downcase == answer_char.try(:downcase) ? correct_char : CLOZE_MARK
-      }.join
-
+    mistake.cloze_text = replace_incorrect_char_to_cloze_mark(correct_word, answer_word)
     mistake
+  end
+
+  # 間違っている文字だけをブランク文字に置換する
+  def replace_incorrect_char_to_cloze_mark(correct_word, answer_word)
+    ziped_chars = correct_word.chars.zip(answer_word.chars)
+    replaced_chars = ziped_chars.map do |(correct_char, answer_char)|
+      # 注意: 大文字・小文字の区別はしない
+      correct_char.downcase == answer_char.try(:downcase) ? correct_char : CLOZE_MARK
+    end
+
+    replaced_chars.join
   end
 
   # 誤り情報を扱うオブジェクト
