@@ -10,6 +10,5 @@
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
-  @include rem('padding-top', 12);
-  @include rem('padding-bottom', 12);
+  @include rem('padding', 12);
 }

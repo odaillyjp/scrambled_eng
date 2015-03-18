@@ -16,6 +16,6 @@
         Hints
   .editer-panel
     %textarea{ id: 'input-challenge-raw_text', class: 'editer-panel__raw-textarea', spellcheck: false }
-    %footer.editer-panel-footer
+    %footer.editer-panel__footer
       %a{ class: 'btn editer-panel__submit-raw-text-button' }
         Submit text

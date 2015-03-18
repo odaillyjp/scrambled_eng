@@ -95,38 +95,45 @@
   box-shadow: inset 0 1px #fff,0 1px 3px rgba(0,0,0,0.5);
   float: left;
   display: block;
+  @include rem('height', 210);
   padding: 20px 20px 10px;
-  width: 400px;
-  height: 210px;
+  position: relative;
+  @include rem('width', 400);
 
   &.is-hidden {
     display: none;
   }
 }
 
+.raw-textarea {
+  @include rem('font-size', 14);
+  @include rem('width', 394);
+}
+
 .editer-panel {
   @extend .challenge-panel-block;
-}
 
-.editer-panel-footer {
-  padding: 7px 5px;
-}
+  .editer-panel__raw-textarea {
+    @extend .raw-textarea;
+    @include rem('height', 130);
+  }
 
-.challenge-panel__raw-textarea {
-  width: 394px;
-  font-size: 14px;
-}
+  .editer-panel__footer {
+    @include rem('bottom', 14);
+    position: absolute;
+    @include rem('width', 400);
+  }
 
-.editer-panel__raw-textarea {
-  @extend .challenge-panel__raw-textarea;
-  height: 10em;
+  .editer-panel__submit-raw-text-button {
+    margin: 0 auto;
+  }
 }
 
 .cloze-text-panel {
   @extend .challenge-panel-block;
 
   .cloze-text-panel__cloze-text {
-    @extend .challenge-panel__raw-textarea;
+    @extend .raw-textarea;
     height: 14em;
   }
 }
@@ -208,9 +215,8 @@
 .popup {
   background: white;
   box-shadow: 0 2px 4px rgba(0,0,0,0.6),0 2px 7px rgba(0,0,0,0.2);
+  margin: auto;
   position: absolute;
-  top: 40%;
-  left: 40%;
   z-index: 100;
 }
 
