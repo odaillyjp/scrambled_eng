@@ -16,7 +16,9 @@ app.Views.Challenges.ChallengeView = Backbone.View.extend
     '#input-challenge-raw_text': 'raw_text'
 
   submitRawText: ->
-    @model.submitRawText()
+    @$('.editer-panel__submit-raw-text-button').addClass('is-submitting')
+    @model.submitRawText().done =>
+      @$('.editer-panel__submit-raw-text-button').removeClass('is-submitting')
     @trigger('submit')
 
   initialize: ->

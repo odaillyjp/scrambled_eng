@@ -1,7 +1,8 @@
 .btn {
   background: $main_medium_color;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  @include rem('border-radius', 5);
+  $button_border_radius: 5;
+  @include rem('border-radius', $button_border_radius);
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), inset 0 0 0 1px rgba(255, 255, 0, 0.1);
   color: $white_color;
   cursor: pointer;
@@ -12,8 +13,25 @@
   text-transform: uppercase;
   @include transition-duration(0.3s);
   @include rem('padding', 12);
-}
 
-.btn:hover {
-  background: $main_low_dark_color;
+  &:hover {
+    background: $main_low_dark_color;
+  }
+
+  &.is-submitting::before {
+    background: $main_low_light_color;
+    background-image: url(image_path('ajax_loader.gif'));
+    background-position: center;
+    background-repeat: no-repeat;
+    @include rem('border-radius', $button_border_radius);
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+  }
 }
