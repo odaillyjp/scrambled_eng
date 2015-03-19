@@ -19,7 +19,7 @@
   }
 
   &.is-submitting::before {
-    background: $main_low_light_color;
+    background: $main_low_dark_color;
     background-image: url(image_path('ajax_loader.gif'));
     background-position: center;
     background-repeat: no-repeat;
