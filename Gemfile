@@ -37,6 +37,11 @@ source 'https://rubygems.org' do
   group :test do
     gem 'shoulda-matchers', require: false
   end
+
+  group :production do
+    gem 'pg'
+    gem 'rails_12factor'
+  end
 end
 
 source 'https://rails-assets.org' do
