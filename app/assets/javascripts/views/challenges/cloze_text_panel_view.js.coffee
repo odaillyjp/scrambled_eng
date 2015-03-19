@@ -18,4 +18,6 @@ app.Views.Challenges.ClozeTextPanelView = Backbone.View.extend
     @
 
   fetchPartialAnswer: ->
-    @model.fetchPartialAnswer()
+    @$('.cloze-text-panel__get-next-word-button').addClass('is-submitting')
+    @model.fetchPartialAnswer().done =>
+      @$('.cloze-text-panel__get-next-word-button').removeClass('is-submitting')
