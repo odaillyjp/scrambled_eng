@@ -1,9 +1,10 @@
 .lp-header
-  .lp-header__site-title
-    %h1
-      %a ScrambledEng
-  .lp-header__site-read-line
-    %h2 For Japanese who learn English.
+  %h1.lp-header__title-area
+    = link_to root_path, class: 'lp-header__site-name' do
+      = image_tag 'logo_m.png', class: 'lp-header__site-logo'
+      Scrambled Eng
+  %h2.lp-header__site-read-line
+    For Japanese who learn English.
 
 %section.course-index
   %h1

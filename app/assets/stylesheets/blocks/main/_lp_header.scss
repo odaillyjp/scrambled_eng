@@ -4,20 +4,27 @@
   @include rem('padding-top', 144);
   position: relative;
   text-align: center;
+}
 
-  .lp-header__site-title {
-    @include rem('font-size', 42);
-    font-weight: bold;
+.lp-header__site-logo {
+  $logo_image_size: 60;
+  border: ($logo_image_size / 12) + px solid $white_color;
+  @include rem('border-radius', $logo_image_size);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  @include rem('height', $logo_image_size);
+  vertical-align: bottom;
+  @include rem('width', $logo_image_size);
+}
 
-    a {
-      color: $main_high_light_color;
-      text-decoration: none;
-    }
-  }
+.lp-header__site-name {
+  @include rem('font-size', 48);
+  color: $main_high_light_color;
+  font-weight: bold;
+}
 
-  .lp-header__site-read-line {
-    color: $main_low_light_color;
-    @include rem('font-size', 18);
-    @include rem('padding-top', 10);
-  }
+.lp-header__site-read-line {
+  color: $main_low_light_color;
+  @include rem('font-size', 18);
+  @include rem('padding-top', 10);
 }
