@@ -3,19 +3,37 @@ $course_management_challenge_height: 80;
 .course-management {
   margin: 24px auto 0;
   margin: 2.4rem auto 0;
-  @include rem('width', 980);
 }
 
 .course-management__course-name {
-  @include rem('font-size', 32);
+  @include rem('font-size', 24);
   font-weight: bold;
   @include rem('margin-top', 24);
   @include rem('margin-bottom', 24);
 }
 
+.course-management__flex-group {
+  @include display-flex;
+  @include flex-direction(row);
+  @include flex-wrap(wrap);
+  @include justify-content(center);
+  margin: 0 auto;
+  @include rem('max-width', 960);
+}
+
 .course-management__challenge-list {
-  @include rem('margin-top', 24);
-  @include rem('margin-bottom', 24);
+  @include flex-basis(600px);
+  @include flex-basis(60rem);
+  @include flex-grow(1);
+  @include rem('margin-left', 20);
+  @include rem('margin-right', 20);
+}
+
+.course-management__challenge-list-title {
+  color: $main_high_dark_color;
+  @include rem('font-size', 20);
+  font-weight: bold;
+  @include rem('padding-bottom', 8);
 }
 
 .course-management__challenge-item {
@@ -24,7 +42,8 @@ $course_management_challenge_height: 80;
   @include border-left-radius($course_management_challenge_height / 10 + rem);
   box-sizing: border-box;
   @include rem('height', $course_management_challenge_height);
-  @include rem('margin-top', 18);
+  @include rem('margin-top', 10);
+  @include rem('margin-bottom', 10);
 }
 
 .course-management__challenge-number {
@@ -43,9 +62,12 @@ $course_management_challenge_height: 80;
 }
 
 .course-management__challenge-ja-text {
+  @include rem('font-size', 16);
+  @include rem('height', 60);
   @include rem('line-height', 20);
   @include rem('margin-left', $course_management_challenge_height);
   @include rem('margin-right', $course_management_challenge_height);
+  overflow: hidden;
   @include rem('padding-left', 8);
   @include rem('padding-right', 8);
   text-align: left;
@@ -66,6 +88,7 @@ $course_management_challenge_height: 80;
   border: 1px solid $main_high_light_color;
   cursor: pointer;
   display: block;
+  @include rem('font-size', 16);
   text-align: center;
   @include transition-duration(0.3s);
   @include rem('line-height', $course-management_challenge_height / 2 - 2);
@@ -77,4 +100,13 @@ $course_management_challenge_height: 80;
 
 .course-management__challenge-delete-link {
   @extend .course-management__challenge-edit-link;
+}
+
+.course-management__course-item {
+  @extend .article-box;
+  @include flex-basis(256px);
+  @include flex-basis(25.6rem);
+  @include flex-grow(1);
+  @include rem('margin-left', 20);
+  @include rem('margin-right', 20);
 }
