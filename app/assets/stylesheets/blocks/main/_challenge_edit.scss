@@ -1,0 +1,51 @@
+.challenge-edit__title {
+  background: $main_medium_color;
+  color: $main_high_light_color;
+  @include rem('font-size', 32);
+  font-weight: bold;
+  @include rem('line-height', 80);
+  @include rem('padding-left', 24);
+}
+
+.challenge-edit {
+  @extend .article-box;
+  @include rem('width', 420);
+  @include rem('margin-top', 24);
+}
+
+.challenge-edit__form-group {
+  @include rem('padding', 12);
+  text-align: left;
+}
+
+.challenge-edit__label {
+  display: block;
+  @include rem('font-size', 16);
+  @include rem('padding-bottom', 8);
+}
+
+.challenge-edit__en-text-label {
+  @extend .challenge-edit__label;
+}
+
+.challenge-edit__ja-text-label {
+  @extend .challenge-edit__label;
+}
+
+.challenge-edit__en-text-form {
+  @include rem('font-size', 14);
+  @include rem('width', 394);
+  @include rem('height', 120);
+}
+
+.challenge-edit__ja-text-form {
+  @include rem('font-size', 14);
+  @include rem('width', 394);
+  @include rem('height', 120);
+}
+
+.challenge-edit__update-challenge-button {
+  margin: 20px auto 0;
+  margin: 2rem auto 0;
+  @include rem('width', 300);
+}

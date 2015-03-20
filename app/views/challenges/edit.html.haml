@@ -1,0 +1,13 @@
+%h1.challenge-edit__title Edit challenge
+
+.challenge-edit
+  = form_for @challenge, url: course_challenges_path(course_id: @challenge.course_id) do |f|
+    .challenge-edit__form-group
+      = f.label :en_text, class: 'challenge-edit__en-text-label'
+      = f.text_area :en_text, class:'challenge-edit__en-text-form'
+
+    .challenge-edit__form-group
+      = f.label :ja_text, class: 'challenge-edit__ja-text-label'
+      = f.text_area :ja_text, class: 'challenge-edit__ja-text-form'
+
+    = f.submit 'Update challenge', class: 'challenge-edit__update-challenge-button btn'
