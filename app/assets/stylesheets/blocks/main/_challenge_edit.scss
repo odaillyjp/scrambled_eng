@@ -1,12 +1,3 @@
-.challenge-edit__title {
-  background: $main_medium_color;
-  color: $main_high_light_color;
-  @include rem('font-size', 32);
-  font-weight: bold;
-  @include rem('line-height', 80);
-  @include rem('padding-left', 24);
-}
-
 .challenge-edit {
   @extend .article-box;
   @include rem('width', 420);

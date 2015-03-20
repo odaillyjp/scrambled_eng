@@ -1,7 +1,8 @@
 $course_management_challenge_height: 80;
 
 .course-management {
-  margin: 0 auto;
+  margin: 24px auto 0;
+  margin: 2.4rem auto 0;
   @include rem('width', 980);
 }
 
