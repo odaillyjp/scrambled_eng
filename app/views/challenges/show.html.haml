@@ -1,5 +1,5 @@
 - content_for :header_item_nav do
-  = link_to 'Create challenge', new_course_challenge_path(course_id: @challenge.course)
+  = link_to 'Manage course', management_course_path(@challenge.course)
 
 %aside#sidebar-container.sidebar-container
 #main-container.main-container
