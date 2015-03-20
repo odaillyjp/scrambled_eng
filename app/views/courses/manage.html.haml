@@ -1,0 +1,16 @@
+.course-management
+  %h1.course-management__course-name= @course.name
+
+  .course-management__new-challenge-button.btn
+    Create Challenge
+
+  %section.course-management__challenge-list
+    - @course.challenges.each do |challenge|
+      %article.course-management__challenge-item
+        .course-management__challenge-number= "#{challenge.sequence_number}"
+        %p.course-management__challenge-ja-text= challenge.ja_text
+        .course-management__link-group
+          %a.course-management__challenge-edit-link
+            Edit
+          %a.course-management__challenge-delete-link
+            Delete

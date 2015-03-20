@@ -39,6 +39,10 @@ class CoursesController < ApplicationController
     redirect_to root_path
   end
 
+  def manage
+    @course = Course.find(params[:id])
+  end
+
   private
 
   def course_params

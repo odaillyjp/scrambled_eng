@@ -1,0 +1,79 @@
+$course_management_challenge_height: 80;
+
+.course-management {
+  margin: 0 auto;
+  @include rem('width', 980);
+}
+
+.course-management__course-name {
+  @include rem('font-size', 32);
+  font-weight: bold;
+  @include rem('margin-top', 24);
+  @include rem('margin-bottom', 24);
+}
+
+.course-management__challenge-list {
+  @include rem('margin-top', 24);
+  @include rem('margin-bottom', 24);
+}
+
+.course-management__challenge-item {
+  @extend .article-box;
+  @include border-left-radius($course_management_challenge_height + px);
+  @include border-left-radius($course_management_challenge_height / 10 + rem);
+  box-sizing: border-box;
+  @include rem('height', $course_management_challenge_height);
+  @include rem('margin-top', 18);
+}
+
+.course-management__challenge-number {
+  background: $white_color;
+  border: 1px solid $main_high_light_color;
+  @include border-radius(50%);
+  bottom: 0;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  @include rem('font-size', 32);
+  left: 0;
+  @include rem('line-height', $course_management_challenge_height);
+  position: absolute;
+  text-align:center;
+  top: 0;
+  @include rem('width', $course_management_challenge_height);
+}
+
+.course-management__challenge-ja-text {
+  @include rem('line-height', 20);
+  @include rem('margin-left', $course_management_challenge_height);
+  @include rem('margin-right', $course_management_challenge_height);
+  @include rem('padding-left', 8);
+  @include rem('padding-right', 8);
+  text-align: left;
+}
+
+.course-management__link-group {
+  background: $white_color;
+  border-left: 3px solid $main_high_light_color;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  top: 0;
+  @include rem('width', $course_management_challenge_height);
+}
+
+.course-management__challenge-edit-link {
+  background: $white_color;
+  border: 1px solid $main_high_light_color;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  @include transition-duration(0.3s);
+  @include rem('line-height', $course-management_challenge_height / 2 - 2);
+
+  &:hover {
+    background: $main_high_light_color;
+  }
+}
+
+.course-management__challenge-delete-link {
+  @extend .course-management__challenge-edit-link;
+}
