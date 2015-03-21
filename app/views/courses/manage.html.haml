@@ -20,5 +20,4 @@
       = link_to 'Edit Course', edit_course_path(@course), class: 'course-management__course-edit-link'
       %a.course-management__course-delete-link
         Delete
-      %a.course-management__new-challenge-button.btn
-        Create Challenge
+      = link_to 'Create Challenge', new_course_challenge_path(course_id: @course), class: 'course-management__new-challenge-button btn'
