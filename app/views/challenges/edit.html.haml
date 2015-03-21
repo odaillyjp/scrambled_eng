@@ -1,7 +1,7 @@
 %h1.main__title Edit Challenge
 
 .challenge-edit
-  = form_for @challenge, url: course_challenges_path(course_id: @challenge.course_id) do |f|
+  = form_for [@challenge.course, @challenge] do |f|
     .challenge-edit__form-group
       = f.label :en_text, class: 'challenge-edit__en-text-label'
       = f.text_area :en_text, class:'challenge-edit__en-text-form'

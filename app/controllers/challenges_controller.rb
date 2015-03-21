@@ -32,7 +32,7 @@ class ChallengesController < ApplicationController
   def update
     if @challenge.update_attributes(challenge_params)
       notice = 'Challenge was successfully updated.'
-      redirect_to manage_course_path(@challenge.course), notice: notice
+      redirect_to management_course_path(@challenge.course), notice: notice
     else
       render action: 'edit'
     end

@@ -112,7 +112,7 @@ class Challenge < ActiveRecord::Base
   end
 
   def to_param
-    sequence_number
+    sequence_number.to_s
   end
 
   private
