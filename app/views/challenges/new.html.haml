@@ -1,10 +1,13 @@
-%h1 Create challenge
+%h1.main__title New Challenge
 
-= form_for @challenge, url: course_challenges_path do |f|
-  = f.label :en_text
-  = f.text_area :en_text
+.challenge-new
+  = form_for @challenge, url: course_challenges_path do |f|
+    .challenge-new__form-group
+      = f.label :en_text, class: 'challenge-new__en-text-label'
+      = f.text_area :en_text, class: 'challenge-new__en-text-form'
 
-  = f.label :ja_text
-  = f.text_area :ja_text
+    .challenge-new__form-group
+      = f.label :ja_text, class: 'challenge-new__ja-text-label'
+      = f.text_area :ja_text, class: 'challenge-new__ja-text-form'
 
-  = f.submit 'Create course', class: 'btn'
+    = f.submit 'Create Challenge', class: 'challenge-new__create-challenge-button btn'
