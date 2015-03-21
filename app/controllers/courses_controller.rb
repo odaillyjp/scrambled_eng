@@ -1,10 +1,11 @@
 class CoursesController < ApplicationController
+  before_action :fetch_course, only: %i(show edit update manage)
+
   def index
     @courses = Course.all
   end
 
   def show
-    @course = Course.find(params[:id])
   end
 
   def new
@@ -12,7 +13,6 @@ class CoursesController < ApplicationController
   end
 
   def edit
-    @course = Course.find(params[:id])
   end
 
   def create
@@ -27,7 +27,7 @@ class CoursesController < ApplicationController
 
   def update
     if @course.update_attributes(course_params)
-      redirect_to @course, notice: 'User was successfully updated.'
+      redirect_to management_course_path(@course), notice: 'User was successfully updated.'
     else
       render action: 'edit'
     end
@@ -40,10 +40,13 @@ class CoursesController < ApplicationController
   end
 
   def manage
-    @course = Course.find(params[:id])
   end
 
   private
+
+  def fetch_course
+    @course = Course.find(params[:id])
+  end
 
   def course_params
     params.require(:course).permit(:name)

@@ -1,0 +1,32 @@
+.course-edit {
+  @extend .article-box;
+  @include rem('width', 420);
+  @include rem('margin-top', 24);
+}
+
+.course-edit__form-group {
+  @include rem('padding', 12);
+  text-align: left;
+}
+
+.course-edit__label {
+  display: block;
+  @include rem('font-size', 16);
+  @include rem('padding-bottom', 8);
+}
+
+.course-edit__name-label {
+  @extend .course-edit__label;
+}
+
+.course-edit__name-form {
+  @include rem('font-size', 14);
+  @include rem('width', 394);
+  @include rem('height', 120);
+}
+
+.course-edit__update-course-button {
+  margin: 20px auto 0;
+  margin: 2rem auto 0;
+  @include rem('width', 394);
+}

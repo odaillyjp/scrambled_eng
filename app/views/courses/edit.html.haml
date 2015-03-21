@@ -1,0 +1,9 @@
+%h1.main__title Edit Course
+
+.course-edit
+  = form_for @course do |f|
+    .course-edit__form-group
+      = f.label :name, class: 'course-edit__name-label'
+      = f.text_area :name, class: 'course-edit__name-form'
+
+    = f.submit 'Update challenge', class: 'course-edit__update-course-button btn'
