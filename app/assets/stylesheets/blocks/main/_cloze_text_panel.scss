@@ -1,0 +1,11 @@
+.cloze-text-panel {
+  @extend .challenge-panel;
+}
+
+.cloze-text-panel__cloze-text {
+  @extend .challenge-panel__body;
+}
+
+.cloze-text-panel__footer {
+  @extend .challenge-panel__footer;
+}

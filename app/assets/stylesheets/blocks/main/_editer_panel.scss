@@ -1,0 +1,16 @@
+.editer-panel {
+  @extend .challenge-panel;
+}
+
+.editer-panel__raw-textarea {
+  @extend .challenge-panel__body;
+  box-sizing: border-box;
+}
+
+.editer-panel__footer {
+  @extend .challenge-panel__footer;
+}
+
+.editer-panel__submit-raw-text-button {
+  margin: 0 auto;
+}

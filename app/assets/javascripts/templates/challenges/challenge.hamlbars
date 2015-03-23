@@ -2,7 +2,7 @@
   %h1.challenge__title Challenge {{id}}
   %p.challenge__ja-text {{ja_text}}
 
-.challenge-panel
+.challenge-panel-container
   %ul.challenge-tab-group
     %li.challenge-tab-item
       %a.challenge-tab-item__answer-link.is-current

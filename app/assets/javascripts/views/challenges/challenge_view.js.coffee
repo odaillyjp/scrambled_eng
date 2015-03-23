@@ -6,6 +6,7 @@ app.Views.Challenges ?= {}
 app.Views.Challenges.ChallengeView = Backbone.View.extend
   className: 'challenge-view'
   template: JST['challenges/challenge']
+  challengePanelContainer: '.challenge-panel-container'
 
   events:
     'click .challenge-tab-item__cloze-text-link': 'renderClozeTextPanel'
@@ -30,8 +31,8 @@ app.Views.Challenges.ChallengeView = Backbone.View.extend
 
   render: ->
     @$el.html(@template(@model.toJSON()))
-    @$('.challenge-panel').append(@clozeTextPanelView.render().el)
-    @$('.challenge-panel').append(@hintsPanelView.render().el)
+    @$(@challengePanelContainer).append(@clozeTextPanelView.render().el)
+    @$(@challengePanelContainer).append(@hintsPanelView.render().el)
     @stickit()
     @
 

@@ -61,49 +61,6 @@
   @extend .challenge-tab-item__link;
 }
 
-.editer-panel {
-  background: #EEEEEE;
-  box-shadow: inset 0 1px #fff,0 1px 3px rgba(0,0,0,0.5);
-  float: left;
-  display: block;
-  @include rem('height', 210);
-  padding: 20px 20px 10px;
-  position: relative;
-  @include rem('width', 400);
-
-  &.is-hidden {
-    display: none;
-  }
-}
-
-.editer-panel__raw-textarea {
-  @include rem('font-size', 14);
-  @include rem('width', 394);
-  @include rem('height', 130);
-}
-
-.editer-panel__footer {
-  @include rem('bottom', 14);
-  position: absolute;
-  @include rem('width', 400);
-}
-
-.editer-panel__submit-raw-text-button {
-  margin: 0 auto;
-}
-
-.cloze-text-panel {
-  @extend .editer-panel;
-}
-
-.cloze-text-panel__cloze-text {
-  @extend .editer-panel__raw-textarea;
-}
-
-.cloze-text-panel__footer {
-  @extend .editer-panel__footer;
-}
-
 .hints-panel {
   @extend .editer-panel;
 
