@@ -1,7 +1,7 @@
 = hb 'if words' do
   %article.hint
     %h1.hint__headline
-      単語一覧
+      = I18n.t('views.challenges.show.word_list_label')
     %ul
       = hb 'each words' do
         %li.hint__word<
@@ -10,15 +10,15 @@
 
   = hb 'else'
   %a.hints-panel__get-words-button.btn
-    Get hint
+    = I18n.t('views.challenges.show.get_words_button')
 
 = hb 'if correct_text' do
   %article.hint
     %h1.hint__headline
-      答え
+      = I18n.t('views.challenges.show.correct_text_label')
     %p.hint__correct-text
       {{correct_text}}
 
   = hb 'else'
   %a.hints-panel__get-correct-text-button.btn
-    Get answer
+    = I18n.t('views.challenges.show.get_correct_text_button')

@@ -6,16 +6,16 @@
   %ul.challenge-tab-group
     %li.challenge-tab-item
       %a.challenge-tab-item__answer-link.is-current
-        Answer
+        = I18n.t('views.challenges.show.answer_tab')
   %ul.challenge-tab-group
     %li.challenge-tab-item
       %a.challenge-tab-item__cloze-text-link.is-current
-        Cloze Text
+        = I18n.t('views.challenges.show.cloze_text_tab')
     %li.challenge-tab-item
       %a.challenge-tab-item__hints-link
-        Hints
+        = I18n.t('views.challenges.show.hints_tab')
   .editer-panel
     %textarea{ id: 'input-challenge-raw_text', class: 'editer-panel__raw-textarea', spellcheck: false }
     %footer.editer-panel__footer
       %a{ class: 'btn editer-panel__submit-raw-text-button' }
-        Submit text
+        = I18n.t('views.challenges.show.submit_text_button')

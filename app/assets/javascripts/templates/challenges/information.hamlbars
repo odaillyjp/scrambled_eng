@@ -1,3 +1,4 @@
 %h1.information__course-name {{courseName}}
 %footer.information__footer
-  %a{ href: '{{firstChallengeUrl}}', class: 'btn information__start-challenge-button' } Start challenge
+  %a{ href: '{{firstChallengeUrl}}', class: 'btn information__start-challenge-button' }
+    = I18n.t('views.courses.show.start_challenge')

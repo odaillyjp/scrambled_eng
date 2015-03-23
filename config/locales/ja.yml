@@ -1,0 +1,17 @@
+ja:
+  views:
+    courses:
+      show:
+        start_challenge: このコースに挑戦する
+
+    challenges:
+      show:
+        answer_tab: 解答
+        cloze_text_tab: 穴埋め問題
+        hints_tab: ヒント
+        submit_text_button: 解答を送る
+        word_list_label: 単語一覧
+        correct_text_label: 答え
+        get_words_button: 全ての単語を表示
+        get_correct_text_button: 答えを表示
+        get_next_word_button: 次の単語を教えてもらう

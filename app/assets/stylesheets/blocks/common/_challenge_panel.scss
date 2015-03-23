@@ -16,7 +16,7 @@ $challenge_panel_width: 400;
 }
 
 .challenge-panel__body {
-  @include rem('font-size', 14);
+  @include rem('font-size', 16);
   @include rem('height', 130);
   @include rem('width', $challenge_panel_width);
 }

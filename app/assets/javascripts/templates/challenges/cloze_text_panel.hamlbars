@@ -2,4 +2,4 @@
   {{cloze_text}}
 %footer.cloze-text-panel__footer
   %a.cloze-text-panel__get-next-word-button.btn
-    Get Next Word
+    = I18n.t('views.challenges.show.get_next_word_button')
