@@ -1,7 +1,9 @@
-%h1 Create course
+%h1.main__title New Course
 
-= form_for(@course) do |f|
-  = f.label :name
-  = f.text_field :name
+.course-new
+  = form_for @course do |f|
+    .course-new__form-group
+      = f.label :name, class: 'course-new__name-label'
+      = f.text_area :name, class: 'course-new__name-form'
 
-  = f.submit 'Create course', class: 'btn'
+    = f.submit 'Create Course', class: 'course-new__create-course-button btn'
