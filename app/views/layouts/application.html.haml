@@ -1,11 +1,13 @@
 !!!
 %html
   %head
+    %meta{ charset: 'UTF-8' }
     %title
       Scrambled Eng
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    %meta{ name: 'viewport', content: 'width=device-width' }
 
   %body
     %header.header
