@@ -15,3 +15,12 @@ en:
         get_words_button: Get Words
         get_correct_text_button: Get Correct Answer
         get_next_word_button: Get Next Word
+
+  activerecord:
+    mistakes:
+      models:
+        challenge:
+          word_is_too_long: Word is too long.
+          word_is_too_short: Word is too short.
+          spelling_mistake: Incorrectly spelled some word.
+

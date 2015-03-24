@@ -15,3 +15,11 @@ ja:
         get_words_button: 全ての単語を表示
         get_correct_text_button: 答えを表示
         get_next_word_button: 次の単語を教えてもらう
+
+  activerecord:
+    mistakes:
+      models:
+        challenge:
+          word_is_too_long: 正解よりも長い単語があります。
+          word_is_too_short: 正解よりも短い単語があります。
+          spelling_mistake: 単語に誤りがあります。

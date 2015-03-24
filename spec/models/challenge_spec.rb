@@ -75,7 +75,8 @@ RSpec.describe Challenge, type: :model do
       end
 
       it '"Incorrectly spelled some word."というメッセージを持つオブジェクトを返すこと' do
-        expect(mistake.message).to eq 'Incorrectly spelled some word.'
+        message = I18n.t('activerecord.mistakes.models.challenge.spelling_mistake')
+        expect(mistake.message).to eq message
       end
 
       it '最初に誤りがあった単語の位置情報を持つオブジェクトを返すこと' do
@@ -147,7 +148,8 @@ RSpec.describe Challenge, type: :model do
       end
 
       it '"Word is too long."というメッセージを持つオブジェクトを返すこと' do
-        expect(mistake.message).to eq 'Word is too long.'
+        message = I18n.t('activerecord.mistakes.models.challenge.word_is_too_long')
+        expect(mistake.message).to eq message
       end
 
       it '文字数が多い単語の位置情報を持つオブジェクトを返すこと' do
@@ -163,7 +165,8 @@ RSpec.describe Challenge, type: :model do
       end
 
       it '"Word is too short."というメッセージを持つオブジェクトを返すこと' do
-        expect(mistake.message).to eq 'Word is too short.'
+        message = I18n.t('activerecord.mistakes.models.challenge.word_is_too_short')
+        expect(mistake.message).to eq message
       end
 
       it '文字数が少ない単語の位置情報を持つオブジェクトを返すこと' do
@@ -179,7 +182,8 @@ RSpec.describe Challenge, type: :model do
       end
 
       it '"Incorrectly spelled some word."というメッセージを持つオブジェクトを返すこと' do
-        expect(mistake.message).to eq 'Incorrectly spelled some word.'
+        message = I18n.t('activerecord.mistakes.models.challenge.spelling_mistake')
+        expect(mistake.message).to eq message
       end
 
       it '誤りがある最初の単語の位置情報を持つオブジェクトを返すこと' do
@@ -195,7 +199,8 @@ RSpec.describe Challenge, type: :model do
       end
 
       it '"Incorrectly spelled some word."というメッセージを持つオブジェクトを返すこと' do
-        expect(mistake.message).to eq 'Incorrectly spelled some word.'
+        message = I18n.t('activerecord.mistakes.models.challenge.spelling_mistake')
+        expect(mistake.message).to eq message
       end
 
       it '誤りがある最初の単語の位置情報を持つオブジェクトを返すこと' do
@@ -272,7 +277,7 @@ RSpec.describe Challenge, type: :model do
       end
 
       it '"Incorrectly spelled some word."というメッセージを持つオブジェクトを返すこと' do
-        expect(mistake.message).to eq 'Incorrectly spelled some word.'
+        expect(mistake.message).to eq I18n.t('activerecord.mistakes.models.challenge.spelling_mistake')
       end
     end
 
@@ -296,7 +301,8 @@ RSpec.describe Challenge, type: :model do
       end
 
       it '"Word is too long."というメッセージを持つオブジェクトを返すこと' do
-        expect(mistake.message).to eq 'Word is too long.'
+        message = I18n.t('activerecord.mistakes.models.challenge.word_is_too_long')
+        expect(mistake.message).to eq message
       end
     end
 
@@ -308,7 +314,8 @@ RSpec.describe Challenge, type: :model do
       end
 
       it '"Word is too short."というメッセージを持つオブジェクトを返すこと' do
-        expect(mistake.message).to eq 'Word is too short.'
+        message = I18n.t('activerecord.mistakes.models.challenge.word_is_too_short')
+        expect(mistake.message).to eq message
       end
     end
 
@@ -320,7 +327,8 @@ RSpec.describe Challenge, type: :model do
       end
 
       it '"Incorrectly spelled some word."というメッセージを持つオブジェクトを返すこと' do
-        expect(mistake.message).to eq 'Incorrectly spelled some word.'
+        message = I18n.t('activerecord.mistakes.models.challenge.spelling_mistake')
+        expect(mistake.message).to eq message
       end
     end
 
@@ -332,7 +340,8 @@ RSpec.describe Challenge, type: :model do
       end
 
       it '"Incorrectly spelled some word."というメッセージを持つオブジェクトを返すこと' do
-        expect(mistake.message).to eq 'Incorrectly spelled some word.'
+        message = I18n.t('activerecord.mistakes.models.challenge.spelling_mistake')
+        expect(mistake.message).to eq message
       end
     end
   end
@@ -347,19 +356,19 @@ RSpec.describe Challenge, type: :model do
     context '正解の単語に"foo"、解答に"fxx"を渡したとき' do
       subject { challenge.send(:mistake_message_of_word, 'foo', 'fxx') }
 
-      it { is_expected.to eq 'Incorrectly spelled some word.' }
+      it { is_expected.to eq I18n.t('activerecord.mistakes.models.challenge.spelling_mistake') }
     end
 
     context '解答が正解よりも長いとき' do
       subject { challenge.send(:mistake_message_of_word, 'foo', 'fooo') }
 
-      it { is_expected.to eq 'Word is too long.' }
+      it { is_expected.to eq I18n.t('activerecord.mistakes.models.challenge.word_is_too_long') }
     end
 
     context '解答が正解よりも短いとき' do
       subject { challenge.send(:mistake_message_of_word, 'foo', 'fo') }
 
-      it { is_expected.to eq 'Word is too short.' }
+      it { is_expected.to eq I18n.t('activerecord.mistakes.models.challenge.word_is_too_short') }
     end
   end
 
