@@ -74,10 +74,7 @@ class Challenge < ActiveRecord::Base
       word_mistake.cloze_text
     end
 
-    mistake.message ||= case correct_words.size <=> answer_words.size
-                        when -1 then 'Words is too many.'
-                        when 1  then 'Words is very few.'
-                        end
+    mistake.message ||= mistake_message_of_text(correct_words, answer_words)
     mistake.cloze_text = en_text.gsub(WORD_REGEXP, '%s') % result_words
     mistake
   end
@@ -151,6 +148,18 @@ class Challenge < ActiveRecord::Base
     mistake.message = mistake_message_of_word(correct_word, answer_word)
     mistake.cloze_text = replace_incorrect_char_to_cloze_mark(correct_word, answer_word)
     mistake
+  end
+
+  # 正しい英文と解答を比べて、誤り原因メッセージを取得する
+  def mistake_message_of_text(correct_words, answer_words)
+    mistake_key = case correct_words.size <=> answer_words.size
+                  when -1 then :too_many
+                  when 1  then :missing_words
+                  when 0  then return nil
+                  end
+
+    key = :"#{self.class.i18n_scope}.mistakes.models.#{self.model_name.i18n_key}.#{mistake_key}"
+    I18n.translate(key)
   end
 
   # 正しい単語と解答の単語を比べて、誤り原因メッセージを取得する

@@ -116,7 +116,7 @@ RSpec.describe Challenge, type: :model do
       end
 
       it '"Words is too many."というメッセージを持つオブジェクトを返すこと' do
-        expect(mistake.message).to eq 'Words is too many.'
+        expect(mistake.message).to eq I18n.t('activerecord.mistakes.models.challenge.too_many')
       end
 
       it '誤り位置情報にNullを持つオブジェクトを返すこと' do
@@ -131,8 +131,8 @@ RSpec.describe Challenge, type: :model do
         expect(mistake.cloze_text).to eq 'She sells seashells __ ___ ________.'
       end
 
-      it '"Words is very few."というメッセージを持つオブジェクトを返すこと' do
-        expect(mistake.message).to eq 'Words is very few.'
+      it '"Missing some words."というメッセージを持つオブジェクトを返すこと' do
+        expect(mistake.message).to eq I18n.t('activerecord.mistakes.models.challenge.missing_words')
       end
 
       it '誤り位置情報にNullを持つオブジェクトを返すこと' do

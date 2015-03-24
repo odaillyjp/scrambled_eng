@@ -20,6 +20,8 @@ ja:
     mistakes:
       models:
         challenge:
+          too_many: 単語が多過ぎます。
+          missing_words: 単語が少な過ぎます。
           word_is_too_long: 正解よりも長い単語があります。
           word_is_too_short: 正解よりも短い単語があります。
           spelling_mistake: 単語に誤りがあります。
