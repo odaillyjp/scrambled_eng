@@ -1,7 +1,6 @@
 html {
   font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
   font-size: 62.5%;
-  height: 100%;
   line-height: 1;
   @include text-size-adjust(100%);
 }
@@ -12,7 +11,6 @@ body {
   @include rem('font-size', 16);
   height: 100%;
   margin: auto;
-  width: 100%;
 }
 
 a {
