@@ -148,7 +148,7 @@ RSpec.describe Challenge, type: :model do
       end
 
       it '"Word is too long."というメッセージを持つオブジェクトを返すこと' do
-        message = I18n.t('activerecord.mistakes.models.challenge.word_is_too_long')
+        message = I18n.t('activerecord.mistakes.models.challenge.too_long')
         expect(mistake.message).to eq message
       end
 
@@ -165,7 +165,7 @@ RSpec.describe Challenge, type: :model do
       end
 
       it '"Word is too short."というメッセージを持つオブジェクトを返すこと' do
-        message = I18n.t('activerecord.mistakes.models.challenge.word_is_too_short')
+        message = I18n.t('activerecord.mistakes.models.challenge.too_short')
         expect(mistake.message).to eq message
       end
 
@@ -301,7 +301,7 @@ RSpec.describe Challenge, type: :model do
       end
 
       it '"Word is too long."というメッセージを持つオブジェクトを返すこと' do
-        message = I18n.t('activerecord.mistakes.models.challenge.word_is_too_long')
+        message = I18n.t('activerecord.mistakes.models.challenge.too_long')
         expect(mistake.message).to eq message
       end
     end
@@ -314,7 +314,7 @@ RSpec.describe Challenge, type: :model do
       end
 
       it '"Word is too short."というメッセージを持つオブジェクトを返すこと' do
-        message = I18n.t('activerecord.mistakes.models.challenge.word_is_too_short')
+        message = I18n.t('activerecord.mistakes.models.challenge.too_short')
         expect(mistake.message).to eq message
       end
     end
@@ -362,13 +362,13 @@ RSpec.describe Challenge, type: :model do
     context '解答が正解よりも長いとき' do
       subject { challenge.send(:mistake_message_of_word, 'foo', 'fooo') }
 
-      it { is_expected.to eq I18n.t('activerecord.mistakes.models.challenge.word_is_too_long') }
+      it { is_expected.to eq I18n.t('activerecord.mistakes.models.challenge.too_long') }
     end
 
     context '解答が正解よりも短いとき' do
       subject { challenge.send(:mistake_message_of_word, 'foo', 'fo') }
 
-      it { is_expected.to eq I18n.t('activerecord.mistakes.models.challenge.word_is_too_short') }
+      it { is_expected.to eq I18n.t('activerecord.mistakes.models.challenge.too_short') }
     end
   end
 

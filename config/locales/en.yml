@@ -22,7 +22,7 @@ en:
         challenge:
           too_many: Words are too many.
           missing_words: Missing some words.
-          word_is_too_long: Word is too long.
-          word_is_too_short: Word is too short.
+          too_long: Word is too long.
+          too_short: Word is too short.
           spelling_mistake: Incorrectly spelled some word.
 

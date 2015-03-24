@@ -168,8 +168,8 @@ class Challenge < ActiveRecord::Base
     mistake_key = if correct_word[0...answer_word.size] == answer_word[0...correct_word.size]
                     # 解答の単語に誤りがない場合
                     case correct_word.size <=> answer_word.size
-                    when -1 then :word_is_too_long
-                    when 1  then :word_is_too_short
+                    when -1 then :too_long
+                    when 1  then :too_short
                     when 0  then return nil
                     end
                   else
