@@ -42,7 +42,7 @@ class Challenge < ActiveRecord::Base
     scan_word(en_text.downcase) == scan_word(answer_text.downcase)
   end
 
-  # 正しい英文(self.en_text)と解答者の答え(answer_text)を比べて
+  # 正しい英文(self.en_text)と解答(answer_text)を比べて
   # 誤り情報を記憶したオブジェクトを返す
   #
   # 例:
@@ -82,7 +82,7 @@ class Challenge < ActiveRecord::Base
     mistake
   end
 
-  # 解答者の答え(answer_text)に次の正しい単語を加えた文字列を返す
+  # 解答(answer_text)に次の正しい単語を加えた文字列を返す
   # 入力途中に誤りがある場合は、その部分を正した文字列を返す
   #
   # 例1:
@@ -121,7 +121,7 @@ class Challenge < ActiveRecord::Base
     text.strip.scan(WORD_REGEXP)
   end
 
-  # 正しい単語(correct_word)と解答者の答えの単語(answer_word)を比べて
+  # 正しい単語(correct_word)と解答の単語(answer_word)を比べて
   # 誤り情報を記憶したオブジェクトを返す
   #
   # 例:
@@ -142,7 +142,7 @@ class Challenge < ActiveRecord::Base
       return mistake
     end
 
-    # 解答者の答えの単語が空文字の場合は、全ての文字をブランク文字に置換した単語を返す
+    # 解答の単語が空文字の場合は、全ての文字をブランク文字に置換した単語を返す
     if answer_word.blank?
       mistake.cloze_text = correct_word.gsub(/./, CLOZE_MARK)
       return mistake
@@ -153,18 +153,18 @@ class Challenge < ActiveRecord::Base
     mistake
   end
 
-  # 正しい単語と解答者の答えの単語を比べて、誤り原因メッセージを取得する
+  # 正しい単語と解答の単語を比べて、誤り原因メッセージを取得する
   def mistake_message_of_word(correct_word, answer_word)
-    # 正しい単語と解答者の答えの単語のどちらか短い方に文字数を合わせて、等値を判定する
+    # 正しい単語と解答の単語のどちらか短い方に文字数を合わせて、等値を判定する
     if correct_word[0...answer_word.size] == answer_word[0...correct_word.size]
-      # 解答者の答えの単語に誤りがない場合
+      # 解答の単語に誤りがない場合
       case correct_word.size <=> answer_word.size
       when -1 then 'Word is too long.'
       when 1  then 'Word is too short.'
       when 0  then nil
       end
     else
-      # 解答者の答えの単語に誤りがある場合
+      # 解答の単語に誤りがある場合
       'Incorrectly spelled some word.'
     end
   end

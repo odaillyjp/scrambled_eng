@@ -252,7 +252,7 @@ RSpec.describe Challenge, type: :model do
   end
 
   describe '#teach_mistake_of_word' do
-    context '正解の単語に"foo"、解答者の答えに"foo"を渡したとき' do
+    context '正解の単語に"foo"、解答に"foo"を渡したとき' do
       let(:mistake) { challenge.send(:teach_mistake_of_word, 'foo', 'foo') }
 
       it '"foo"という文字列を持つオブジェクトを返すこと' do
@@ -264,7 +264,7 @@ RSpec.describe Challenge, type: :model do
       end
     end
 
-    context '正解の単語に"foo"、解答者の答えに"fxx"を渡したとき' do
+    context '正解の単語に"foo"、解答に"fxx"を渡したとき' do
       let(:mistake) { challenge.send(:teach_mistake_of_word, 'foo', 'fxx') }
 
       it '"f__"という文字列を持つオブジェクトを返すこと' do
@@ -276,7 +276,7 @@ RSpec.describe Challenge, type: :model do
       end
     end
 
-    context '正解の単語に"FOO"、解答者の答えに"foo"を渡したとき' do
+    context '正解の単語に"FOO"、解答に"foo"を渡したとき' do
       let(:mistake) { challenge.send(:teach_mistake_of_word, 'FOO', 'foo') }
 
       it '"FOO"という文字列を持つオブジェクトを返すこと' do
@@ -288,7 +288,7 @@ RSpec.describe Challenge, type: :model do
       end
     end
 
-    context '解答者の答えが正解よりも長いとき' do
+    context '解答が正解よりも長いとき' do
       let(:mistake) { challenge.send(:teach_mistake_of_word, 'foo', 'fooo') }
 
       it '正解している部分だけを当てはめた文字列を持つオブジェクトを返すこと' do
@@ -300,7 +300,7 @@ RSpec.describe Challenge, type: :model do
       end
     end
 
-    context '解答者の答えが正解よりも短いとき' do
+    context '解答が正解よりも短いとき' do
       let(:mistake) { challenge.send(:teach_mistake_of_word, 'foo', 'fo') }
 
       it '足りない部分は誤りだと扱うこと' do
@@ -312,7 +312,7 @@ RSpec.describe Challenge, type: :model do
       end
     end
 
-    context '解答者の答えが正解よりも長く、途中に誤りもあるとき' do
+    context '解答が正解よりも長く、途中に誤りもあるとき' do
       let(:mistake) { challenge.send(:teach_mistake_of_word, 'foo', 'fxoo') }
 
       it '正解している部分だけを当てはめた文字列を持つオブジェクトを返すこと' do
@@ -324,7 +324,7 @@ RSpec.describe Challenge, type: :model do
       end
     end
 
-    context '解答者の答えが正解よりも短く、途中に誤りもあるとき' do
+    context '解答が正解よりも短く、途中に誤りもあるとき' do
       let(:mistake) { challenge.send(:teach_mistake_of_word, 'foo', 'fx') }
 
       it '正解している部分だけを当てはめた文字列を持つオブジェクトを返すこと' do
@@ -338,25 +338,25 @@ RSpec.describe Challenge, type: :model do
   end
 
   describe '#mistake_message_of_word' do
-    context '正解の単語に"foo"、解答者の答えに"foo"を渡したとき' do
+    context '正解の単語に"foo"、解答に"foo"を渡したとき' do
       subject { challenge.send(:mistake_message_of_word, 'foo', 'foo') }
 
       it { is_expected.to be_nil }
     end
 
-    context '正解の単語に"foo"、解答者の答えに"fxx"を渡したとき' do
+    context '正解の単語に"foo"、解答に"fxx"を渡したとき' do
       subject { challenge.send(:mistake_message_of_word, 'foo', 'fxx') }
 
       it { is_expected.to eq 'Incorrectly spelled some word.' }
     end
 
-    context '解答者の答えが正解よりも長いとき' do
+    context '解答が正解よりも長いとき' do
       subject { challenge.send(:mistake_message_of_word, 'foo', 'fooo') }
 
       it { is_expected.to eq 'Word is too long.' }
     end
 
-    context '解答者の答えが正解よりも短いとき' do
+    context '解答が正解よりも短いとき' do
       subject { challenge.send(:mistake_message_of_word, 'foo', 'fo') }
 
       it { is_expected.to eq 'Word is too short.' }
@@ -364,19 +364,19 @@ RSpec.describe Challenge, type: :model do
   end
 
   describe '#replace_incorrect_char_to_cloze_mark' do
-    context '正解の単語に"foo"、解答者の答えに"foo"を渡したとき' do
+    context '正解の単語に"foo"、解答に"foo"を渡したとき' do
       subject { challenge.send(:replace_incorrect_char_to_cloze_mark, 'foo', 'foo') }
 
       it { is_expected.to eq 'foo' }
     end
 
-    context '正解の単語に"foo"、解答者の答えに"fxx"を渡したとき' do
+    context '正解の単語に"foo"、解答に"fxx"を渡したとき' do
       subject { challenge.send(:replace_incorrect_char_to_cloze_mark, 'foo', 'fxx') }
 
       it { is_expected.to eq 'f__' }
     end
 
-    context '正解の単語に"FOO"、解答者の答えに"foo"を渡したとき' do
+    context '正解の単語に"FOO"、解答に"foo"を渡したとき' do
       subject { challenge.send(:replace_incorrect_char_to_cloze_mark, 'FOO', 'foo') }
 
       it { is_expected.to eq 'FOO' }
