@@ -9,11 +9,11 @@
       .lp-header__image
     .lp-header__box-item
       %p.lp-header__description= t('views.homes.index.lp_header_description')
-      = link_to 'お試しの問題に挑戦する', '#', class: 'lp-header__tutorial-button'
+      = link_to 'お試しの問題に挑戦する', course_path(1), class: 'lp-header__tutorial-button'
 
 %section.course-index
   %h1
-    Learn where to start.
+    挑戦したいコースを選んでください
   %ul.course-index-list
     - @courses.each do |course|
       %li.course-index-item{ id: "course_#{course.id}" }
