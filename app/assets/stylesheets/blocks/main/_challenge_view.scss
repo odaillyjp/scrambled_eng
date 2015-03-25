@@ -26,7 +26,8 @@
   }
 
   .challenge__ja-text {
-    @include rem('font-size', 16);
+    @include rem('font-size', 20);
+    @include rem('padding-bottom', 24);
   }
 }
 
