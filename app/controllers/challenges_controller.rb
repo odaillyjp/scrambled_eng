@@ -45,8 +45,9 @@ class ChallengesController < ApplicationController
   def resolve
     @challenge = @challenges.find_by!(sequence_number: params[:sequence_number])
     raw_text = params[:raw_text] || ''
+    @answer = @challenge.build_answer(raw_text)
 
-    if @challenge.correct?(raw_text)
+    if @answer.check!
       next_challenge = @challenges.order_course_at(@challenge).next(false)
       if next_challenge
         next_challenge_url = course_challenge_url(next_challenge, course_id: params[:course_id])
@@ -59,15 +60,15 @@ class ChallengesController < ApplicationController
         course_information_url: course_url(@challenge.course_id)
       }
     else
-      mistake = @challenge.teach_mistake(raw_text)
-      render json: { correct: false, mistake: mistake }
+      render json: { correct: false, mistake: @answer.mistake }
     end
   end
 
   def teach_partial_answer
     raw_text = params[:raw_text] || ''
-    partial_answer = @challenge.teach_partial_answer(raw_text)
-    render json: { partial_answer: partial_answer }
+    answer = @challenge.build_answer(raw_text)
+    answer.detect_partial_answer!
+    render json: { mistake: answer.mistake }
   end
 
   private

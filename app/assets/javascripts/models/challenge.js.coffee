@@ -33,7 +33,7 @@ app.Models.Challenge = Backbone.Model.extend
       dataType: 'json'
       data: {raw_text: @get('raw_text')}
     ).done (data) =>
-      @set('raw_text', data.partial_answer)
+      @set('raw_text', data.mistake.partial_answer)
 
   fetchWords: ->
     $.ajax(@url(),
