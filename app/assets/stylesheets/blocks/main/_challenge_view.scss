@@ -16,7 +16,7 @@
 .challenge {
   .challenge__header {
     @include rem('padding-bottom', 12);
-    border-bottom: 1px solid $main_high_dark_color;
+    border-bottom: 1px solid $main_low_dark_color;
   }
 
   .challenge__title {
