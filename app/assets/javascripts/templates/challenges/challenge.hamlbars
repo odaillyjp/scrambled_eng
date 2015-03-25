@@ -15,7 +15,7 @@
       %a.challenge-tab-item__hints-link
         = I18n.t('views.challenges.show.hints_tab')
   .editer-panel
-    %textarea{ id: 'input-challenge-raw_text', class: 'editer-panel__raw-textarea', spellcheck: false }
+    %textarea{ id: 'input-challenge-raw_text', class: 'editer-panel__raw-textarea', spellcheck: false, placeholder: 'ここに解答を入力してください' }
     %footer.editer-panel__footer
       %a{ class: 'btn editer-panel__submit-raw-text-button' }
         = I18n.t('views.challenges.show.submit_text_button')
