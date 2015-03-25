@@ -5,7 +5,7 @@ app.Models.Challenge = Backbone.Model.extend
   initialize: ->
     @listenTo @, 'change:raw_text', _.debounce =>
       @fetchHiddenText()
-    , 500
+    , 300
 
   textToLead: (maxLength = 8) ->
     ja_text = @get('ja_text')
