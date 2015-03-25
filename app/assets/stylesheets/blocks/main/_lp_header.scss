@@ -1,7 +1,11 @@
+$lp_break_small: 500px;
+
 .lp-header {
   background: $main_medium_color;
-  @include rem('height', 240);
-  @include rem('padding-top', 144);
+  @include rem('padding-bottom', 60);
+  @include rem('padding-left', 16);
+  @include rem('padding-right', 16);
+  @include rem('padding-top', 50);
   position: relative;
   text-align: center;
 }
@@ -15,16 +19,73 @@
   @include rem('height', $logo_image_size);
   vertical-align: bottom;
   @include rem('width', $logo_image_size);
+
+  @media screen and (max-width: $lp_break_small) {
+    border: ($logo_image_size / 9) + px solid $white_color;
+    @include rem('border-radius', $logo_image_size * 0.75);
+    @include rem('height', $logo_image_size * 0.75);
+    @include rem('width', $logo_image_size * 0.75);
+  }
 }
 
 .lp-header__site-name {
-  @include rem('font-size', 48);
+  $lp_site_name_font_size: 48;
+  @include rem('font-size', $lp_site_name_font_size);
   color: $main_high_light_color;
   font-weight: bold;
+
+  @media screen and (max-width: $lp_break_small) {
+    @include rem('font-size', $lp_site_name_font_size * 0.75);
+  }
 }
 
 .lp-header__site-read-line {
   color: $main_low_light_color;
-  @include rem('font-size', 18);
-  @include rem('padding-top', 10);
+  @include rem('font-size', 16);
+  @include rem('padding-top', 12);
+  @include rem('padding-bottom', 40);
+
+  @media screen and (max-width: $lp_break_small) {
+    @include rem('font-size', 14);
+  }
+}
+
+.lp-header__box-group {
+  @include display-flex;
+  @include flex-direction(row);
+  @include flex-wrap(wrap);
+  @include justify-content(center);
+  margin: 0 auto;
+  @include rem('max-width', 900);
+  text-align: left;
+}
+
+.lp-header__box-item {
+  @include flex-basis(420px);
+  @include flex-basis(42rem);
+  @include flex-grow(1);
+  @include rem('margin-top', 12);
+  @include rem('margin-left', 12);
+  @include rem('margin-right', 12);
+}
+
+.lp-header__image {
+  background: $white_color;
+  box-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  height: 240px;
+}
+
+.lp-header__description {
+  @include rem('font-size', 16);
+  color: $main_high_light_color;
+  @include rem('line-height', 28);
+
+  @media screen and (max-width: $lp_break_small) {
+    @include rem('font-size', 14);
+    @include rem('line-height', 24);
+  }
+}
+
+.lp-header__tutorial-button {
+  @include rem('margin-top', 24);
 }

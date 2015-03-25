@@ -1,5 +1,10 @@
 ja:
   views:
+    homes:
+      index:
+        lp_header_read_line: 自由に作って、ゆっくり解く。繰り返して英語を学ぶ。
+        lp_header_description: Scrambled Eng は、好きなフレーズでゆっくり学ぶことを考えた英語学習サービスです。あなたが登録したフレーズをもとに、英語の穴埋め問題を作成します。
+
     courses:
       show:
         start_challenge: このコースに挑戦する

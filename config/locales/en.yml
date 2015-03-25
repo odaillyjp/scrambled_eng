@@ -1,5 +1,10 @@
 en:
   views:
+    homes:
+      index:
+        lp_header_read_line: For Japanese who learn English.
+        lp_header_description: TODO
+
     courses:
       show:
         start_challenge: Start Challenge

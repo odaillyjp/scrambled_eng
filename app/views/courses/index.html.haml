@@ -3,8 +3,13 @@
     = link_to root_path, class: 'lp-header__site-name' do
       = image_tag 'logo_m.png', class: 'lp-header__site-logo'
       Scrambled Eng
-  %h2.lp-header__site-read-line
-    For Japanese who learn English.
+  %h2.lp-header__site-read-line= t('views.homes.index.lp_header_read_line')
+  .lp-header__box-group
+    .lp-header__box-item
+      .lp-header__image
+    .lp-header__box-item
+      %p.lp-header__description= t('views.homes.index.lp_header_description')
+      = link_to 'お試しの問題に挑戦する', '#', class: 'lp-header__tutorial-button btn'
 
 %section.course-index
   %h1
