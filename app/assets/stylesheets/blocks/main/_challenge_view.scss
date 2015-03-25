@@ -14,20 +14,21 @@
 }
 
 .challenge {
-  h1, p {
-    @include rem('padding-top', 12);
+  .challenge__header {
     @include rem('padding-bottom', 12);
-    position: relative;
+    border-bottom: 1px solid $main_high_dark_color;
   }
 
   .challenge__title {
     @include rem('font-size', 24);
     font-weight: bold;
+    @include rem('padding-bottom', 12);
   }
 
   .challenge__ja-text {
     @include rem('font-size', 20);
-    @include rem('padding-bottom', 24);
+    @include rem('padding-bottom', 42);
+    @include rem('padding-top', 24);
   }
 }
 

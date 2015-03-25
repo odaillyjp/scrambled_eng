@@ -1,5 +1,7 @@
 .challenge
-  %h1.challenge__title Challenge {{id}}
+  .challenge__header
+    %h1.challenge__title Challenge {{id}}
+    %p 次の文章を英文に直してください。
   %p.challenge__ja-text {{ja_text}}
 
 .challenge-panel-container
