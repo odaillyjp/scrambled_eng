@@ -87,5 +87,7 @@ $lp_break_small: 500px;
 }
 
 .lp-header__tutorial-button {
+  @extend .btn-m;
+  background: $sub_medium_color;
   @include rem('margin-top', 24);
 }
