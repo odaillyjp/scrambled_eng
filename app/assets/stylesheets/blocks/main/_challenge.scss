@@ -1,0 +1,44 @@
+$challenge_padding_left: 20;
+
+.challenge {
+  display: block;
+  height: 100%;
+  position: relative;
+}
+
+.challenge__header {
+  border-bottom: 2px solid $main_medium_color;
+}
+
+.challenge__title {
+  background: $main_medium_color;
+  color: $white_color;
+  @include rem('font-size', 24);
+  font-weight: bold;
+  @include rem('padding-bottom', 12);
+  @include rem('padding-left', $challenge_padding_left);
+  @include rem('padding-top', 12);
+}
+
+.challenge__question {
+  color: $main_medium_color;
+  @include rem('font-size', 16);
+  @include rem('padding-bottom', 12);
+  @include rem('padding-left', $challenge_padding_left);
+  @include rem('padding-top', 12);
+}
+
+.challenge__ja-text {
+  color: $main_low_dark_color;
+  @include rem('font-size', 28);
+  @include rem('line-height', 36);
+  @include rem('max-width', 920);
+  @include rem('padding-bottom', 42);
+  @include rem('padding-left', $challenge_padding_left);
+  @include rem('padding-right', $challenge_padding_left);
+  @include rem('padding-top', 24);
+}
+
+.challenge__panel-container {
+  @include rem('padding-left', $challenge_padding_left);
+}

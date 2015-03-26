@@ -1,15 +1,15 @@
-.challenge
-  .challenge__header
-    %h1.challenge__title Challenge {{id}}
-    %p 次の文章を英文に直してください。
-  %p.challenge__ja-text {{ja_text}}
+%header.challenge__header
+  %h1.challenge__title Challenge {{id}}
+  %p.challenge__question= I18n.t('views.challenges.show.question')
 
-.challenge-panel-container
-  %ul.challenge-tab-group
+%p.challenge__ja-text {{ja_text}}
+
+.challenge__panel-container
+  %ul.challenge__panel-tab-group
     %li.challenge-tab-item
       %a.challenge-tab-item__answer-link.is-current
         = I18n.t('views.challenges.show.answer_tab')
-  %ul.challenge-tab-group
+  %ul.challenge__panel-tab-group
     %li.challenge-tab-item
       %a.challenge-tab-item__cloze-text-link.is-current
         = I18n.t('views.challenges.show.cloze_text_tab')

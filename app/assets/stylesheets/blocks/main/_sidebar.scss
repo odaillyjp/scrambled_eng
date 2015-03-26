@@ -1,19 +1,14 @@
-.sidebar-container {
-  background: $main_high_dark_color;
-  float: left;
-  height: 100%;
-  display: block;
-}
-
 .sidebar {
-  border-right: 1px solid $main_medium_color;
+  border-right: 2px solid $main_low_dark_color;
+  box-sizing: border-box;
   height: 100%;
   overflow-y: scroll;
-  @include rem('width', $sidebar_width - 1);
+  position: absolute;
+  @include rem('width', $sidebar_width);
 }
 
 .sidebar__course-name {
-  background: $main_medium_color;
+  background: $main_low_dark_color;
   color: $main_high_light_color;
   @include rem('font-size', 20);
   font-weight: bold;

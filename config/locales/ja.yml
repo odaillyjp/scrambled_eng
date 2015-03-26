@@ -11,6 +11,7 @@ ja:
 
     challenges:
       show:
+        question: 次の文章を英語に直してください。
         answer_tab: 解答
         cloze_text_tab: 穴埋め問題
         hints_tab: ヒント

@@ -4,6 +4,9 @@
 
 .cloze-text-panel__cloze-text {
   @extend .challenge-panel__body;
+  @include rem('font-size', 15);
+  @include rem('line-height', 18);
+  @include rem('padding', 2);
 }
 
 .cloze-text-panel__footer {

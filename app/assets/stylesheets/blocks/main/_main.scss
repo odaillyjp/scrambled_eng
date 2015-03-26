@@ -10,3 +10,17 @@
   @include rem('line-height', 80);
   @include rem('padding-left', 24);
 }
+
+.main-container {
+  background: $main_high_light_color;
+  @include rem('margin-left', $sidebar_width);
+  height: 100%;
+  position: relative;
+}
+
+.sidebar-container {
+  background: $main_high_dark_color;
+  float: left;
+  height: 100%;
+  display: block;
+}

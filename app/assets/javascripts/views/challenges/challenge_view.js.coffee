@@ -4,9 +4,9 @@ app = @ScrambledEng
 app.Views.Challenges ?= {}
 
 app.Views.Challenges.ChallengeView = Backbone.View.extend
-  className: 'challenge-view'
+  className: 'challenge'
   template: JST['challenges/challenge']
-  challengePanelContainer: '.challenge-panel-container'
+  challengePanelContainer: '.challenge__panel-container'
 
   events:
     'click .challenge-tab-item__cloze-text-link': 'renderClozeTextPanel'

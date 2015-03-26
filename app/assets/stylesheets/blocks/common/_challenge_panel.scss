@@ -1,4 +1,4 @@
-$challenge_panel_width: 400;
+$challenge_panel_width: 420;
 
 .challenge-panel {
   background: #EEEEEE;
@@ -27,3 +27,8 @@ $challenge_panel_width: 400;
   @include rem('width', $challenge_panel_width);
 }
 
+// Panel Tab
+.challenge__panel-tab-group {
+  float: left;
+  @include rem('width', $challenge_panel_width + 40);
+}

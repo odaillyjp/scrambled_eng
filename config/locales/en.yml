@@ -11,6 +11,7 @@ en:
 
     challenges:
       show:
+        question: In English, please.
         answer_tab: Answer
         cloze_text_tab: Cloze Text
         hints_tab: Hints
