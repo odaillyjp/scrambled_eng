@@ -1,5 +1,6 @@
 - content_for :header_item_nav do
-  = link_to 'Manage course', management_course_path(@course)
+  %li.header__nav-list-item
+    = link_to 'Manage course', management_course_path(@course)
 
 %aside#sidebar-container.sidebar-container
 #main-container.main-container

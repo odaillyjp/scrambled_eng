@@ -14,8 +14,11 @@
       .header__cell
         .header__logo-box
           .header__item
-            = link_to root_path, class: 'brand-link' do
-              ScrambledEng
+            %h1.header__title-area
+              = link_to root_path, class: 'header__site-name' do
+                = image_tag 'logo_m.png', class: 'header__site-logo'
+                Scrambled Eng
+
         .header__nav-box
           %nav.header__item
             %ul.header__nav-list
@@ -24,6 +27,7 @@
               %li.header__nav-list-item
                 = link_to 'Create course', new_course_path, class: 'new_course_link'
               = yield :header_item_nav
+    .clearfix
 
     %main.main
       = yield

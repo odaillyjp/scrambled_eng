@@ -1,4 +1,4 @@
-$lp_break_small: 500px;
+$lp_break_small: 760px;
 
 .lp-header {
   background: $main_medium_color;
@@ -12,7 +12,7 @@ $lp_break_small: 500px;
 
 .lp-header__site-logo {
   $logo_image_size: 60;
-  border: ($logo_image_size / 12) + px solid $white_color;
+  border: ($logo_image_size / 14) + px solid $white_color;
   @include rem('border-radius', $logo_image_size);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
@@ -21,7 +21,7 @@ $lp_break_small: 500px;
   @include rem('width', $logo_image_size);
 
   @media screen and (max-width: $lp_break_small) {
-    border: ($logo_image_size / 9) + px solid $white_color;
+    border: ($logo_image_size / 14 * 0.75) + px solid $white_color;
     @include rem('border-radius', $logo_image_size * 0.75);
     @include rem('height', $logo_image_size * 0.75);
     @include rem('width', $logo_image_size * 0.75);
