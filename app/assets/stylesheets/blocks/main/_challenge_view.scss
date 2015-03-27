@@ -1,29 +1,3 @@
-.challenge-tab-item__link {
-  background: #CCCCCC;
-  box-shadow: inset 0 1px #fff,0 1px 3px rgba(0,0,0,0.5);
-  cursor: pointer;
-  float: left;
-  display: block;
-  padding: 10px;
-  width: 100px;
-
-  &.is-current {
-    background: #DDDDDD;
-  }
-}
-
-.challenge-tab-item__answer-link {
-  @extend .challenge-tab-item__link;
-}
-
-.challenge-tab-item__cloze-text-link {
-  @extend .challenge-tab-item__link;
-}
-
-.challenge-tab-item__hints-link {
-  @extend .challenge-tab-item__link;
-}
-
 .hints-panel {
   @extend .editer-panel;
 

@@ -4,6 +4,7 @@ en:
       index:
         lp_header_read_line: For Japanese who learn English.
         lp_header_description: TODO
+        start_tutorial: TODO
 
     courses:
       show:

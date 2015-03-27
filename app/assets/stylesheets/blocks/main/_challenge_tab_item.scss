@@ -1,0 +1,26 @@
+.challenge-tab-item__link {
+  background: #CCCCCC;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  @include rem('font-size', 16);
+  cursor: pointer;
+  float: left;
+  display: block;
+  @include rem('padding', 10);
+  @include rem('width', 100);
+
+  &.is-current {
+    background: #DDDDDD;
+  }
+}
+
+.challenge-tab-item__answer-link {
+  @extend .challenge-tab-item__link;
+}
+
+.challenge-tab-item__cloze-text-link {
+  @extend .challenge-tab-item__link;
+}
+
+.challenge-tab-item__hints-link {
+  @extend .challenge-tab-item__link;
+}
