@@ -30,8 +30,8 @@ $challenge_padding_left: 20;
 
 .challenge__ja-text {
   color: $main_low_dark_color;
-  @include rem('font-size', 28);
-  @include rem('line-height', 36);
+  @include rem('font-size', 20);
+  @include rem('line-height', 28);
   @include rem('max-width', 920);
   @include rem('padding-bottom', 42);
   @include rem('padding-left', $challenge_padding_left);
