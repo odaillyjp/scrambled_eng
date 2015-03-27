@@ -27,7 +27,7 @@ app.Views.Challenges.SidebarItemView = Backbone.View.extend
     Backbone.history.navigate(@model.url(), true)
 
   addCurrentClass: ->
-    @$el.addClass('is-current')
+    @$('.sidebar-item__challenge-link').addClass('is-current')
 
   removeCurrentClass: ->
-    @$el.removeClass('is-current')
+    @$('.sidebar-item__challenge-link').removeClass('is-current')
