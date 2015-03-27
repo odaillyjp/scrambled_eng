@@ -6,11 +6,11 @@ app.Views.Challenges ?= {}
 app.Views.Challenges.SidebarItemView = Backbone.View.extend
   tagName: 'li'
   id: -> "challenge_#{@model.id}"
-  className: 'challenge-sidebar-nav-item'
+  className: 'sidebar-item'
   template: JST['challenges/sidebar_item']
 
   events:
-    'click .challenge-sidebar-link': 'navigateToChallenge'
+    'click .sidebar-item__challenge-link': 'navigateToChallenge'
 
   render: ->
     content = @model.toJSON()

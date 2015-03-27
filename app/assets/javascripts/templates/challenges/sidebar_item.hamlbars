@@ -1,1 +1,1 @@
-%a{ href: '{{url}}', class: 'sidebar__item-link challenge-sidebar-link' } Challenge {{id}} 「{{lead}}」
+%a{ href: '{{url}}', class: 'sidebar-item__challenge-link' } Challenge {{id}} 「{{lead}}」
