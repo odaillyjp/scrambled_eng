@@ -28,7 +28,19 @@ $challenge_panel_width: 420;
 }
 
 // Panel Tab
+$challenge_panel_tab_break_small: 1200px;
+
+@media screen and (max-width: $challenge_panel_tab_break_small) {
+  .challenge__panel-tab-area {
+    float: left;
+  }
+}
+
 .challenge__panel-tab-group {
   float: left;
   @include rem('width', $challenge_panel_width + 40);
+
+  @media screen and (max-width: $challenge_panel_tab_break_small) {
+    float: none;
+  }
 }
