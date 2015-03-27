@@ -3,6 +3,7 @@
 #= require lodash
 #= require backbone
 #= require backbone.stickit/backbone.stickit
+#= require backbone.select/backbone.select
 #= require handlebars.runtime
 #= require scrambled_eng
 #= require_tree .

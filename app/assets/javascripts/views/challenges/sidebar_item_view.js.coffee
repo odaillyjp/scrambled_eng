@@ -12,6 +12,10 @@ app.Views.Challenges.SidebarItemView = Backbone.View.extend
   events:
     'click .sidebar-item__challenge-link': 'navigateToChallenge'
 
+  initialize: ->
+    @listenTo @model, 'selected', @addCurrentClass
+    @listenTo @model, 'deselected', @removeCurrentClass
+
   render: ->
     content = @model.toJSON()
     _.extend(content, lead: @model.textToLead())
@@ -21,3 +25,9 @@ app.Views.Challenges.SidebarItemView = Backbone.View.extend
   navigateToChallenge: (e) ->
     e.preventDefault()
     Backbone.history.navigate(@model.url(), true)
+
+  addCurrentClass: ->
+    @$el.addClass('is-current')
+
+  removeCurrentClass: ->
+    @$el.removeClass('is-current')

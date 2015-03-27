@@ -48,4 +48,5 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-lodash'
   gem 'rails-assets-backbone'
   gem 'rails-assets-backbone.stickit'
+  gem 'rails-assets-backbone.select'
 end

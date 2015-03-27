@@ -3,6 +3,7 @@ app.Models ?= {}
 
 app.Models.Challenge = Backbone.Model.extend
   initialize: ->
+    Backbone.Select.Me.applyTo(@)
     @listenTo @, 'change:raw_text', _.debounce =>
       @fetchHiddenText()
     , 300
@@ -62,4 +63,5 @@ app.Models.Challenge = Backbone.Model.extend
 app.Collections.ChallengeCollection = Backbone.Collection.extend
   model: app.Models.Challenge
   initialize: (course_id) ->
+    Backbone.Select.One.applyTo(@, [])
     @url = "/courses/#{course_id}/challenges"

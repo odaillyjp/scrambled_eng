@@ -18,16 +18,12 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
     @layout.setMainView(informationView)
 
   showChallenge: (course_id, challenge_id) ->
-    unless @challenges
-      @__fetchChallenges(course_id)
-      @__renderSidebarView(course_id)
-    @challenge = @challenges.get(challenge_id)
-    if @challenge
-      @__renderChallengeView()
+    if @challenges
+      @__renderChallengeView(challenge_id)
     else
-      @challenge = new app.Models.Challenge(id: challenge_id)
-      @challenge.urlRoot = "/courses/#{course_id}/challenges"
-      @challenge.fetch(success: => @__renderChallengeView())
+      @__fetchChallenges(course_id).success =>
+        @__renderSidebarView(course_id)
+        @__renderChallengeView(challenge_id)
 
   __fetchChallenges: (course_id) ->
     @challenges = new app.Collections.ChallengeCollection(course_id)
@@ -37,6 +33,8 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
     sidebarView = new app.Views.Challenges.SidebarView(collection: @challenges)
     @layout.setSidebarView(sidebarView)
 
-  __renderChallengeView: ->
+  __renderChallengeView: (challenge_id) ->
+    @challenge = @challenges.get(challenge_id)
+    @challenges.select(@challenge)
     challengeView = new app.Views.Challenges.ChallengeView(model: @challenge)
     @layout.setMainView(challengeView)
