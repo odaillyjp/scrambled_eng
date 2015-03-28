@@ -21,6 +21,8 @@
 
         .header__nav-box
           %nav.header__item
+            = link_to '#', class: 'header__menu-link' do
+              Menu
             %ul.header__nav-list
               %li.header__nav-list-item
                 = link_to 'Courses', root_path, class: 'courses_link'

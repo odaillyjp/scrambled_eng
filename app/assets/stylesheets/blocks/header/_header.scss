@@ -24,6 +24,7 @@ $header_break_small: 760px;
   width: 40%;
 
   @media screen and (max-width: $header_break_small) {
+    @include rem('padding-left', 10);
     width: 80%;
   }
 }
@@ -57,10 +58,26 @@ $header_break_small: 760px;
 
 .header__item {
   @include rem('line-height', $header_height);
+  position: relative;
+}
+
+.header__menu-link {
+  display: none;
+
+  @media screen and (max-width: $header_break_small) {
+    @include rem('right', 10);
+    display: block;
+    position: absolute;
+  }
 }
 
 .header__nav-list {
   float: right;
+  display: block;
+
+  @media screen and (max-width: $header_break_small) {
+    display: none;
+  }
 }
 
 .header__nav-list-item {
