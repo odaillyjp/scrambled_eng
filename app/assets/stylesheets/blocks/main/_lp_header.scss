@@ -8,10 +8,17 @@ $lp_break_small: 760px;
   @include rem('padding-top', 50);
   position: relative;
   text-align: center;
+
+  @media screen and (max-width: $lp_break_small) {
+    @include rem('padding-bottom', 40);
+    @include rem('padding-left', 12);
+    @include rem('padding-right', 12);
+    @include rem('padding-top', 30);
+  }
 }
 
 .lp-header__site-logo {
-  $logo_image_size: 60;
+  $logo_image_size: 64;
   border: ($logo_image_size / 14) + px solid $white_color;
   @include rem('border-radius', $logo_image_size);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
@@ -21,10 +28,10 @@ $lp_break_small: 760px;
   @include rem('width', $logo_image_size);
 
   @media screen and (max-width: $lp_break_small) {
-    border: ($logo_image_size / 14 * 0.75) + px solid $white_color;
-    @include rem('border-radius', $logo_image_size * 0.75);
-    @include rem('height', $logo_image_size * 0.75);
-    @include rem('width', $logo_image_size * 0.75);
+    border: ($logo_image_size / 14 * 0.5) + px solid $white_color;
+    @include rem('border-radius', $logo_image_size * 0.5);
+    @include rem('height', $logo_image_size * 0.5);
+    @include rem('width', $logo_image_size * 0.5);
   }
 }
 
@@ -35,7 +42,7 @@ $lp_break_small: 760px;
   font-weight: bold;
 
   @media screen and (max-width: $lp_break_small) {
-    @include rem('font-size', $lp_site_name_font_size * 0.75);
+    @include rem('font-size', $lp_site_name_font_size * 0.5);
   }
 }
 
@@ -67,6 +74,11 @@ $lp_break_small: 760px;
   @include rem('margin-top', 12);
   @include rem('margin-left', 12);
   @include rem('margin-right', 12);
+
+  @media screen and (max-width: $lp_break_small) {
+    @include rem('margin-left', 0);
+    @include rem('margin-right', 0);
+  }
 }
 
 .lp-header__image {
