@@ -25,10 +25,16 @@
               Menu
             %ul.header__nav-list
               %li.header__nav-list-item
-                = link_to 'Courses', root_path, class: 'courses_link'
-              %li.header__nav-list-item
-                = link_to 'Create course', new_course_path, class: 'new_course_link'
-              = yield :header_item_nav
+                = link_to 'Courses', root_path, class: 'header__courses-link'
+              - if current_user
+                %li.header__nav-list-item
+                  = link_to 'Create course', new_course_path, class: 'header__new-course-link'
+                = yield :header_item_nav
+                %li.header__nav-list-item
+                  = image_tag current_user.image, class: 'header__user-image'
+              - else
+                %li.header__nav-list-item
+                  = link_to 'Sign in with Google', '/auth/google_oauth2', class: 'header__sign-in-link'
     .clearfix
 
     %main.main

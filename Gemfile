@@ -12,6 +12,8 @@ source 'https://rubygems.org' do
   gem 'hamlbars'
   gem 'haml-rails'
   gem 'handlebars_assets'
+  gem 'omniauth'
+  gem 'omniauth-google-oauth2'
   gem 'order_query'
 
   group :development do

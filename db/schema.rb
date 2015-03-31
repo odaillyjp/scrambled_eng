@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309071411) do
+ActiveRecord::Schema.define(version: 20150331025503) do
 
   create_table "challenges", force: :cascade do |t|
     t.text     "en_text",                     null: false
@@ -31,5 +31,16 @@ ActiveRecord::Schema.define(version: 20150309071411) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "uid",        null: false
+    t.string   "provider",   null: false
+    t.string   "name",       null: false
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
 
 end

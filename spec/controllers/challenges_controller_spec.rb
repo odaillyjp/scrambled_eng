@@ -83,7 +83,7 @@ RSpec.describe ChallengesController, type: :controller do
         expect(JSON.parse(response.body)['correct']).to be_truthy
       end
     end
-   end
+  end
 
   describe 'POST #teach_partial_answer' do
     before do

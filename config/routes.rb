@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/create'
+
   root 'courses#index'
   resources :courses do
     get 'management', action: 'manage', on: :member
@@ -8,4 +10,6 @@ Rails.application.routes.draw do
       post 'partial_answer', action: 'teach_partial_answer', on: :member
     end
   end
+
+  get '/auth/:provider/callback', to: 'sessions#create'
 end

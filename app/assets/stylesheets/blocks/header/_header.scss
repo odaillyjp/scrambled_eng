@@ -85,4 +85,14 @@ $header_break_small: 760px;
   @include rem('font-size', 16);
   font-weight: bold;
   @include rem('margin-right', 30);
+  @include rem('height', $header_height);
+}
+
+.header__user-image {
+  $user_image_border_radius: 6;
+
+  @include border-radius($user_image_border_radius + px);
+  @include border-radius($user_image_border_radius / 10 + rem);
+  vertical-align: middle;
+  @include rem('width', 40);
 }
