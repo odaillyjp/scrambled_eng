@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  before_action :authenticate_user!, only: %i(new edit create update destroy manage)
   before_action :fetch_course, only: %i(show edit update manage)
 
   def index

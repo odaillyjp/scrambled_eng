@@ -1,4 +1,5 @@
 class ChallengesController < ApplicationController
+  before_action :authenticate_user!, only: %i(new edit create update destroy)
   before_action :fetch_challenges, only: %i(index create resolve)
   before_action :fetch_challenge,  only: %i(show edit update destroy teach_partial_answer)
 

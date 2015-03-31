@@ -26,7 +26,7 @@
             %ul.header__nav-list
               %li.header__nav-list-item
                 = link_to 'Courses', root_path, class: 'header__courses-link'
-              - if current_user
+              - if user_sign_in?
                 %li.header__nav-list-item
                   = link_to 'Create course', new_course_path, class: 'header__new-course-link'
                 = yield :header_item_nav
