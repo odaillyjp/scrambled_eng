@@ -9,6 +9,7 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
   initialize: ->
     @layout = new app.Views.LayoutView(el: $('body'))
     @challenges = null
+    @__on_dropdown_menu_event()
 
   indexChallenge: (course_id) ->
     unless @challenges
@@ -24,6 +25,12 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
       @__fetchChallenges(course_id).success =>
         @__renderSidebarView(course_id)
         @__renderChallengeView(challenge_id)
+
+  __on_dropdown_menu_event: ->
+    # ヘッダーのドロップダウンメニュー
+    $(document).on 'click', '.header__dropdown-menu-link', ->
+      $('.header__dropdown-menu').toggleClass('is-hidden')
+      false
 
   __fetchChallenges: (course_id) ->
     @challenges = new app.Collections.ChallengeCollection(course_id)

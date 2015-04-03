@@ -31,10 +31,16 @@
                   = link_to 'Create course', new_course_path, class: 'header__new-course-link'
                 = yield :header_item_nav
                 %li.header__nav-list-item
-                  = image_tag current_user.image, class: 'header__user-image'
+                  = link_to '', class: 'header__dropdown-menu-link' do
+                    = image_tag current_user.image, class: 'header__user-image'
               - else
                 %li.header__nav-list-item
                   = link_to 'Sign in with Google', '/auth/google_oauth2', class: 'header__sign-in-link'
+            %ul.header__dropdown-menu.is-hidden
+              %li.header__dropdown-item
+                My Profile
+              %li.header__dropdown-item
+                = link_to 'Sign Out', session_path, method: :delete, class: 'header__sign-out-link'
     .clearfix
 
     %main.main

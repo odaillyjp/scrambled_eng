@@ -96,3 +96,9 @@ $header_break_small: 760px;
   vertical-align: middle;
   @include rem('width', 40);
 }
+
+.header__dropdown-menu {
+  &.is-hidden {
+    display: none;
+  }
+}
