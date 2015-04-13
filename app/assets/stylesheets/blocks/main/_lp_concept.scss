@@ -3,9 +3,17 @@
   @include rem('margin-bottom', 20);
 }
 
+.lp-concept__list {
+  width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .lp-concept__item {
   color: $main_high_dark_color;
-  @include rem('font-size', 16);
+  display: block;
+  float: left;
+  text-align: center;
   @include rem('width', 240);
 }
 
@@ -23,4 +31,10 @@
 
 .lp-concept__cycle-phaze-image {
   @extend .lp-concept__image;
+}
+
+.lp-concept__body {
+  @include rem('font-size', 16);
+  @include rem('margin-top', 20);
+  @include rem('margin-bottom', 20);
 }
