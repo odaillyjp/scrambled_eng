@@ -1,24 +1,29 @@
 .lp-concept {
-  @include rem('margin-top', 20);
-  @include rem('margin-bottom', 20);
+  @include rem('margin-top', 30);
+  @include rem('margin-bottom', 30);
 }
 
 .lp-concept__list {
-  width: 720px;
   margin-left: auto;
   margin-right: auto;
+  @include rem('width', 700);
 }
 
 .lp-concept__item {
-  color: $main_high_dark_color;
   display: block;
   float: left;
   text-align: center;
-  @include rem('width', 240);
+  @include rem('width', 200);
+}
+
+.lp-concept__arrow {
+  display: block;
+  float: left;
+  @include rem('padding-top', 60);
 }
 
 .lp-concept__image {
-  @include rem('width', 160);
+  @include rem('width', 140);
 }
 
 .lp-concept__create-phaze-image {
@@ -34,7 +39,12 @@
 }
 
 .lp-concept__body {
-  @include rem('font-size', 16);
+  color: $main_high_dark_color;
+  @include rem('font-size', 14);
   @include rem('margin-top', 20);
   @include rem('margin-bottom', 20);
+}
+
+.lp-concept__arrow-image {
+  @include rem('width', 50);
 }
