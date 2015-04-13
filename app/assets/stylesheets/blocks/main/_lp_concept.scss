@@ -7,6 +7,10 @@
   margin-left: auto;
   margin-right: auto;
   @include rem('width', 700);
+
+  @media screen and (max-width: $lp_break_small) {
+    width: 100%;
+  }
 }
 
 .lp-concept__item {
@@ -14,12 +18,20 @@
   float: left;
   text-align: center;
   @include rem('width', 200);
+
+  @media screen and (max-width: $lp_break_small) {
+    width: 100%;
+  }
 }
 
 .lp-concept__arrow {
   display: block;
   float: left;
   @include rem('padding-top', 60);
+
+  @media screen and (max-width: $lp_break_small) {
+    display: none;
+  }
 }
 
 .lp-concept__image {
