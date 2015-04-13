@@ -1,12 +1,12 @@
 .lp-header
   %h1.lp-header__title-area
     = link_to root_path, class: 'lp-header__site-name' do
-      = image_tag 'logo_m.png', class: 'lp-header__site-logo'
+      = image_tag 'scrambled_logo.svg', class: 'lp-header__site-logo'
       Scrambled Eng
   %h2.lp-header__site-read-line= t('views.homes.index.lp_header_read_line')
   .lp-header__box-group
     .lp-header__box-item
-      .lp-header__image
+      = image_tag 'stationery.svg', class: 'lp-header__site-image'
     .lp-header__box-item
       %p.lp-header__description= t('views.homes.index.lp_header_description')
       = link_to t('views.homes.index.start_tutorial'), course_path(1), class: 'lp-header__tutorial-button'

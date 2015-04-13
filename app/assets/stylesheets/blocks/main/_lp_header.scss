@@ -81,8 +81,14 @@ $lp_break_small: 760px;
   }
 }
 
-.lp-header__image {
-  height: 240px;
+.lp-header__site-image {
+  display: block;
+  margin: 0 auto;
+  @include rem('width', 400);
+
+  @media screen and (max-width: $lp_break_small) {
+    @include rem('width', 240);
+  }
 }
 
 .lp-header__description {

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="180px" height="180px" viewBox="0 0 180 180" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3 (11970) - http://www.bohemiancoding.com/sketch -->
+    <title>pen</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="90" cy="90" r="90"></circle>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Oval-10-+-Oval-11-+-Polygon-1-+-Polygon-1-Copy-+-Group" sketch:type="MSLayerGroup">
+            <g id="Oval-10-+-Oval-11" sketch:type="MSShapeGroup">
+                <circle id="Oval-10" fill="#3A9CBD" cx="90" cy="90" r="90"></circle>
+                <circle id="Oval-11" fill="#0A6381" cx="90" cy="90" r="70"></circle>
+            </g>
+            <g id="Polygon-1-+-Polygon-1-Copy-+-Group">
+                <mask id="mask-2" sketch:name="Mask" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Mask" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
+                <g mask="url(#mask-2)">
+                    <g transform="translate(63.000000, -9.000000)">
+                        <g id="Polygon-1-+-Polygon-1-Copy" transform="translate(0.000000, 66.000000)">
+                            <path d="M30.2607562,75.1195888 L54.0677966,38.5456352 L43.6531304,0 L10.4146662,0 L0,38.5456352 L23.8070404,75.1195888 L23.8070404,37.6831882 C21.2632376,36.5296338 19.5045632,34.0548254 19.5045632,31.187966 C19.5045632,27.2186826 22.8758592,24.0009426 27.0345634,24.0009426 C31.1932677,24.0009426 34.5645637,27.2186826 34.5645637,31.187966 C34.5645637,34.0553252 32.8052761,36.5304965 30.2607562,37.6837913 L30.2607562,75.1195888 Z" id="Polygon-1" fill="#FEFEFE" sketch:type="MSShapeGroup"></path>
+                            <path d="M35.3435144,0 L43.6531304,0 L54.0677966,38.5456352 L30.2607562,75.1195888 L30.2607562,75.1195888 L30.2607562,37.6821519 C32.8045392,36.5287736 34.5632334,34.0540801 34.5632334,31.1873312 C34.5632334,27.2183984 31.1922352,24.0009426 27.0338983,24.0009426 L27.0338983,0 L35.3435144,0 Z" id="Polygon-1-Copy" fill="#90D3E9" sketch:type="MSShapeGroup"></path>
+                        </g>
+                        <g id="Group" transform="translate(10.000000, 0.000000)">
+                            <rect id="Rectangle-2" fill="#3A9CBD" sketch:type="MSShapeGroup" x="0" y="0" width="16.964657" height="66.4769231"></rect>
+                            <rect id="Rectangle-2-Copy" fill="#014258" sketch:type="MSShapeGroup" x="16.964657" y="0" width="16.964657" height="66.4769231"></rect>
+                            <rect id="Rectangle-4" fill="#90D3E9" sketch:type="MSShapeGroup" x="0" y="45.2615385" width="16.964657" height="10.46"></rect>
+                            <rect id="Rectangle-4-Copy" fill="#0A6381" sketch:type="MSShapeGroup" x="16.964657" y="45.2615385" width="16.964657" height="10.46"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
