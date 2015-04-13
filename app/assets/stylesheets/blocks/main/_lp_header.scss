@@ -2,10 +2,10 @@ $lp_break_small: 760px;
 
 .lp-header {
   background: $main_medium_color;
-  @include rem('padding-bottom', 60);
+  @include rem('padding-bottom', 50);
   @include rem('padding-left', 16);
   @include rem('padding-right', 16);
-  @include rem('padding-top', 50);
+  @include rem('padding-top', 40);
   position: relative;
   text-align: center;
 
@@ -50,7 +50,7 @@ $lp_break_small: 760px;
   color: $main_low_light_color;
   @include rem('font-size', 16);
   @include rem('padding-top', 12);
-  @include rem('padding-bottom', 40);
+  @include rem('padding-bottom', 30);
 
   @media screen and (max-width: $lp_break_small) {
     @include rem('font-size', 14);
