@@ -4,7 +4,10 @@ en:
       index:
         lp_header_read_line: For Japanese who learn English.
         lp_header_description: TODO
-        start_tutorial: TODO
+        start_tutorial: Start Tutorial
+        create_phaze_body: TODO
+        challenge_phaze_body: TODO
+        cycle_phaze_body: TODO
 
     courses:
       show:
