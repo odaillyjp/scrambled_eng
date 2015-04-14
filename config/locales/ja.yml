@@ -2,11 +2,11 @@ ja:
   views:
     homes:
       index:
-        lp_header_read_line: 自由に作って、ゆっくり解く。繰り返して英語を学ぶ。
-        lp_header_description: Scrambled Eng は、好きなフレーズでゆっくり学ぶことを考えた英語学習サービスです。英語のフレーズと訳文を登録するだけで、穴埋め問題が簡単に作れます。まずは、お試しの問題を見てみてください。
-        start_tutorial: お試しの問題に挑戦する
-        create_phaze_body: 英語のフレーズと訳文を登録
-        challenge_phaze_body: 自分が作った問題に挑戦
+        lp_header_read_line: 好きなフレーズで、ゆっくり英語を学びたい。
+        lp_header_description: 洋画を見たり、洋書を読むのって楽しいですね。「この英語のフレーズは素敵だから覚えたい」と思ってノートに書いたけれど、なかなか覚えられないことがよくあります。Scrambled Eng は、そんな頑張り屋のための英語学習サービスです。
+        start_tutorial: お試しの問題で学んでみる
+        create_phaze_body: 英語のフレーズと訳文を登録して、問題を作る
+        challenge_phaze_body: 自分が作った問題に挑戦する
         cycle_phaze_body: 何度も繰り返して英語を学ぶ
 
     courses:

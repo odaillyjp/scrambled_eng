@@ -90,13 +90,13 @@
 }
 
 .lp-header__description {
-  @include rem('font-size', 16);
+  @include rem('font-size', 14);
   color: $main_high_light_color;
-  @include rem('line-height', 28);
+  @include rem('line-height', 24);
 
   @media screen and (max-width: $lp_break_small) {
-    @include rem('font-size', 14);
-    @include rem('line-height', 24);
+    @include rem('font-size', 13);
+    @include rem('line-height', 22);
   }
 }
 
