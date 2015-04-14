@@ -5,9 +5,14 @@ ja:
         lp_header_read_line: 好きなフレーズで、ゆっくり英語を学びたい。
         lp_header_description: 洋画を見たり、洋書を読むのって楽しいですね。「この英語のフレーズは素敵だから覚えたい」と思ってノートに書いたけれど、なかなか覚えられないことがよくあります。Scrambled Eng は、そんな頑張り屋のための英語学習サービスです。
         start_tutorial: お試しの問題で学んでみる
+        creater_headline: 好きなフレーズを使って、学びたい
         create_phaze_body: 英語のフレーズと訳文を登録して、問題を作る
         challenge_phaze_body: 自分が作った問題に挑戦する
         cycle_phaze_body: 何度も繰り返して英語を学ぶ
+        answerer_headline: みんなが登録したフレーズを使って、学びたい
+        search_phaze_body: 気になる問題を探す
+        answer_phaze_body: みんなが作った問題に挑戦する
+        comment_phaze_body: 問題を作った人にコメントを送る
 
     courses:
       show:

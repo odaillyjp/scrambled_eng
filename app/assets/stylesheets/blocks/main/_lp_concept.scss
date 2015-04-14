@@ -1,6 +1,25 @@
 .lp-concept {
   @include rem('margin-top', 30);
+}
+
+.lp-concept__inner {
   @include rem('margin-bottom', 30);
+}
+
+.lp-concept__creater {
+  @extend .lp-concept__inner;
+}
+
+.lp-concept__answerer {
+  @extend .lp-concept__inner;
+}
+
+.lp-concept__headline {
+  color: $main_low_dark_color;
+  @include rem('font-size', 16);
+  font-weight: bold;
+  text-align: center;
+  @include rem('margin-bottom', 20);
 }
 
 .lp-concept__list {
@@ -47,6 +66,18 @@
 }
 
 .lp-concept__cycle-phaze-image {
+  @extend .lp-concept__image;
+}
+
+.lp-concept__search-phaze-image {
+  @extend .lp-concept__image;
+}
+
+.lp-concept__answer-phaze-image {
+  @extend .lp-concept__image;
+}
+
+.lp-concept__comment-phaze-image {
   @extend .lp-concept__image;
 }
 
