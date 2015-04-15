@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="240px" height="240px" viewBox="0 0 240 240" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3 (11970) - http://www.bohemiancoding.com/sketch -->
+    <title>climbing_phaze</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="110" cy="110" r="110"></circle>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Oval-10-Copy-+-Oval-10-Copy-2-+-Triangle-4-+-Group-Mask" sketch:type="MSLayerGroup">
+            <circle id="Oval-10-Copy" fill="#3A9CBD" sketch:type="MSShapeGroup" cx="120" cy="120" r="120"></circle>
+            <g id="Oval-10-Copy-2-+-Triangle-4-+-Group-Mask" transform="translate(10.000000, 10.000000)">
+                <mask id="mask-2" sketch:name="Mask" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Mask" fill="#FEFEFE" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
+                <path d="M-2.69522678,164.012225 L-47,223 L155,223 L54,88.5276873 L43.4057377,102.632984 L34.6977778,84 L-2.69522678,164.012225 Z" id="Triangle-4-Copy-2" fill="#E3F5FB" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
+                <path d="M169.349376,109.717647 L120,240 L345,240 L232.5,-57 L220.69946,-25.8465753 L211,-67 L169.349376,109.717647 Z" id="Triangle-4" fill="#80BBCF" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
+                <g id="Group" mask="url(#mask-2)">
+                    <g transform="translate(78.000000, 48.000000)">
+                        <circle id="Oval-2" fill="#80BBCF" sketch:type="MSShapeGroup" cx="62" cy="12.6332427" r="12.5"></circle>
+                        <rect id="Rectangle-6" fill="#80BBCF" sketch:type="MSShapeGroup" transform="translate(53.500000, 50.399056) rotate(10.000000) translate(-53.500000, -50.399056) " x="41" y="26.1283235" width="25" height="48.541465" rx="8"></rect>
+                        <g id="Rectangle-6-Copy-+-Rectangle-6-Copy-2" stroke-width="1" fill="none" sketch:type="MSLayerGroup" transform="translate(0.000000, 11.000000)">
+                            <rect id="Rectangle-6-Copy" fill="#80BBCF" sketch:type="MSShapeGroup" transform="translate(27.983145, 32.399056) rotate(10.000000) translate(-27.983145, -32.399056) " x="15.0671243" y="3.27417704" width="25.8320412" height="58.249758" rx="8"></rect>
+                            <rect id="Rectangle-6-Copy-2" fill="#80BBCF" sketch:type="MSShapeGroup" transform="translate(18.483145, 40.382201) rotate(10.000000) translate(-18.483145, -40.382201) " x="5.99765828" y="20.9492515" width="24.9709732" height="38.8658989" rx="8"></rect>
+                        </g>
+                        <rect id="Rectangle-7" fill="#80BBCF" sketch:type="MSShapeGroup" x="37" y="68" width="25" height="21" rx="8"></rect>
+                        <rect id="Rectangle-8" fill="#80BBCF" sketch:type="MSShapeGroup" transform="translate(50.500000, 94.500000) rotate(60.000000) translate(-50.500000, -94.500000) " x="31" y="87" width="39" height="15" rx="8"></rect>
+                        <rect id="Rectangle-8-Copy-3" fill="#80BBCF" sketch:type="MSShapeGroup" transform="translate(56.500000, 126.500000) rotate(90.000000) translate(-56.500000, -126.500000) " x="37" y="120" width="39" height="13" rx="8"></rect>
+                        <rect id="Rectangle-8-Copy-4" fill="#80BBCF" sketch:type="MSShapeGroup" transform="translate(79.000000, 33.000000) rotate(-10.000000) translate(-79.000000, -33.000000) " x="59" y="27" width="40" height="12" rx="8"></rect>
+                        <rect id="Rectangle-8-Copy" fill="#80BBCF" sketch:type="MSShapeGroup" transform="translate(70.500000, 98.000000) rotate(112.000000) translate(-70.500000, -98.000000) " x="51" y="92" width="39" height="12" rx="8"></rect>
+                        <rect id="Rectangle-8-Copy-2" fill="#80BBCF" sketch:type="MSShapeGroup" transform="translate(62.500000, 83.000000) rotate(5.000000) translate(-62.500000, -83.000000) " x="43" y="77" width="39" height="12" rx="8"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
