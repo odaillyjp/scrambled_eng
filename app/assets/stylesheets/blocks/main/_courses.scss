@@ -1,11 +1,10 @@
-.course-index {
+.courses {
   @include rem('margin-top', 20);
-  @include rem('margin-left', 16);
-  @include rem('margin-right', 16);
+  @include rem('margin-bottom', 20);
   text-align: center;
 }
 
-.course-index-list {
+.courses__list {
   @include display-flex;
   @include flex-direction(row);
   @include flex-wrap(wrap);
@@ -15,12 +14,13 @@
   text-align: center;
 }
 
-.course-index-item {
+.courses__item {
   background: $white_color;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   @include flex-basis(240px);
   @include flex-basis(24rem);
   @include flex-grow(1);
+  @include rem('font-size', 16);
   @include rem('height', 100);
   @include rem('margin-top', 12);
   @include rem('margin-left', 12);

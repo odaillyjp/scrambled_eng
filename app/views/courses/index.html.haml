@@ -1,57 +1,7 @@
-.lp-header
-  %h1.lp-header__title-area
-    = link_to root_path, class: 'lp-header__site-name' do
-      = image_tag 'scrambled_logo.svg', class: 'lp-header__site-logo'
-      Scrambled Eng
-  %h2.lp-header__site-read-line= t('views.homes.index.lp_header_read_line')
-  .lp-header__box-group
-    .lp-header__box-item
-      = image_tag 'stationery.svg', class: 'lp-header__site-image'
-    .lp-header__box-item
-      %p.lp-header__description= t('views.homes.index.lp_header_description')
-      = link_to t('views.homes.index.start_tutorial'), course_path(1), class: 'lp-header__tutorial-button'
+%h1.main__title Course List
 
-.lp-concept
-  %section.lp-concept__creater
-    %h1.lp-concept__headline= t('views.homes.index.creater_headline')
-    %ul.lp-concept__list
-      %li.lp-concept__item
-        = image_tag 'create_phaze.svg', class: 'lp-concept__create-phaze-image'
-        %p.lp-concept__body= t('views.homes.index.create_phaze_body')
-      %li.lp-concept__arrow
-        = image_tag 'arrow.svg', class: 'lp-concept__arrow-image'
-      %li.lp-concept__item
-        = image_tag 'challenge_phaze.svg', class: 'lp-concept__challenge-phaze-image'
-        %p.lp-concept__body= t('views.homes.index.challenge_phaze_body')
-      %li.lp-concept__arrow
-        = image_tag 'arrow.svg', class: 'lp-concept__arrow-image'
-      %li.lp-concept__item
-        = image_tag 'cycle_phaze.svg', class: 'lp-concept__cycle-phaze-image'
-        %p.lp-concept__body= t('views.homes.index.cycle_phaze_body')
-    .clearfix
-
-  %section.lp-concept__answerer
-    %h1.lp-concept__headline= t('views.homes.index.answerer_headline')
-    %ul.lp-concept__list
-      %li.lp-concept__item
-        = image_tag 'search_phaze.svg', class: 'lp-concept__search-phaze-image'
-        %p.lp-concept__body= t('views.homes.index.search_phaze_body')
-      %li.lp-concept__arrow
-        = image_tag 'arrow.svg', class: 'lp-concept__arrow-image'
-      %li.lp-concept__item
-        = image_tag 'create_phaze.svg', class: 'lp-concept__answer-phaze-image'
-        %p.lp-concept__body= t('views.homes.index.answer_phaze_body')
-      %li.lp-concept__arrow
-        = image_tag 'arrow.svg', class: 'lp-concept__arrow-image'
-      %li.lp-concept__item
-        = image_tag 'comment_phaze.svg', class: 'lp-concept__comment-phaze-image'
-        %p.lp-concept__body= t('views.homes.index.comment_phaze_body')
-    .clearfix
-
-%section.course-index
-  %h1
-    挑戦したいコースを選んでください
-  %ul.course-index-list
+%section.courses
+  %ul.courses__list
     - @courses.each do |course|
-      %li.course-index-item{ id: "course_#{course.id}" }
-        = link_to course.name, course, class: 'course-index-item__name'
+      %li.courses__item{ id: "course_#{course.id}" }
+        = link_to course.name, course, class: 'courses__course-name'
