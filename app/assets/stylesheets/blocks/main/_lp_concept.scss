@@ -79,6 +79,10 @@
   @extend .lp-concept__image;
 }
 
+.lp-concept__arrow-image {
+  @include rem('width', 50);
+}
+
 .lp-concept__body {
   color: $main_high_dark_color;
   @include rem('font-size', 14);
@@ -86,6 +90,27 @@
   @include rem('margin-bottom', 24);
 }
 
-.lp-concept__arrow-image {
-  @include rem('width', 50);
+.lp-concept__note {
+  color: $main_high_dark_color;
+  @include rem('font-size', 13);
+  margin: 0 auto;
+  @include rem('line-height', 24);
+  @include rem('padding-left', 12);
+  @include rem('padding-right', 12);
+  text-align: center;
+  @include rem('max-width', 460);
+}
+
+.lp-concept__sign-in-link {
+  font-weight: bold;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.lp-concept__course-list-button {
+  @extend .btn;
+  @include rem('margin-bottom', 10);
 }

@@ -8,6 +8,7 @@ en:
         create_phaze_body: TODO
         challenge_phaze_body: TODO
         cycle_phaze_body: TODO
+        course_list_button: TODO
 
     courses:
       show:

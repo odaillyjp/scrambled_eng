@@ -39,7 +39,7 @@
 .btn-m {
   @extend .btn;
   background: $sub_medium_color;
-  
+
   &:hover {
     background: $sub_low_dark_color;
   }

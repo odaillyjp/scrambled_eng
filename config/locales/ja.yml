@@ -13,6 +13,7 @@ ja:
         search_phaze_body: 気になる問題を探す
         answer_phaze_body: みんなが作った問題に挑戦する
         comment_phaze_body: 問題を作った人にコメントを送る
+        course_list_button: みんなが作った問題を見る
 
     courses:
       show:

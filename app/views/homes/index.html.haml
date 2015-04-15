@@ -29,6 +29,8 @@
         = image_tag 'cycle_phaze.svg', class: 'lp-concept__cycle-phaze-image'
         %p.lp-concept__body= t('views.homes.index.cycle_phaze_body')
     .clearfix
+    %p.lp-concept__note
+      問題を作るには #{link_to 'Googleアカウントでのログイン', '/auth/google_oauth2', class: 'lp-concept__sign-in-link'} が必要です。
 
   %section.lp-concept__answerer
     %h1.lp-concept__headline= t('views.homes.index.answerer_headline')
@@ -47,6 +49,9 @@
         = image_tag 'comment_phaze.svg', class: 'lp-concept__comment-phaze-image'
         %p.lp-concept__body= t('views.homes.index.comment_phaze_body')
     .clearfix
+    %p.lp-concept__note
+      = link_to t('views.homes.index.course_list_button'), courses_path, class: 'lp-concept__course-list-button'
+      問題に挑戦するだけであればログインは必要ありません。
 
 - content_for :footer do
   = render 'shared/footer'

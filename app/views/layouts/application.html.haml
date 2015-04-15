@@ -25,7 +25,7 @@
               Menu
             %ul.header__nav-list
               %li.header__nav-list-item
-                = link_to 'Courses', root_path, class: 'header__courses-link'
+                = link_to 'Courses', courses_path, class: 'header__courses-link'
               - if user_sign_in?
                 %li.header__nav-list-item
                   = link_to 'Create course', new_course_path, class: 'header__new-course-link'
