@@ -47,3 +47,6 @@
         = image_tag 'comment_phaze.svg', class: 'lp-concept__comment-phaze-image'
         %p.lp-concept__body= t('views.homes.index.comment_phaze_body')
     .clearfix
+
+- content_for :footer do
+  = render 'shared/footer'

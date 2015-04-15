@@ -1,0 +1,55 @@
+.footer {
+  color: $grayish_light_color;
+  background: $grayish_dark_color;
+}
+
+.footer__inner {
+  @include rem('padding', 40);
+
+  @media screen and (max-width: $lp_break_small) {
+    @include rem('padding-left', 20);
+    @include rem('padding-right', 20);
+  }
+}
+
+.footer__title-area {
+  @include rem('font-size', 32);
+  font-weight: bold;
+  @include rem('margin-bottom', 20);
+
+  @media screen and (max-width: $lp_break_small) {
+    @include rem('font-size', 26);
+  }
+}
+
+.footer__site-logo {
+  $logo_image_size: 50;
+  @include rem('height', $logo_image_size);
+  vertical-align: middle;
+  @include rem('width', $logo_image_size);
+
+  @media screen and (max-width: $lp_break_small) {
+    $logo_image_size: 40;
+    @include rem('height', $logo_image_size);
+    @include rem('width', $logo_image_size);
+  }
+}
+
+.footer__about {
+  @include rem('font-size', 14);
+  @include rem('line-height', 20);
+  @include rem('margin-bottom', 10);
+
+  a {
+    font-weight: bold;
+  }
+}
+
+.footer__copyright {
+  @include rem('font-size', 14);
+  @include rem('line-height', 20);
+
+  a {
+    font-weight: bold;
+  }
+}
