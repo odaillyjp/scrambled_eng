@@ -1,9 +1,6 @@
-.lp-concept {
-  @include rem('margin-top', 30);
-}
-
 .lp-concept__inner {
-  @include rem('margin-bottom', 30);
+  @include rem('padding-top', 30);
+  @include rem('padding-bottom', 20);
 }
 
 .lp-concept__creater {
@@ -12,6 +9,7 @@
 
 .lp-concept__answerer {
   @extend .lp-concept__inner;
+  background: #E4EAEB;
 }
 
 .lp-concept__headline {
@@ -84,8 +82,8 @@
 .lp-concept__body {
   color: $main_high_dark_color;
   @include rem('font-size', 14);
-  @include rem('margin-top', 20);
-  @include rem('margin-bottom', 20);
+  @include rem('margin-top', 16);
+  @include rem('margin-bottom', 24);
 }
 
 .lp-concept__arrow-image {

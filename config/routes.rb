@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'sessions/create'
+  root 'homes#index'
 
-  root 'courses#index'
   resources :courses do
     get 'management', action: 'manage', on: :member
 
@@ -12,5 +11,6 @@ Rails.application.routes.draw do
   end
 
   get '/auth/:provider/callback', to: 'sessions#create'
+  get 'sessions/create'
   delete '/session', to: 'sessions#destroy'
 end
