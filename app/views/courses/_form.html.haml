@@ -1,0 +1,19 @@
+.course-form
+  = form_for course do |f|
+    .course-form__group
+      = f.label :name, class: 'course-form__name-label'
+      = f.text_field :name, placeholder: '私のお気に入りのフレーズ集', class: 'course-form__name-form'
+    .course-form__group
+      = f.label :description, class: 'course-form__description-label'
+      = f.text_area :description, class: 'course-form__description-form'
+    .course-form__group
+      = f.label :level, class: 'course-form__level-label'
+      = f.select :level, [['易しい', 1], ['普通', 2], ['難しい', 3], ['すごく難しい', 4]], class: 'course-form__level-form'
+    .course-form__group
+      = f.label :state, class: 'course-form__state-label'
+      = f.check_box :state, { class: 'course-form__state-form' }, 'overt', 'secret'
+    .course-form__group
+      = f.label :updatable, class: 'course-form__updatable-label'
+      = f.check_box :updatable, class: 'course-form__updatable-form'
+
+    = f.submit class: 'course-form__update-course-button btn'

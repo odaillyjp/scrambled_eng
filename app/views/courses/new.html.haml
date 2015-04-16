@@ -1,21 +1,3 @@
 %h1.main__title New Course
 
-.course-new
-  = form_for @course do |f|
-    .course-new__form-group
-      = f.label :name, class: 'course-new__name-label'
-      = f.text_field :name, class: 'course-new__name-form'
-    .course-new__form-group
-      = f.label :description, class: 'course-new__description-label'
-      = f.text_area :description, class: 'course-new__description-form'
-    .course-new__form-group
-      = f.label :level, class: 'course-new__level-label'
-      = f.select :level, [['易しい', 1], ['普通', 2], ['難しい', 3], ['すごく難しい', 4]], class: 'course-new__level-form'
-    .course-new__form-group
-      = f.label :state, class: 'course-new__state-label'
-      = f.check_box :state, { class: 'course-new__state-form' }, 'overt', 'secret'
-    .course-new__form-group
-      = f.label :updatable, class: 'course-new__updatable-label'
-      = f.check_box :updatable, class: 'course-new__updatable-form'
-
-    = f.submit 'Create Course', class: 'course-new__create-course-button btn'
+= render partial: 'form', locals: { course: @course }

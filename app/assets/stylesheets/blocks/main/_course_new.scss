@@ -1,32 +1,53 @@
-.course-new {
+.course-form {
   @extend .article-box;
-  @include rem('width', 420);
+  @include rem('max-width', 420);
   @include rem('margin-top', 24);
 }
 
-.course-new__form-group {
+.course-form__group {
   @include rem('padding', 12);
   text-align: left;
 }
 
-.course-new__label {
+.course-form__label {
   display: block;
   @include rem('font-size', 16);
   @include rem('padding-bottom', 8);
 }
 
-.course-new__name-label {
-  @extend .course-new__label;
+.course-form__name-label {
+  @extend .course-form__label;
 }
 
-.course-new__name-form {
+.course-form__description-label {
+  @extend .course-form__label;
+}
+
+.course-form__level-label {
+  @extend .course-form__label;
+}
+
+.course-form__state-label {
+  @extend .course-form__label;
+}
+
+.course-form__updatable-label {
+  @extend .course-form__label;
+}
+
+.course-form__name-form {
   @include rem('font-size', 14);
-  @include rem('width', 394);
-  @include rem('height', 120);
+  width: 100%;
 }
 
-.course-new__create-course-button {
+.course-form__description-form {
+  @include rem('font-size', 14);
+  @include rem('height', 40);
+  width: 100%;
+}
+
+.course-form__create-course-button {
   margin: 20px auto 0;
   margin: 2rem auto 0;
-  @include rem('width', 394);
+  @include rem('max-width', 394);
 }
