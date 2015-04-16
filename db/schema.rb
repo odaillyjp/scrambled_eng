@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331025503) do
+ActiveRecord::Schema.define(version: 20150416063628) do
 
   create_table "challenges", force: :cascade do |t|
     t.text     "en_text",                     null: false
@@ -27,10 +27,17 @@ ActiveRecord::Schema.define(version: 20150331025503) do
   add_index "challenges", ["sequence_number"], name: "index_challenges_on_sequence_number"
 
   create_table "courses", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",                                  null: false
+    t.text     "description"
+    t.integer  "level",       limit: 1, default: 0,     null: false
+    t.integer  "user_id",                               null: false
+    t.integer  "state",       limit: 1, default: 0,     null: false
+    t.boolean  "updatable",             default: false, null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
+
+  add_index "courses", ["user_id"], name: "index_courses_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "uid",        null: false
