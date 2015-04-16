@@ -25,4 +25,51 @@ RSpec.describe Course, type: :model do
   it { is_expected.to validate_presence_of(:level) }
   it { is_expected.to validate_presence_of(:user_id) }
   it { is_expected.to validate_presence_of(:state) }
+
+  context '自分が作った非公開のコースのとき' do
+    let(:current_user) { create(:user) }
+    let(:course) { create(:course, user: current_user, state: :secret) }
+
+    describe '.only_authorized' do
+      context 'そのコースの製作者を渡したとき' do
+        it '作ったコースを含んだオブジェクトが返ってくること' do
+          expect(Course.only_authorized(current_user)).to be_include(course)
+        end
+      end
+
+      context 'そのコースの製作者以外を渡したとき' do
+        let(:other_user) { create(:user) }
+
+        it '作ったコースが含まれていないこと' do
+          expect(Course.only_authorized(other_user)).not_to be_include(course)
+        end
+      end
+
+      context 'nullを渡したとき' do
+        it '作ったコースが含まれていないこと' do
+          expect(Course.only_authorized(nil)).not_to be_include(course)
+        end
+      end
+    end
+  end
+
+  context '他のユーザーが作った公開されたコースのとき' do
+    let(:current_user) { create(:user) }
+    let(:other_user) { create(:user) }
+    let(:course) { create(:course, user: other_user, state: :overt) }
+
+    describe '.only_authorized' do
+      context 'そのコースの製作者を渡したとき' do
+        it '作ったコースを含んだオブジェクトが返ってくること' do
+          expect(Course.only_authorized(current_user)).to be_include(course)
+        end
+      end
+
+      context 'nullを渡したとき' do
+        it '作ったコースを含んだオブジェクトが返ってくること' do
+          expect(Course.only_authorized(nil)).to be_include(course)
+        end
+      end
+    end
+  end
 end

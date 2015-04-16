@@ -25,4 +25,8 @@ class Course < ActiveRecord::Base
   validates :updatable, inclusion: { in: [true, false] }
 
   enum state: %i(secret overt)
+
+  scope :only_authorized, lambda { |current_user|
+    where('user_id = ? OR state = ?', current_user, Course.states[:overt])
+  }
 end

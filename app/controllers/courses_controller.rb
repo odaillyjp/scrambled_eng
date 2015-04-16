@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
   before_action :fetch_course, only: %i(show edit update manage)
 
   def index
-    @courses = Course.all
+    @courses = Course.only_authorized(current_user)
   end
 
   def show
