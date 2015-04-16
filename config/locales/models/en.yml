@@ -1,0 +1,10 @@
+en:
+  activerecord:
+    mistakes:
+      models:
+        challenge:
+          too_many: Words are too many.
+          missing_words: Missing some words.
+          too_long: Word is too long.
+          too_short: Word is too short.
+          spelling_mistake: Incorrectly spelled some word.
