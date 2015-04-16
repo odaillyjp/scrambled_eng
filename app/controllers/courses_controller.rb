@@ -10,14 +10,14 @@ class CoursesController < ApplicationController
   end
 
   def new
-    @course = Course.new
+    @course = current_user.courses.new
   end
 
   def edit
   end
 
   def create
-    @course = Course.new(course_params)
+    @course = current_user.courses.new(course_params)
 
     if @course.save
       redirect_to @course, notice: 'Course was successfully created.'
@@ -50,6 +50,6 @@ class CoursesController < ApplicationController
   end
 
   def course_params
-    params.require(:course).permit(:name)
+    params.require(:course).permit(:name, :description, :level, :state, :updatable)
   end
 end

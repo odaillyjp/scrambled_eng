@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :courses
+
   validates :uid, presence: true, uniqueness: { scope: :provider }
   validates :provider, presence: true
   validates :name, presence: true

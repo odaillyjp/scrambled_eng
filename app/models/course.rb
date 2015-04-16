@@ -22,7 +22,7 @@ class Course < ActiveRecord::Base
   validates :level, presence: true
   validates :user_id, presence: true
   validates :state, presence: true
-  validates :updatable, presence: true
+  validates :updatable, inclusion: { in: [true, false] }
 
   enum state: %i(secret overt)
 end
