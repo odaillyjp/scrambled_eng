@@ -12,6 +12,9 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
     @__on_dropdown_menu_event()
 
   indexChallenge: (course_id) ->
+    # new や edit の場合は処理しない
+    return false unless @__is_number(course_id)
+
     unless @challenges
       @__fetchChallenges(course_id)
       @__renderSidebarView(course_id)
@@ -19,6 +22,9 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
     @layout.setMainView(informationView)
 
   showChallenge: (course_id, challenge_id) ->
+    # new や edit の場合は処理しない
+    return false unless @__is_number(challenge_id)
+
     if @challenges
       @__renderChallengeView(challenge_id)
     else
@@ -31,6 +37,9 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
     $(document).on 'click', '.header__dropdown-menu-link', ->
       $('.header__dropdown-menu').toggleClass('is-hidden')
       false
+
+  __is_number: (id) ->
+    id.match(/^\d+$/)
 
   __fetchChallenges: (course_id) ->
     @challenges = new app.Collections.ChallengeCollection(course_id)
