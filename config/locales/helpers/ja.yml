@@ -1,0 +1,6 @@
+ja:
+  helpers:
+    submit:
+      course:
+        create: この内容で登録する
+        update: この内容で更新する

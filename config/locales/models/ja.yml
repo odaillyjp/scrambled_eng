@@ -1,5 +1,16 @@
 ja:
   activerecord:
+    models:
+      course: コース
+
+    attributes:
+      course:
+        name: 名前
+        description: コースの説明
+        level: 難しさ
+        state: 公開・非公開の状態
+        updatable: 誰でも更新権限
+
     mistakes:
       models:
         challenge:

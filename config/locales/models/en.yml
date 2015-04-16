@@ -1,5 +1,16 @@
 en:
   activerecord:
+    models:
+      course: Course
+
+    attributes:
+      course:
+        name: Name
+        description: Description
+        level: Level
+        state: State
+        updatable: Updatable
+
     mistakes:
       models:
         challenge:

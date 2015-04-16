@@ -1,0 +1,6 @@
+en:
+  helpers:
+    submit:
+      course:
+        create: Create Course
+        update: Update Course
