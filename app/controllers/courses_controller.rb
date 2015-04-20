@@ -20,7 +20,8 @@ class CoursesController < ApplicationController
     @course = current_user.courses.new(course_params)
 
     if @course.save
-      redirect_to @course, notice: 'Course was successfully created.'
+      flash[:notice] = I18n.t('activerecord.notices.course.create')
+      redirect_to :manage
     else
       render action: 'new'
     end
@@ -28,7 +29,8 @@ class CoursesController < ApplicationController
 
   def update
     if @course.update_attributes(course_params)
-      redirect_to management_course_path(@course), notice: 'User was successfully updated.'
+      flash[:notice] = I18n.t('activerecord.notices.course.update')
+      redirect_to management_course_path(@course)
     else
       render action: 'edit'
     end

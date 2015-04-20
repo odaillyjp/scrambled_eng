@@ -1,4 +1,9 @@
 .course-form
+  - if course.errors.any?
+    %ul.course-form__error-explanation-list
+      - course.errors.full_messages.each do |msg|
+        %li.course-form__error-explanation= msg
+
   = form_for course do |f|
     .course-form__group
       = f.label :name, class: 'course-form__name-label'
@@ -16,4 +21,4 @@
       = f.check_box :updatable, class: 'course-form__updatable-form'
       = f.label :updatable, t('views.courses.new.updatable_note'), class: 'course-form__updatable-label'
 
-    = f.submit class: 'course-form__update-course-button btn'
+    = f.submit class: 'course-form__update-course-button'

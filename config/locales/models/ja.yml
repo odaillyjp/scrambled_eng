@@ -19,3 +19,21 @@ ja:
           too_long: 正解よりも長い単語があります。
           too_short: 正解よりも短い単語があります。
           spelling_mistake: 単語に誤りがあります。
+
+    notices:
+      models:
+        course:
+          create: 新しいコースを作成しました。
+          update: 更新しました。
+
+    errors:
+      messages:
+        blank: を入力してください。
+
+      models:
+        course:
+          attributes:
+            name:
+              too_long: は40文字以下にしてください。
+            description:
+              too_long: は120文字以下にしてください。

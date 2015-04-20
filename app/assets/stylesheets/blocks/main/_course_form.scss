@@ -2,6 +2,21 @@
   @extend .article-box;
   @include rem('max-width', 420);
   @include rem('margin-top', 24);
+  text-align: left;
+}
+
+.course-form__error-explanation-list {
+  list-style-type: disc;
+  @include rem('padding-bottom', 8);
+  @include rem('padding-left', 36);
+  @include rem('padding-right', 12);
+  @include rem('padding-top', 8);
+}
+
+.course-form__error-explanation {
+  color: $sub_medium_color;
+  @include rem('font-size', 16);
+  @include rem('line-height', 24);
 }
 
 .course-form__group {
@@ -9,7 +24,6 @@
   @include rem('padding-left', 12);
   @include rem('padding-right', 12);
   @include rem('padding-top', 16);
-  text-align: left;
 
   label {
     color: $main_high_dark_color;
@@ -18,7 +32,7 @@
 
   .field_with_errors {
     label { color: $sub_medium_color; }
-    input { border: solid 2px $sub_medium_color; }
+    input, textarea { border: solid 2px $sub_medium_color; }
   }
 }
 
@@ -77,6 +91,7 @@
 }
 
 .course-form__submit-course-button {
+  @extend .btn;
   margin: 20px auto 0;
   margin: 2rem auto 0;
   width: 100%;

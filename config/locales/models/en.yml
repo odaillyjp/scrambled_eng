@@ -19,3 +19,9 @@ en:
           too_long: Word is too long.
           too_short: Word is too short.
           spelling_mistake: Incorrectly spelled some word.
+
+    notices:
+      models:
+        course:
+          create: Course was successfully created.
+          update: User was successfully updated.
