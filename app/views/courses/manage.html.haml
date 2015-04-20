@@ -1,4 +1,6 @@
 %h1.main__title Management Course
+- flash.each do |name, msg|
+  = content_tag :div, msg, class: "main__#{name}"
 
 .course-management
   .course-management__flex-group

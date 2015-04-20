@@ -11,6 +11,15 @@
   @include rem('padding-left', 24);
 }
 
+.main__notice {
+  background: $main_high_dark_color;
+  color: $main_high_light_color;
+  @include rem('font-size', 14);
+  font-weight: bold;
+  @include rem('line-height', 40);
+  @include rem('padding-left', 24);
+}
+
 .main-container {
   background: $main_high_light_color;
   @include rem('margin-left', $sidebar_width);

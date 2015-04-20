@@ -24,7 +24,7 @@ ja:
       models:
         course:
           create: 新しいコースを作成しました。
-          update: 更新しました。
+          update: コースを更新しました。
 
     errors:
       messages:
