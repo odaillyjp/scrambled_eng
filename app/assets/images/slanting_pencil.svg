@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="75px" height="75px" viewBox="0 0 75 75" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3 (11970) - http://www.bohemiancoding.com/sketch -->
+    <title>slanting_pencil</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Group" sketch:type="MSLayerGroup" transform="translate(33.146447, 41.353553) rotate(-135.000000) translate(-33.146447, -41.353553) translate(21.646447, -6.146447)">
+            <rect id="Rectangle-4" fill="#90D3E9" sketch:type="MSShapeGroup" x="1.13686838e-13" y="29.6524064" width="22.5" height="64.8449198"></rect>
+            <polygon id="Path" fill="#90D3E9" sketch:type="MSShapeGroup" points="11.25 1 22.5 29.6524064 2.27373675e-13 29.6524064 "></polygon>
+            <rect id="Rectangle-5" fill="#3A9CBD" sketch:type="MSShapeGroup" x="2.27373675e-13" y="29.6524064" width="11" height="64.8449198"></rect>
+            <polygon id="Path-Copy-2" fill="#FEFEFE" sketch:type="MSShapeGroup" points="11.25 1 22.5 29.6524064 11.0270901 29.6524064 "></polygon>
+            <polygon id="Path" fill="#3A9CBD" sketch:type="MSShapeGroup" points="11.25 1 16 13.0641711 6.5 13.0641711 "></polygon>
+            <rect id="Rectangle-6" fill="#90D3E9" sketch:type="MSShapeGroup" x="3.41060513e-13" y="38.7005348" width="11" height="7.54010695"></rect>
+            <rect id="Rectangle-6-Copy" fill="#FEFEFE" sketch:type="MSShapeGroup" x="11" y="38.7005348" width="11.5" height="7.54010695"></rect>
+        </g>
+    </g>
+</svg>

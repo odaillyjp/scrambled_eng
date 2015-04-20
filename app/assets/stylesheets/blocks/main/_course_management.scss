@@ -26,7 +26,7 @@ $course_management_challenge_height: 80;
 .course-management__nav-item {
   float: left;
   @include rem('font-size', 14);
-  @include rem('margin-right', 20);
+  @include rem('margin-right', 28);
 }
 
 .course-management__item-link {
@@ -34,8 +34,19 @@ $course_management_challenge_height: 80;
   @include rem('padding', 8);
   transition-duration: 0.3s;
 
+  img {
+    opacity: 0.5;
+    transition-duration: 0.3s;
+    vertical-align: middle;
+    @include rem('width', 20);
+  }
+
   &:hover {
     color: $main_low_dark_color;
+
+    img {
+      opacity: 1.0;
+    }
   }
 }
 
