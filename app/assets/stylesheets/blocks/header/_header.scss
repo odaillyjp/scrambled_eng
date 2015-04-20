@@ -82,10 +82,28 @@ $header_break_small: 760px;
 
 .header__nav-list-item {
   float: left;
-  @include rem('font-size', 16);
+  @include rem('font-size', 14);
   font-weight: bold;
   @include rem('margin-right', 30);
   @include rem('height', $header_height);
+
+  a {
+    padding: 8px 12px;
+    transition-duration: 0.3s;
+
+    &:hover {
+      color: $main_low_dark_color;
+    }
+  }
+}
+
+.header__sign-in-link {
+  border: solid 2px $main_medium_color;
+  border-radius: 4px;
+
+  &:hover {
+    border: solid 2px $main_low_dark_color;
+  }
 }
 
 .header__user-image {
