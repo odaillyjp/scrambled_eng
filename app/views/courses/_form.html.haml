@@ -8,12 +8,12 @@
       = f.text_area :description, class: 'course-form__description-form'
     .course-form__group
       = f.label :level, class: 'course-form__level-label'
-      = f.select :level, [['易しい', 1], ['普通', 2], ['難しい', 3], ['すごく難しい', 4]], class: 'course-form__level-form'
+      = f.select :level, [['易しい', 1], ['普通', 2], ['難しい', 3], ['すごく難しい', 4]], {}, class: 'course-form__level-form'
     .course-form__group
       = f.label :state, class: 'course-form__state-label'
-      = f.select :level, [['全員に公開', :overtness], ['ログインユーザーのみに公開', :members_only], ['非公開', :secret]], class: 'course-form__state-form'
+      = f.select :level, [['全員に公開', :overtness], ['ログインユーザーのみに公開', :members_only], ['非公開', :secret]], {}, class: 'course-form__state-form'
     .course-form__group
-      = f.label :updatable, class: 'course-form__updatable-label'
       = f.check_box :updatable, class: 'course-form__updatable-form'
+      = f.label :updatable, t('views.courses.new.updatable_note'), class: 'course-form__updatable-label'
 
     = f.submit class: 'course-form__update-course-button btn'

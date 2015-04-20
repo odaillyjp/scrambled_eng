@@ -1,0 +1,91 @@
+.course-form {
+  @extend .article-box;
+  @include rem('max-width', 420);
+  @include rem('margin-top', 24);
+}
+
+.course-form__group {
+  @include rem('padding-bottom', 16);
+  @include rem('padding-left', 12);
+  @include rem('padding-right', 12);
+  @include rem('padding-top', 16);
+  text-align: left;
+
+  label {
+    color: $main_high_dark_color;
+    font-weight: bold;
+  }
+
+  .field_with_errors {
+    label { color: $sub_medium_color; }
+    input { border: solid 2px $sub_medium_color; }
+  }
+}
+
+.course-form__label {
+  display: block;
+  @include rem('font-size', 16);
+  @include rem('padding-bottom', 8);
+}
+
+.course-form__name-label {
+  @extend .course-form__label;
+}
+
+.course-form__description-label {
+  @extend .course-form__label;
+}
+
+.course-form__level-label {
+  @extend .course-form__label;
+}
+
+.course-form__state-label {
+  @extend .course-form__label;
+}
+
+.course-form__updatable-label {
+  @extend .course-form__label;
+}
+
+.course-form__name-form {
+  @include rem('font-size', 14);
+  width: 100%;
+}
+
+.course-form__description-form {
+  @include rem('font-size', 14);
+  @include rem('height', 40);
+  width: 100%;
+}
+
+.course-form__level-form {
+  @include rem('font-size', 16);
+}
+
+.course-form__state-form {
+  @include rem('font-size', 16);
+}
+
+.course-form__updatable-note {
+  @include rem('font-size', 14);
+}
+
+.course-form__updatable-label {
+  display: inline;
+  @include rem('font-size', 14);
+}
+
+.course-form__submit-course-button {
+  margin: 20px auto 0;
+  margin: 2rem auto 0;
+  width: 100%;
+}
+
+.course-form__create-course-button {
+  @extend .course-form__submit-course-button;
+}
+
+.course-form__update-course-button {
+  @extend .course-form__submit-course-button;
+}

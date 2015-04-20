@@ -19,6 +19,9 @@ ja:
       show:
         start_challenge: このコースに挑戦する
 
+      new:
+        updatable_note: 他のユーザーが問題の追加・修正を行うことを許可する
+
     challenges:
       show:
         question: 次の文章を英語に直してください。
