@@ -1,8 +1,8 @@
 $course_management_challenge_height: 80;
 
 .course-management {
-  margin: 24px auto 0;
-  margin: 2.4rem auto 0;
+  margin: 12px auto 0;
+  margin: 1.2rem auto 0;
 }
 
 .course-management__course-name {
@@ -12,6 +12,51 @@ $course_management_challenge_height: 80;
   @include rem('margin-bottom', 24);
 }
 
+.course-management__nav-box {
+  border-bottom: solid 1px $main_medium_color;
+  @include rem('height', 40);
+  @include rem('margin-left', 24);
+  @include rem('margin-right', 24);
+}
+
+.course-management__nav-list {
+  @include rem('line-height', 40);
+}
+
+.course-management__nav-item {
+  float: left;
+  @include rem('font-size', 14);
+  @include rem('margin-right', 20);
+}
+
+.course-management__item-link {
+  color: $main_medium_color;
+  @include rem('padding', 8);
+  transition-duration: 0.3s;
+
+  &:hover {
+    color: $main_low_dark_color;
+  }
+}
+
+.course-management__current-item-link {
+  @extend .course-management__item-link;
+  color: $main_low_dark_color;
+  font-weight: bold;
+}
+
+.course-management__dashboard-link {
+  @extend .course-management__current-item-link;
+}
+
+.course-management__new-challenge-link {
+  @extend .course-management__item-link;
+}
+
+.course-management__course-edit-link {
+  @extend .course-management__item-link;
+}
+
 .course-management__flex-group {
   @include display-flex;
   @include flex-direction(row);
@@ -19,14 +64,15 @@ $course_management_challenge_height: 80;
   @include justify-content(center);
   margin: 0 auto;
   @include rem('max-width', 960);
+  @include rem('padding-top', 24);
 }
 
 .course-management__challenge-list {
   @include flex-basis(600px);
   @include flex-basis(60rem);
   @include flex-grow(1);
-  @include rem('margin-left', 20);
-  @include rem('margin-right', 20);
+  @include rem('margin-left', 12);
+  @include rem('margin-right', 12);
 }
 
 .course-management__challenge-list-title {
