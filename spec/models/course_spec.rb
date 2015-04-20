@@ -56,7 +56,7 @@ RSpec.describe Course, type: :model do
   context '他のユーザーが作った公開されたコースのとき' do
     let(:current_user) { create(:user) }
     let(:other_user) { create(:user) }
-    let(:course) { create(:course, user: other_user, state: :overt) }
+    let(:course) { create(:course, user: other_user, state: :overtness) }
 
     describe '.only_authorized' do
       context 'そのコースの製作者を渡したとき' do

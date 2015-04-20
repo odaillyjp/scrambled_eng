@@ -8,7 +8,7 @@ ja:
         name: 名前
         description: コースの説明
         level: 難しさ
-        state: 公開・非公開の状態
+        state: 公開範囲
         updatable: 誰でも更新権限
 
     mistakes:
