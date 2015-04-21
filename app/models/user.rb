@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :courses
+  has_many :challenges
 
   validates :uid, presence: true, uniqueness: { scope: :provider }
   validates :provider, presence: true

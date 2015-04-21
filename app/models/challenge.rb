@@ -5,17 +5,21 @@
 #  id              :integer          not null, primary key
 #  en_text         :text             not null
 #  ja_text         :text             not null
-#  course_id       :integer
+#  course_id       :integer          not null
+#  sequence_number :integer          not null
+#  user_id         :integer          not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  sequence_number :integer          default(1), not null
 #
 
 class Challenge < ActiveRecord::Base
   belongs_to :course
-  validates :en_text, presence: true
-  validates :ja_text, presence: true
+  belongs_to :user
+  validates :en_text, presence: true, length: { maximum: 1000 }
+  validates :ja_text, presence: true, length: { maximum: 1000 }
+  validates :course_id, presence: true
   validates :sequence_number, presence: true, uniqueness: { scope: :course_id }
+  validates :user_id, presence: true
 
   include WordExtractable
   include OrderQuery

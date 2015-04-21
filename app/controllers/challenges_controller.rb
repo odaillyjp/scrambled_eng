@@ -22,10 +22,11 @@ class ChallengesController < ApplicationController
   def create
     @challenge = @challenges.new(challenge_params)
     @challenge.sequence_number = @challenges.count + 1
+    @challenge.user = current_user
 
     if @challenge.save
       flash[:notice] = I18n.t('activerecord.notices.models.challenge.create')
-      redirect_to @challenge.course
+      redirect_to management_course_path(@challenge.course)
     else
       render action: 'new'
     end

@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: challenges
+#
+#  id              :integer          not null, primary key
+#  en_text         :text             not null
+#  ja_text         :text             not null
+#  course_id       :integer          not null
+#  sequence_number :integer          not null
+#  user_id         :integer          not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe Challenge, type: :model do
@@ -5,9 +19,14 @@ RSpec.describe Challenge, type: :model do
   subject { challenge }
 
   it { is_expected.to validate_presence_of(:en_text) }
+  it { is_expected.to validate_length_of(:en_text).is_at_most(1000) }
   it { is_expected.to validate_presence_of(:ja_text) }
+  it { is_expected.to validate_length_of(:ja_text).is_at_most(1000) }
+  it { is_expected.to validate_presence_of(:course_id) }
   it { is_expected.to validate_presence_of(:sequence_number) }
+  it { is_expected.to validate_presence_of(:user_id) }
   it { is_expected.to validate_uniqueness_of(:sequence_number).scoped_to(:course_id) }
+  it { is_expected.to respond_to(:to_key) }
   it { is_expected.to respond_to(:to_param) }
 
   describe '#cloze_text' do
