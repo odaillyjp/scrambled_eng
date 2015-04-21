@@ -37,11 +37,11 @@ $course_management_challenge_height: 80;
 .course-management__item-link {
   color: $main_medium_color;
   @include rem('padding', 8);
-  transition-duration: 0.3s;
+  @include transition-duration(0.3s);
 
   img {
     opacity: 0.5;
-    transition-duration: 0.3s;
+    @include transition-duration(0.3s);
     vertical-align: middle;
     @include rem('width', 20);
   }

@@ -14,10 +14,19 @@
 .main__notice {
   background: $main_high_dark_color;
   color: $main_high_light_color;
+  cursor: pointer;
   @include rem('font-size', 14);
   font-weight: bold;
-  @include rem('line-height', 40);
+  @include rem('line-height', 30);
   @include rem('padding-left', 24);
+  @include transition-duration(0.3s);
+  width: 100%;
+}
+
+.main__close-mark {
+  @include rem('margin-right', 10);
+  vertical-align: middle;
+  @include rem('width', 16);
 }
 
 .main-container {

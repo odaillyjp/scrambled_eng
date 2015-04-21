@@ -10,6 +10,7 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
     @layout = new app.Views.LayoutView(el: $('body'))
     @challenges = null
     @__on_dropdown_menu_event()
+    @__on_notice_event()
 
   indexChallenge: (course_id) ->
     # new や edit の場合は処理しない
@@ -36,6 +37,12 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
     # ヘッダーのドロップダウンメニュー
     $(document).on 'click', '.header__dropdown-menu-link', ->
       $('.header__dropdown-menu').toggleClass('is-hidden')
+      false
+
+  __on_notice_event: ->
+    # お知らせメッセージの削除イベント
+    $(document).on 'click', '.main__notice', ->
+      $('.main__notice').hide()
       false
 
   __is_number: (id) ->

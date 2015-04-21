@@ -89,7 +89,7 @@ $header_break_small: 760px;
 
   a {
     padding: 8px 12px;
-    transition-duration: 0.3s;
+    @include transition-duration(0.3s);
 
     &:hover {
       color: $main_low_dark_color;

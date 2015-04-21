@@ -42,7 +42,7 @@
 
   a {
     font-weight: bold;
-    transition-duration: 0.2s;
+    @include transition-duration(0.2s);
 
     &:hover {
       color: $main_low_light_color;
@@ -56,7 +56,7 @@
 
   a {
     font-weight: bold;
-    transition-duration: 0.2s;
+    @include transition-duration(0.2s);
 
     &:hover {
       color: $main_low_light_color;
