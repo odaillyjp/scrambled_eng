@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       course: コース
+      challenge: 問題
 
     attributes:
       course:
@@ -10,6 +11,10 @@ ja:
         level: 難しさ
         state: 公開範囲
         updatable: 誰でも更新権限
+
+      challenge:
+        en_text: 英語の文章
+        ja_text: 翻訳した日本語の文章
 
     mistakes:
       models:
@@ -23,8 +28,12 @@ ja:
     notices:
       models:
         course:
-          create: 新しいコースを作成しました。
-          update: コースを更新しました。
+          create: 新しいコースを作りました。
+          update: コースを修正しました。
+
+        challenge:
+          create: 新しい問題を作りました。
+          update: 問題を修正しました。
 
     errors:
       messages:

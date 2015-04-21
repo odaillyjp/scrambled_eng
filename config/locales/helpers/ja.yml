@@ -4,3 +4,7 @@ ja:
       course:
         create: この内容で登録する
         update: この内容で更新する
+
+      challenge:
+        create: この内容で登録する
+        update: この内容で更新する

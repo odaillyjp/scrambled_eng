@@ -36,6 +36,10 @@ class Challenge < ActiveRecord::Base
     Answer.new(self, en_text, answer_text)
   end
 
+  def to_key
+    [course_id.to_s, sequence_number.to_s]
+  end
+
   def to_param
     sequence_number.to_s
   end

@@ -1,0 +1,11 @@
+.challenge-form
+  = form_for [challenge.course, challenge], url: course_challenge_path(sequence_number: challenge) do |f|
+    .challenge-form__group
+      = f.label :en_text, class: 'challenge-form__en-text-label'
+      = f.text_area :en_text, placeholder: 'She sells seashells by the seashore.', class: 'challenge-form__en-text-form'
+
+    .challenge-form__group
+      = f.label :ja_text, class: 'challenge-form__ja-text-label'
+      = f.text_area :ja_text, placeholder: '彼女は海岸で貝殻を売ります。', class: 'challenge-form__ja-text-form'
+
+    = f.submit class: 'challenge-form__submit-challenge-button'

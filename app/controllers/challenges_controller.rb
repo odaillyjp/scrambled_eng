@@ -24,7 +24,8 @@ class ChallengesController < ApplicationController
     @challenge.sequence_number = @challenges.count + 1
 
     if @challenge.save
-      redirect_to @challenge.course, notice: 'Challenge was successfully created.'
+      flash[:notice] = I18n.t('activerecord.notices.models.challenge.create')
+      redirect_to @challenge.course
     else
       render action: 'new'
     end
@@ -32,8 +33,8 @@ class ChallengesController < ApplicationController
 
   def update
     if @challenge.update_attributes(challenge_params)
-      notice = 'Challenge was successfully updated.'
-      redirect_to management_course_path(@challenge.course), notice: notice
+      flash[:notice] = I18n.t('activerecord.notices.models.challenge.update')
+      redirect_to management_course_path(@challenge.course)
     else
       render action: 'edit'
     end

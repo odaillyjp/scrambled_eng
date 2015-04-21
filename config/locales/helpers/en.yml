@@ -4,3 +4,7 @@ en:
       course:
         create: Create Course
         update: Update Course
+
+      challenge:
+        create: Create Challange
+        update: update Challenge

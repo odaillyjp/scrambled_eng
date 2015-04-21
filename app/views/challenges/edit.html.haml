@@ -1,13 +1,3 @@
 %h1.main__title Edit Challenge
 
-.challenge-edit
-  = form_for [@challenge.course, @challenge] do |f|
-    .challenge-edit__form-group
-      = f.label :en_text, class: 'challenge-edit__en-text-label'
-      = f.text_area :en_text, class:'challenge-edit__en-text-form'
-
-    .challenge-edit__form-group
-      = f.label :ja_text, class: 'challenge-edit__ja-text-label'
-      = f.text_area :ja_text, class: 'challenge-edit__ja-text-form'
-
-    = f.submit 'Update challenge', class: 'challenge-edit__update-challenge-button btn'
+= render partial: 'form', locals: { challenge: @challenge }

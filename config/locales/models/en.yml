@@ -2,6 +2,7 @@ en:
   activerecord:
     models:
       course: Course
+      challenge: Challenge
 
     attributes:
       course:
@@ -10,6 +11,10 @@ en:
         level: Level
         state: State
         updatable: Updatable
+
+      challenge:
+        en_text: English
+        ja_text: Japanese
 
     mistakes:
       models:
