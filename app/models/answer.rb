@@ -1,10 +1,7 @@
 class Answer
   attr_reader :mistake
 
-  DELIMITER_MARK = '\s\r\n,.:;"()!?'
-  DECIMAL_MARK = ',.'
-  WORD_REGEXP = /(?:[^#{DELIMITER_MARK}]+|(?<=\d)[#{DECIMAL_MARK}](?=\d))+/
-  CLOZE_MARK = '_'
+  include WordExtractable
 
   def initialize(base, correct_text, answer_text)
     @base = base
@@ -53,10 +50,6 @@ class Answer
   end
 
   private
-
-  def scan_word(text)
-    text.strip.scan(WORD_REGEXP)
-  end
 
   def detect_mistake_of_text
     @mistake = Mistake.new

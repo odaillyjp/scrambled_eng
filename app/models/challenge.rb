@@ -17,11 +17,7 @@ class Challenge < ActiveRecord::Base
   validates :ja_text, presence: true
   validates :sequence_number, presence: true, uniqueness: { scope: :course_id }
 
-  DELIMITER_MARK = '\s\r\n,.:;"()!?'
-  DECIMAL_MARK = ',.'
-  WORD_REGEXP = /(?:[^#{DELIMITER_MARK}]+|(?<=\d)[#{DECIMAL_MARK}](?=\d))+/
-  CLOZE_MARK = '_'
-
+  include WordExtractable
   include OrderQuery
   order_query :order_course, [:sequence_number, :asc]
 
@@ -42,11 +38,5 @@ class Challenge < ActiveRecord::Base
 
   def to_param
     sequence_number.to_s
-  end
-
-  private
-
-  def scan_word(text)
-    text.strip.scan(WORD_REGEXP)
   end
 end
