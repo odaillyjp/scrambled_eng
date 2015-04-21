@@ -27,6 +27,11 @@ $course_management_challenge_height: 80;
   float: left;
   @include rem('font-size', 14);
   @include rem('margin-right', 28);
+
+  &.is-current .course-management__item-link {
+    color: $main_low_dark_color;
+    font-weight: bold;
+  }
 }
 
 .course-management__item-link {
@@ -50,14 +55,8 @@ $course_management_challenge_height: 80;
   }
 }
 
-.course-management__current-item-link {
-  @extend .course-management__item-link;
-  color: $main_low_dark_color;
-  font-weight: bold;
-}
-
 .course-management__dashboard-link {
-  @extend .course-management__current-item-link;
+  @extend .course-management__item-link;
 }
 
 .course-management__new-challenge-link {

@@ -1,3 +1,6 @@
 %h1.main__title New Challenge
 
+.course-management
+  = render partial: 'shared/management_nav', locals: { course: @challenge.course, current_item: :create_challenge }
+
 = render partial: 'form', locals: { challenge: @challenge }

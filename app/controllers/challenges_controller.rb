@@ -10,7 +10,7 @@ class ChallengesController < ApplicationController
   end
 
   def new
-    @challenge = Challenge.new
+    @challenge = Challenge.new(course_id: params[:course_id])
   end
 
   def edit
