@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :users, only: %i(show)
 
+  get 'histories/heatmap', to: 'histories#heatmap'
+
   get '/auth/:provider/callback', to: 'sessions#create'
   get 'sessions/create'
   delete '/session', to: 'sessions#destroy'

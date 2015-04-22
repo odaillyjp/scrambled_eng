@@ -52,9 +52,12 @@ class ChallengesController < ApplicationController
 
     if @answer.check!
       next_challenge = @challenges.order_course_at(@challenge).next(false)
+
       if next_challenge
         next_challenge_url = course_challenge_url(next_challenge, course_id: params[:course_id])
       end
+
+      create_history!
 
       render json: {
         correct: true,
@@ -75,6 +78,16 @@ class ChallengesController < ApplicationController
   end
 
   private
+
+  def create_history!
+    return false unless user_sign_in?
+
+    # 1つの問題につき、1日に1回しか履歴を作らない
+    @history = History.where('updated_at >= ?', Time.current.beginning_of_day)
+      .find_or_initialize_by(user: current_user, challenge: @challenge)
+
+    @history.save!
+  end
 
   def fetch_challenges
     @challenges = Course.find(params[:course_id]).challenges

@@ -42,7 +42,16 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
     cal.init(
       itemSelector: '.user__heatmap-box',
       domain: 'month',
-      range: 6)
+      subdomain: 'day'
+      range: 6,
+      data: "/histories/heatmap?user_id=#{user_id}&from={{d:start}}&to={{d:end}}",
+      dataType: 'json',
+      start: do ->
+        today = new Date()
+        today.setMonth(today.getMonth() - 5)
+        console.log(today)
+        today
+      )
 
   __on_dropdown_menu_event: ->
     # ヘッダーのドロップダウンメニュー
