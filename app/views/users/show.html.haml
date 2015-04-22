@@ -1,0 +1,13 @@
+%h1.main__title Management Course
+
+- flash.each do |_name, msg|
+  = content_tag :div, class: 'main__notice' do
+    = image_tag 'close_mark.svg', class: 'main__close-mark'
+    = msg
+
+%section.user
+  = image_tag @user.image, class: 'user__image'
+  %p.user__name
+    = @user.name
+
+  .user__heatmap-box

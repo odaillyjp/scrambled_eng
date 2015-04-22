@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users, only: %i(show)
+
   get '/auth/:provider/callback', to: 'sessions#create'
   get 'sessions/create'
   delete '/session', to: 'sessions#destroy'
