@@ -15,6 +15,8 @@
 class Challenge < ActiveRecord::Base
   belongs_to :course
   belongs_to :user
+  has_many :histories
+
   validates :en_text, presence: true, length: { maximum: 1000 }
   validates :ja_text, presence: true, length: { maximum: 1000 }
   validates :course_id, presence: true
