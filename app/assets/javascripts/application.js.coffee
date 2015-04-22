@@ -4,6 +4,8 @@
 #= require backbone
 #= require backbone.stickit/backbone.stickit
 #= require backbone.select/backbone.select
+#= require d3
+#= require cal-heatmap
 #= require handlebars.runtime
 #= require scrambled_eng
 #= require_tree .

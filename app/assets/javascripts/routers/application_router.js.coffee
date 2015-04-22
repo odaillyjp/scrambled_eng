@@ -5,6 +5,7 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
   routes:
     'courses/:course_id/challenges/:challenge_id' : 'showChallenge'
     'courses/:course_id': 'indexChallenge'
+    'users/:user_id': 'showUser'
 
   initialize: ->
     @layout = new app.Views.LayoutView(el: $('body'))
@@ -32,6 +33,16 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
       @__fetchChallenges(course_id).success =>
         @__renderSidebarView(course_id)
         @__renderChallengeView(challenge_id)
+
+  showUser: (user_id) ->
+    # new や edit の場合は処理しない
+    return false unless @__is_number(user_id)
+
+    cal = new CalHeatMap()
+    cal.init(
+      itemSelector: '.user__heatmap-box',
+      domain: 'month',
+      range: 6)
 
   __on_dropdown_menu_event: ->
     # ヘッダーのドロップダウンメニュー
