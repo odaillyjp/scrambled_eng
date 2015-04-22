@@ -116,7 +116,27 @@ $header_break_small: 760px;
 }
 
 .header__dropdown-menu {
+  background: $main_high_light_color;
+  position: absolute;
+  @include rem('right', 30);
+  @include rem('top', 50);
+  z-index: 5;
+
   &.is-hidden {
     display: none;
+  }
+}
+
+.header__dropdown-item {
+  @include rem('height', 30);
+  line-height: normal;
+  border-bottom: solid 1px $gray_color;
+  @include rem('width', 120);
+
+  a {
+    display: block;
+    @include rem('font-size', 14);
+    @include rem('line-height', 30);
+    text-align: center;
   }
 }
