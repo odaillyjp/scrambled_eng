@@ -114,6 +114,12 @@ $header_break_small: 760px;
   @include rem('width', 40);
 }
 
+.header__dropdown-mark-image {
+  @include rem('padding-left', 4);
+  vertical-align: middle;
+  @include rem('width', 12);
+}
+
 .header__dropdown-menu {
   @include animation(fade-in-dropdown 0.3s ease);
   background: $main_high_light_color;
