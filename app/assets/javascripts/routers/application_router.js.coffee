@@ -53,19 +53,22 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
     # new や edit の場合は処理しない
     return false unless @__is_number(user_id)
 
+    monthRange = 3
     cal = new CalHeatMap()
     cal.init(
       itemSelector: '.user__heatmap-box',
       domain: 'month',
-      subDomain: 'day'
-      range: 6,
+      subDomain: 'x_day',
+      cellSize: 20,
+      range: monthRange,
       data: "/histories/heatmap?user_id=#{user_id}&from={{d:start}}&to={{d:end}}",
       dataType: 'json',
       displayLegend: false,
+      domainMargin: 10,
+      subDomainTextFormat: '%d',
       start: do ->
         today = new Date()
-        today.setMonth(today.getMonth() - 5)
-        console.log(today)
+        today.setMonth(today.getMonth() - (monthRange - 1))
         today
     )
 
