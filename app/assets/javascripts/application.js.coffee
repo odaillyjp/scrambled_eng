@@ -7,5 +7,6 @@
 #= require d3
 #= require cal-heatmap
 #= require handlebars.runtime
+#= require_tree ./functions
 #= require scrambled_eng
 #= require_tree .

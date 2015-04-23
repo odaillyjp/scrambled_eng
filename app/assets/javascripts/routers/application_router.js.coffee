@@ -16,7 +16,7 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
 
   showChallenge: (course_id, challenge_id) ->
     # new や edit の場合は処理しない
-    return false unless @__is_number(challenge_id)
+    return false unless _common.is_number(challenge_id)
 
     if @challenges
       @__renderChallengeView(challenge_id)
@@ -38,12 +38,12 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
       displayLegend: false,
       domainMargin: [12, 4],
       legend: [5, 10, 15, 20, 25],
-      start: @__add_month(new Date(), (1 - monthRange))
+      start: _common.add_month(new Date(), (1 - monthRange))
     )
 
   indexCourse: (course_id) ->
     # new や edit の場合は処理しない
-    return false unless @__is_number(course_id)
+    return false unless _common.is_number(course_id)
 
     unless @challenges
       @__fetchChallenges(course_id)
@@ -53,7 +53,7 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
 
   showUser: (user_id) ->
     # new や edit の場合は処理しない
-    return false unless @__is_number(user_id)
+    return false unless _common.is_number(user_id)
 
     monthRange = 3
     cal = new CalHeatMap()
@@ -69,7 +69,7 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
       domainMargin: 10,
       subDomainTextFormat: '%d',
       legend: [4, 8, 12, 16, 20],
-      start: @__add_month(new Date(), (1 - monthRange))
+      start: _common.add_month(new Date(), (1 - monthRange))
     )
 
   __on_dropdown_menu_event: ->
@@ -83,13 +83,6 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
     $(document).on 'click', '.main__notice', ->
       $('.main__notice').hide()
       false
-
-  __is_number: (id) ->
-    id.match(/^\d+$/)
-
-  __add_month: (date, months) ->
-    date.setMonth(date.getMonth() + months)
-    date
 
   __fetchChallenges: (course_id) ->
     @challenges = new app.Collections.ChallengeCollection(course_id)
