@@ -38,7 +38,7 @@
                   = link_to 'Sign in with Google', '/auth/google_oauth2', class: 'header__sign-in-link'
             %ul.header__dropdown-menu.is-hidden
               %li.header__dropdown-item
-                = link_to 'My Profile', user_path(current_user), class: 'header__my-profile-link'
+                = link_to 'My Dashboard', user_path(current_user), class: 'header__my-profile-link'
               %li.header__dropdown-item
                 = link_to 'Sign Out', session_path, method: :delete, class: 'header__sign-out-link'
     .clearfix
