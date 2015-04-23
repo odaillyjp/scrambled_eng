@@ -1,5 +1,6 @@
 class HistoriesController < ApplicationController
   def heatmap
-    render json: History.heatmap_json(params[:user_id], params[:from], params[:to])
+    json_data = HistoryHeatmap::Generator.run(params.extract!(:course_id, :user_id, :from, :to))
+    render json: json_data
   end
 end

@@ -4,7 +4,8 @@ app.Routers ?= {}
 app.Routers.ApplicationRouter = Backbone.Router.extend
   routes:
     'courses/:course_id/challenges/:challenge_id' : 'showChallenge'
-    'courses/:course_id': 'indexChallenge'
+    'courses/:course_id/management': 'manageCourse'
+    'courses/:course_id': 'indexCourse'
     'users/:user_id': 'showUser'
 
   initialize: ->
@@ -12,16 +13,6 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
     @challenges = null
     @__on_dropdown_menu_event()
     @__on_notice_event()
-
-  indexChallenge: (course_id) ->
-    # new や edit の場合は処理しない
-    return false unless @__is_number(course_id)
-
-    unless @challenges
-      @__fetchChallenges(course_id)
-      @__renderSidebarView(course_id)
-    informationView = new app.Views.Challenges.InformationView(collection: @challenges)
-    @layout.setMainView(informationView)
 
   showChallenge: (course_id, challenge_id) ->
     # new や edit の場合は処理しない
@@ -34,6 +25,30 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
         @__renderSidebarView(course_id)
         @__renderChallengeView(challenge_id)
 
+  manageCourse: (course_id) ->
+    cal = new CalHeatMap()
+    cal.init(
+      itemSelector: '.course-management__heatmap-box',
+      domain: 'month',
+      subDomain: 'x_day'
+      cellSize: 20,
+      range: 1,
+      data: "/histories/heatmap?course_id=#{course_id}&from={{d:start}}&to={{d:end}}",
+      dataType: 'json',
+      domainLabelFormat: '',
+      subDomainTextFormat: '%d',
+      displayLegend: false)
+
+  indexCourse: (course_id) ->
+    # new や edit の場合は処理しない
+    return false unless @__is_number(course_id)
+
+    unless @challenges
+      @__fetchChallenges(course_id)
+      @__renderSidebarView(course_id)
+    informationView = new app.Views.Challenges.InformationView(collection: @challenges)
+    @layout.setMainView(informationView)
+
   showUser: (user_id) ->
     # new や edit の場合は処理しない
     return false unless @__is_number(user_id)
@@ -42,16 +57,17 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
     cal.init(
       itemSelector: '.user__heatmap-box',
       domain: 'month',
-      subdomain: 'day'
+      subDomain: 'day'
       range: 6,
       data: "/histories/heatmap?user_id=#{user_id}&from={{d:start}}&to={{d:end}}",
       dataType: 'json',
+      displayLegend: false,
       start: do ->
         today = new Date()
         today.setMonth(today.getMonth() - 5)
         console.log(today)
         today
-      )
+    )
 
   __on_dropdown_menu_event: ->
     # ヘッダーのドロップダウンメニュー
