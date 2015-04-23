@@ -12,6 +12,13 @@ $course_management_challenge_height: 80;
   @include rem('margin-bottom', 24);
 }
 
+.course-management__heatmap-headline {
+  @include rem('font-size', 16);
+}
+.course-management__heatmap-container > .cal-heatmap-container {
+  margin: auto;
+}
+
 .course-management__nav-box {
   border-bottom: solid 1px $main_medium_color;
   @include rem('height', 40);

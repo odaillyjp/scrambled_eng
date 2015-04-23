@@ -29,13 +29,15 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
     monthRange = 3
     cal = new CalHeatMap()
     cal.init(
-      itemSelector: '.course-management__heatmap-box',
+      itemSelector: '.course-management__heatmap-container',
       domain: 'month',
       subDomain: 'day'
       range: monthRange,
       data: "/histories/heatmap?course_id=#{course_id}&from={{d:start}}&to={{d:end}}",
       dataType: 'json',
       displayLegend: false,
+      domainMargin: [12, 4],
+      legend: [5, 10, 15, 20, 25],
       start: @__add_month(new Date(), (1 - monthRange))
     )
 
@@ -66,6 +68,7 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
       displayLegend: false,
       domainMargin: 10,
       subDomainTextFormat: '%d',
+      legend: [4, 8, 12, 16, 20],
       start: @__add_month(new Date(), (1 - monthRange))
     )
 
