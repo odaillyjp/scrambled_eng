@@ -26,18 +26,18 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
         @__renderChallengeView(challenge_id)
 
   manageCourse: (course_id) ->
+    monthRange = 3
     cal = new CalHeatMap()
     cal.init(
       itemSelector: '.course-management__heatmap-box',
       domain: 'month',
-      subDomain: 'x_day'
-      cellSize: 20,
-      range: 1,
+      subDomain: 'day'
+      range: monthRange,
       data: "/histories/heatmap?course_id=#{course_id}&from={{d:start}}&to={{d:end}}",
       dataType: 'json',
-      domainLabelFormat: '',
-      subDomainTextFormat: '%d',
-      displayLegend: false)
+      displayLegend: false,
+      start: @__add_month(new Date(), (1 - monthRange))
+    )
 
   indexCourse: (course_id) ->
     # new や edit の場合は処理しない
@@ -66,10 +66,7 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
       displayLegend: false,
       domainMargin: 10,
       subDomainTextFormat: '%d',
-      start: do ->
-        today = new Date()
-        today.setMonth(today.getMonth() - (monthRange - 1))
-        today
+      start: @__add_month(new Date(), (1 - monthRange))
     )
 
   __on_dropdown_menu_event: ->
@@ -86,6 +83,10 @@ app.Routers.ApplicationRouter = Backbone.Router.extend
 
   __is_number: (id) ->
     id.match(/^\d+$/)
+
+  __add_month: (date, months) ->
+    date.setMonth(date.getMonth() + months)
+    date
 
   __fetchChallenges: (course_id) ->
     @challenges = new app.Collections.ChallengeCollection(course_id)
