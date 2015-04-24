@@ -15,10 +15,10 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user!
-    authenticate_permittion { user_sign_in? }
+    authenticate_permission { user_sign_in? }
   end
 
-  def authenticate_permittion(&block)
+  def authenticate_permission(&block)
     redirect_to root_path unless block.call
   end
 end

@@ -1,8 +1,8 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!, only: %i(new edit create update destroy manage)
   before_action :fetch_course, only: %i(show edit update manage)
-  before_action :authenticate_access_permittion, only: %i(show)
-  before_action :authenticate_management_permittion, only: %i(edit update destroy manage)
+  before_action :authenticate_access_permission, only: %i(show)
+  before_action :authenticate_management_permission, only: %i(edit update destroy manage)
 
   def index
     @courses = Course.only_authorized(current_user)
@@ -53,8 +53,8 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
   end
 
-  def authenticate_access_permittion
-    authenticate_permittion do
+  def authenticate_access_permission
+    authenticate_permission do
       case @course.state
       when 'overtness'
         true
@@ -66,14 +66,8 @@ class CoursesController < ApplicationController
     end
   end
 
-  def authenticate_management_permittion
-    authenticate_permittion do
-      if @course.updatable
-        user_sign_in?
-      else
-        @course.user == current_user
-      end
-    end
+  def authenticate_management_permission
+    authenticate_permission { @course.user == current_user }
   end
 
   def course_params

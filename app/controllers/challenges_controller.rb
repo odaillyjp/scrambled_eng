@@ -1,7 +1,10 @@
 class ChallengesController < ApplicationController
   before_action :authenticate_user!, only: %i(new edit create update destroy)
-  before_action :fetch_challenges, only: %i(index create resolve)
-  before_action :fetch_challenge,  only: %i(show edit update destroy teach_partial_answer)
+  before_action :fetch_course
+  before_action :fetch_challenges, only: %i(index new create resolve)
+  before_action :fetch_challenge,  only: %i(show edit update destroy resolve teach_partial_answer)
+  before_action :authenticate_access_permission, only: %i(index show)
+  before_action :authenticate_management_permission, only: %i(new edit create update destroy manage)
 
   def index
   end
@@ -10,13 +13,10 @@ class ChallengesController < ApplicationController
   end
 
   def new
-    @challenge = Challenge.new(course_id: params[:course_id])
+    @challenge = @challenges.new
   end
 
   def edit
-    @challenge = Challenge.find_by!(
-      course_id: params[:course_id],
-      sequence_number: params[:sequence_number])
   end
 
   def create
@@ -46,7 +46,6 @@ class ChallengesController < ApplicationController
   end
 
   def resolve
-    @challenge = @challenges.find_by!(sequence_number: params[:sequence_number])
     raw_text = params[:raw_text] || ''
     @answer = @challenge.build_answer(raw_text)
 
@@ -89,14 +88,35 @@ class ChallengesController < ApplicationController
     @history.save!
   end
 
+  def fetch_course
+    @course = Course.find(params[:course_id])
+  end
+
   def fetch_challenges
-    @challenges = Course.find(params[:course_id]).challenges
+    @challenges = Challenge.where(course_id: params[:course_id])
   end
 
   def fetch_challenge
     @challenge = Challenge.find_by!(
       course_id: params[:course_id],
       sequence_number: params[:sequence_number])
+  end
+
+  def authenticate_access_permission
+    authenticate_permission do
+      case @course.state
+      when 'overtness'
+        true
+      when 'members_only'
+        user_sign_in?
+      when 'secret'
+        @course.user == current_user
+      end
+    end
+  end
+
+  def authenticate_management_permission
+    authenticate_permission { @course.user == current_user }
   end
 
   def challenge_params
