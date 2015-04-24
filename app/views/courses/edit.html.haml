@@ -1,3 +1,6 @@
+- content_for :header_item_nav do
+  = render partial: 'shared/header_management_item', locals: { course: @course }
+
 %h1.main__title Edit Course
 
 .course-management

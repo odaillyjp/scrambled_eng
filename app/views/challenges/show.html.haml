@@ -1,6 +1,5 @@
 - content_for :header_item_nav do
-  %li.header__nav-list-item
-    = link_to 'Manage course', management_course_path(@challenge.course)
+  = render partial: 'shared/header_management_item', locals: { course: @course }
 
 %aside#sidebar-container.sidebar-container
 #main-container.main-container
