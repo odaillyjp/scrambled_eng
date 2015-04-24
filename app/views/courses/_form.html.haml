@@ -17,8 +17,5 @@
     .course-form__group
       = f.label :state, class: 'course-form__state-label'
       = f.select :state, [['全員に公開', :overtness], ['ログインユーザーのみに公開', :members_only], ['非公開', :secret]], {}, class: 'course-form__state-form'
-    .course-form__group
-      = f.check_box :updatable, class: 'course-form__updatable-form'
-      = f.label :updatable, t('views.courses.new.updatable_note'), class: 'course-form__updatable-label'
 
     = f.submit class: 'course-form__update-course-button'
