@@ -1,4 +1,4 @@
-%h1.main__title Management Course
+%h1.main__title User Dashboard
 
 - flash.each do |_name, msg|
   = content_tag :div, class: 'main__notice' do
@@ -6,9 +6,10 @@
     = msg
 
 %section.user
-  = image_tag @user.image, class: 'user__image'
-  %p.user__name
-    = @user.name
+  .user__profile-box
+    = image_tag @user.image, class: 'user__image'
+    %h1.user__profile-headline
+      #{@user.name}さんの学習記録
 
   .user__heatmap-box
 

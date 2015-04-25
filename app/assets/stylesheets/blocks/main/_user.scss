@@ -1,0 +1,24 @@
+.user {
+  @include rem('padding-bottom', 20);
+  @include rem('padding-left', 40);
+  @include rem('padding-right', 40);
+  @include rem('padding-top', 20);
+}
+
+.user__profile-box {
+  background: $grayish_lightest_color;
+  border-radius: ('border-radius', 4);
+  @include rem('padding', 8);
+}
+
+.user__profile-headline {
+  display: inline;
+  color: $main_high_dark_color;
+  @include rem('font-size', 18);
+  font-weight: bold;
+}
+
+.user__heatmap-box {
+  @include rem('margin-top', 10);
+  @include rem('margin-bottom', 10);
+}
