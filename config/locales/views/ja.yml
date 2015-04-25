@@ -37,4 +37,5 @@ ja:
 
     users:
       show:
-        recently_played: 最近解いた問題
+        recently_played: 最近挑戦したコース
+        manageable_courses: 管理しているコース

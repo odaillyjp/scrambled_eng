@@ -15,7 +15,14 @@
   %section.user__recently-played
     %h1.user__recently-played-headline
       = t('views.users.show.recently_played')
-    - @histories.each do |history|
+    - @recently_histories.each do |history|
       .user__recently-played-course-name
         - course = history.challenge.course
-        = link_to course.name, course_path(course), class: 'user__history-course-link'
+        = link_to course.name, course_path(course), class: 'user__recently-played-course-link'
+
+  %section.user__manageable-course
+    %h1.user__manageable-course-headline
+      = t('views.users.show.manageable_courses')
+    - @manageable_courses.each do |course|
+      .user__manageable-course-headline
+        = link_to course.name, course_path(course), class: 'user__manageable-course-link'
