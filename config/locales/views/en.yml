@@ -29,3 +29,7 @@ en:
         get_words_button: Get Words
         get_correct_text_button: Get Correct Answer
         get_next_word_button: Get Next Word
+
+    users:
+      show:
+        recently_played: Recently Played

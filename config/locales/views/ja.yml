@@ -34,3 +34,7 @@ ja:
         get_words_button: 全ての単語を表示
         get_correct_text_button: 答えを表示
         get_next_word_button: 次の単語を教えてもらう
+
+    users:
+      show:
+        recently_played: 最近解いた問題

@@ -11,3 +11,11 @@
     = @user.name
 
   .user__heatmap-box
+
+  %section.user__recently-played
+    %h1.user__recently-played-headline
+      = t('views.users.show.recently_played')
+    - @histories.each do |history|
+      .user__recently-played-course-name
+        - course = history.challenge.course
+        = link_to course.name, course_path(course), class: 'user__history-course-link'
