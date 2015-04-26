@@ -15,6 +15,5 @@ RSpec.describe History, type: :model do
   let(:history) { build(:history) }
   subject { history }
 
-  it { is_expected.to validate_presence_of(:user_id) }
   it { is_expected.to validate_presence_of(:challenge_id) }
 end
