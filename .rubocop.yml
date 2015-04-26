@@ -10,6 +10,9 @@ NumericLiterals:
 ClassAndModuleChildren:
   Enabled: false
 
+ClassLength:
+  Enabled: false
+
 Documentation:
   Enabled: false
 
