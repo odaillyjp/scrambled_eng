@@ -16,12 +16,6 @@ app.Views.Challenges.ChallengeView = Backbone.View.extend
   bindings:
     '#input-challenge-raw_text': 'raw_text'
 
-  submitRawText: ->
-    @$('.editer-panel__submit-raw-text-button').addClass('is-submitting')
-    @model.submitRawText().done =>
-      @$('.editer-panel__submit-raw-text-button').removeClass('is-submitting')
-    @trigger('submit')
-
   initialize: ->
     @clozeTextPanelView = new app.Views.Challenges.ClozeTextPanelView(model: @model)
     @hintsPanelView = new app.Views.Challenges.HintsPanelView(model: @model)
@@ -47,6 +41,12 @@ app.Views.Challenges.ChallengeView = Backbone.View.extend
     @$('.challenge-tab-item__hints-link').addClass('is-current')
     @clozeTextPanelView.$el.addClass('is-hidden')
     @hintsPanelView.$el.removeClass('is-hidden')
+
+  submitRawText: ->
+    @$('.editer-panel__submit-raw-text-button').addClass('is-submitting')
+    @model.submitRawText().done =>
+      @$('.editer-panel__submit-raw-text-button').removeClass('is-submitting')
+    @trigger('submit')
 
   renderCorrectModal: (data) ->
     correctModalView = new app.Views.Challenges.CorrectModalView(data)
