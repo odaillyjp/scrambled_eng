@@ -1,7 +1,12 @@
 class Answer
-  attr_reader :mistake
+  attr_reader :checked, :mistake
+  alias_method :checked?, :checked
 
+  include ActiveSupport::Callbacks
   include WordExtractable
+
+  define_callbacks :before_check
+  set_callback :before_check, :before, :check!, unless: :checked?
 
   def initialize(base, correct_text, answer_text)
     @base = base
@@ -9,42 +14,54 @@ class Answer
     @correct_words = scan_word(correct_text)
     @answer_text = answer_text.strip
     @answer_words = scan_word(answer_text)
+    @checked = false
     @mistake = nil
   end
 
   def correct?
     # 注意: 大文字・小文字の区別はしない
     # 注意: 単語の綴りが合っていれば正解とする
-    scan_word(@correct_text.downcase) == scan_word(@answer_text.downcase)
+    @correct ||= (scan_word(@correct_text.downcase) == scan_word(@answer_text.downcase))
   end
 
   def check!
-    return true if correct?
+    result = if correct?
+               true
+             else
+               if @correct_words.size > 1
+                 detect_mistake_of_text
+               else
+                 detect_mistake_of_word
+               end
+               false
+             end
 
-    if @correct_words.size > 1
-      detect_mistake_of_text
-    else
-      detect_mistake_of_word
+    @checked = true
+    result
+  end
+
+  def fetch_cloze_text!
+    run_callbacks :before_check do
+      correct? ? @correct_text : @mistake.cloze_text
     end
-
-    false
   end
 
   def detect_partial_answer!
     return nil if correct?
-    check! if @mistake.blank?
 
-    @mistake.partial_answer = begin
-      if @mistake.position.present?
-        # 文の途中に誤りがある場合は、誤りがあった単語の位置に正しい単語を入れる
-        @mistake.next_word = @correct_words[@mistake.position]
-        replaced_words = @answer_words.clone
-        replaced_words[@mistake.position] = @mistake.next_word
-        @answer_text.gsub(WORD_REGEXP, '%s') % replaced_words
-      else
-        # 文の途中に誤りがない場合は、次の正しい単語を加える
-        @mistake.next_word = @correct_words[@answer_words.size]
-        [@answer_text, @mistake.next_word].reject(&:blank?).join(' ')
+    run_callbacks :before_check do
+      @mistake.partial_answer = begin
+        if @mistake.position.present?
+          # 文の途中に誤りがある場合は、誤りがあった単語の位置に正しい単語を入れる
+          @mistake.next_word = @correct_words[@mistake.position]
+          replaced_words = @answer_words.clone
+          replaced_words[@mistake.position] = @mistake.next_word
+          @answer_text.gsub(WORD_REGEXP, '%s') % replaced_words
+        else
+          # 文の途中に誤りがない場合は、次の正しい単語を加える
+          @mistake.next_word = @correct_words[@answer_words.size]
+          [@answer_text, @mistake.next_word].reject(&:blank?).join(' ')
+        end
       end
     end
   end

@@ -11,10 +11,40 @@ RSpec.describe Answer, type: :model do
         it { expect(answer.correct?).to be_truthy }
       end
 
-      describe '#detect_partial_answer!' do
-        before { answer.send(:detect_partial_answer!) }
+      describe '#check!' do
+        it { expect(answer.check!).to be_truthy }
 
         it 'MistakeがNullのままであること' do
+          answer.check!
+          expect(answer.mistake).to be_nil
+        end
+      end
+
+      context '#check! を呼び出し済みのとき' do
+        before { answer.check! }
+
+        describe '#checked?' do
+          it { expect(answer.checked?).to be_truthy }
+        end
+      end
+
+      context '#check! を呼び出していないとき' do
+        describe '#checked?' do
+          it { expect(answer.checked?).to be_falsy }
+        end
+      end
+
+      describe '#fetch_cloze_text!' do
+        it '正解の文章を返すこと' do
+          expect(answer.fetch_cloze_text!).to eq challenge.en_text
+        end
+      end
+
+      describe '#detect_partial_answer!' do
+        it { expect(answer.detect_partial_answer!).to be_nil }
+
+        it 'MistakeがNullのままであること' do
+          answer.detect_partial_answer!
           expect(answer.mistake).to be_nil
         end
       end
@@ -26,7 +56,7 @@ RSpec.describe Answer, type: :model do
           expect(answer.mistake.cloze_text).to eq challenge.en_text
         end
 
-        it 'メッサージにNullを持つオブジェクトを返すこと' do
+        it 'メッセージにNullを持つオブジェクトを返すこと' do
           expect(answer.mistake.message).to be_nil
         end
 
@@ -41,6 +71,37 @@ RSpec.describe Answer, type: :model do
 
       describe '#correct?' do
         it { expect(answer.correct?).to be_falsy }
+      end
+
+      describe '#check!' do
+        it { expect(answer.check!).to be_falsy }
+
+        it 'mistakeに誤り情報オブジェクトが入っていること' do
+          answer.check!
+          expect(answer.mistake).to respond_to(:cloze_text)
+          expect(answer.mistake).to respond_to(:message)
+          expect(answer.mistake).to respond_to(:position)
+        end
+      end
+
+      context '#check! を呼び出し済みのとき' do
+        before { answer.check! }
+
+        describe '#checked?' do
+          it { expect(answer.checked?).to be_truthy }
+        end
+      end
+
+      describe '#fetch_cloze_text!' do
+        it '誤っている部分をブランク文字に置換した文字列を返すこと' do
+          expect(answer.fetch_cloze_text!).to eq 'She s_lls seash_lls __ the s_______.'
+        end
+      end
+
+      context '#check! を呼び出していないとき' do
+        describe '#checked?' do
+          it { expect(answer.checked?).to be_falsy }
+        end
       end
 
       describe '#detect_partial_answer!' do
