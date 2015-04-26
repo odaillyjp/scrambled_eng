@@ -29,4 +29,21 @@ en:
       models:
         course:
           create: Course was successfully created.
-          update: User was successfully updated.
+          update: Course was successfully updated.
+
+        challenge:
+          create: Challenge was successfully created.
+          update: Challenge was successfully updated.
+          destroy: Challenge was successfullt deleted.
+
+    errors:
+      messages:
+        blank: TODO
+
+      models:
+        course:
+          attributes:
+            name:
+              too_long: Name is too long.
+            description:
+              too_long: Description is too long.

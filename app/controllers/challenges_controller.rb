@@ -42,7 +42,17 @@ class ChallengesController < ApplicationController
   end
 
   def destroy
-    redirect_to root_path
+    Challenge.transaction do
+      @challenge.destroy!
+      challenges = Challenge.where(
+        'course_id = ? AND sequence_number > ?',
+        params[:course_id],
+        params[:sequence_number])
+      challenges.update_all('sequence_number = sequence_number - 1')
+    end
+
+    flash[:notice] = I18n.t('activerecord.notices.models.challenge.destroy')
+    redirect_to management_course_path(@challenge.course)
   end
 
   def resolve

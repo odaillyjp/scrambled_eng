@@ -12,7 +12,7 @@ app.Views.Challenges.DeleteConfirmModalView = Backbone.View.extend
     'click .delete-confirm-modal__cancel-button': 'remove'
 
   initialize: (data) ->
-    @content = _.pick(data, 'ja_text')
+    @content = _.pick(data, 'ja_text', 'course_id', 'challenge_id')
 
   render: ->
     @$el.html(@template(@content))

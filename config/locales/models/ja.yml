@@ -34,6 +34,7 @@ ja:
         challenge:
           create: 新しい問題を作りました。
           update: 問題を修正しました。
+          destroy: 問題を削除しました。
 
     errors:
       messages:

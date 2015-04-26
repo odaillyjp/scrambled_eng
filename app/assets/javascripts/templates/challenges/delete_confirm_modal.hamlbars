@@ -6,9 +6,9 @@
       {{ja_text}}
     %footer.course-confirm-modal__footer
       .delete-confirm-modal__button-group
-        .delete-confirm-modal__delete-button
+        %a.delete-confirm-modal__delete-button{ href: "/courses/{{course_id}}/challenges/{{challenge_id}}", 'data-method' => :delete }
           削除
-        .delete-confirm-modal__cancel-button
+        %a.delete-confirm-modal__cancel-button
           キャンセル
       .clearfix
 

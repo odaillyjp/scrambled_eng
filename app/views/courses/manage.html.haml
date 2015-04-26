@@ -17,7 +17,7 @@
         Challenge List
 
       - @course.challenges.each do |challenge|
-        %article.course-management__challenge-item
+        %article.course-management__challenge-item{ data: { course_id: @course.id, challenge_id: challenge.sequence_number } }
           .course-management__challenge-number= challenge.sequence_number
           %p.course-management__challenge-ja-text= truncate(challenge.ja_text, length: 75)
           .course-management__link-group
