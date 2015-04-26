@@ -123,9 +123,9 @@ $header_break_small: 760px;
 .header__dropdown-menu {
   @include animation(fade-in-dropdown 0.3s ease);
   background: $main_high_light_color;
-  border-left: solid 1px $gray_color;
-  border-right: solid 1px $gray_color;
-  border-bottom: solid 1px $gray_color;
+  border-left: solid 1px $grayish_medium_dark_color;
+  border-right: solid 1px $grayish_medium_dark_color;
+  border-bottom: solid 1px $grayish_medium_dark_color;
   @include border-bottom-radius(4px);
   @include border-bottom-radius(0.4rem);
   position: absolute;
@@ -158,6 +158,6 @@ $header_break_small: 760px;
   }
 
   &:not(:last-child) {
-    border-bottom: solid 1px $gray_color;
+    border-bottom: solid 1px $grayish_medium_dark_color;
   }
 }

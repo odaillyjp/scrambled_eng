@@ -9,7 +9,7 @@ $article-box-padding-size: 12;
   text-align: center;
 }
 
-.article-box__title {
+.article-box__headline {
   @include rem('font-size', 20);
   font-weight: bold;
   @include rem('padding-left', 12);

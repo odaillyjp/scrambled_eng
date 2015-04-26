@@ -1,6 +1,6 @@
 .popup
-  .correct-view
-    %h1.correct-modal__title Congratulations!
+  .correct-modal__inner
+    %h1.correct-modal__headline Congratulations!
     %p.correct-modal__success-message {{message}}
     %footer.correct-modal__footer
       = hb 'if next_challenge_url' do

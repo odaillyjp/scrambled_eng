@@ -1,0 +1,48 @@
+$delete-modal-height: 200;
+$delete-modal-width: 320;
+
+.delete-confirm-modal {
+  @extend .modal;
+
+  .popup {
+    @include rem('margin-left', (-$delete-modal-width / 2));
+    @include rem('margin-top', (-$delete-modal-height / 2));
+    @include rem('width', $delete-modal-width);
+  }
+}
+
+.delete-confirm-modal__inner {
+  @extend .article-box;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.6),0 2px 7px rgba(0,0,0,0.2);
+  @include rem('height', $delete-modal-height);
+}
+
+.delete-confirm-modal__headline {
+  @extend .article-box__headline;
+  border-bottom: solid 1px $grayish_lightest_color;
+  @include rem('padding-bottom', 8);
+}
+
+.delete-confirm-modal__challenge-ja-text {
+  @include rem('font-size', 16);
+  @include rem('height', 60);
+  @include rem('line-height', 20);
+  @include rem('margin', 12);
+  overflow: hidden;
+}
+
+.course-confirm-modal__footer {
+  @extend .article-box__footer;
+  @include rem('width', ($delete-modal-width - 24));
+}
+
+.delete-confirm-modal__delete-button {
+  @extend .btn-m;
+  @include rem('padding', 6);
+  @include rem('margin-bottom', 12);
+}
+
+.delete-confirm-modal__cancel-button {
+  @extend .btn;
+  @include rem('padding', 6);
+}

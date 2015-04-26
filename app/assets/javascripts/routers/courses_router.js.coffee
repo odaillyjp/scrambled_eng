@@ -24,6 +24,8 @@ app.Routers.CoursesRouter = Backbone.Router.extend
       start: _common.add_month(new Date(), (1 - monthRange))
     )
 
+    new app.Views.Challenges.ManagementListView()
+
   indexCourse: (course_id) ->
     # new や edit の場合は処理しない
     return false unless _common.is_number(course_id)

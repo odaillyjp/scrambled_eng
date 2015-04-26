@@ -7,7 +7,7 @@ $information-width: 400;
 }
 
 .information__course-name {
-  @extend .article-box__title;
+  @extend .article-box__headline;
 }
 
 .information__footer {

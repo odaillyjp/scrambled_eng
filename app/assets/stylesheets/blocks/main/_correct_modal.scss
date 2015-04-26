@@ -1,31 +1,25 @@
-.popup {
-  margin: auto;
-  position: absolute;
-  z-index: 100;
+$correct-modal-height: 160;
+$correct-modal-width: 480;
+
+.correct-modal {
+  @extend .modal;
+
+  .popup {
+    @include rem('margin-left', (-$correct-modal-width / 2));
+    @include rem('margin-top', (-$correct-modal-height / 2));
+    @include rem('width', $correct-modal-width);
+  }
 }
 
-.overlay {
-  background: rgba(0,0,0,0.2);
-  position: fixed;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  z-index: 50;
-}
-
-$correct-view-width: 480;
-
-.correct-view {
+.correct-modal__inner {
   @extend .article-box;
   box-shadow: 0 2px 4px rgba(0,0,0,0.6),0 2px 7px rgba(0,0,0,0.2);
-  @include rem('height', 160);
-  @include rem('width', $correct-view-width);
+  @include rem('height', $correct-modal-height);
 }
 
-.correct-modal__title {
-  @extend .article-box__title;
-  border-bottom: 1px solid #B1AFA0;
+.correct-modal__headline {
+  @extend .article-box__headline;
+  border-bottom: solid 1px #B1AFA0;
   @include rem('padding-bottom', 8);
   text-transform: uppercase;
 }
@@ -38,7 +32,7 @@ $correct-view-width: 480;
 
 .correct-modal__footer {
   @extend .article-box__footer;
-  @include rem('width', $correct-view-width);
+  @include rem('width', $correct-modal-width);
 }
 
 .correct-modal__button {

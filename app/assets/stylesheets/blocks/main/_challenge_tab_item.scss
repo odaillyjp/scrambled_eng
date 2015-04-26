@@ -1,5 +1,5 @@
 .challenge-tab-item__link {
-  background: #CCCCCC;
+  background: $grayish_medium_light_color;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   @include rem('font-size', 16);
   cursor: pointer;
@@ -9,7 +9,7 @@
   @include rem('width', 100);
 
   &.is-current {
-    background: #DDDDDD;
+    background: $grayish_lighter_color;
   }
 }
 
