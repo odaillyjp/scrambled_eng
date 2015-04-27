@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
     resources :challenges, param: :sequence_number  do
       post 'resolving', action: 'resolve', on: :member
-      post 'partial_answer', action: 'teach_partial_answer', on: :member
+      post 'mistake', action: 'find_mistake', on: :member
     end
   end
 

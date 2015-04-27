@@ -12,15 +12,8 @@ app.Models.Challenge = Backbone.Model.extend
     ja_text = @get('ja_text')
     "#{ja_text.substr(0, maxLength)}..." if ja_text
 
-  fetchHiddenText: ->
-    @_resolveRawText().done (data) =>
-      if data.correct
-        @set('cloze_text', data.challenge.en_text)
-      else
-        @set('cloze_text', data.mistake.cloze_text)
-
   submitRawText: ->
-    @_resolveRawText().done (data) =>
+    @_findMistake().done (data) =>
       if data.correct
         @set('cloze_text', data.challenge.en_text)
         @trigger('correct', data)
@@ -28,13 +21,13 @@ app.Models.Challenge = Backbone.Model.extend
         @set('cloze_text', data.mistake.cloze_text)
         @trigger('notification', data.mistake.message)
 
+  fetchHiddenText: ->
+    @_findMistake(require_cloze_text: true).done (data) =>
+      @set('cloze_text', data.cloze_text)
+
   fetchPartialAnswer: ->
-    $.ajax("#{@url()}/partial_answer",
-      type: 'POST'
-      dataType: 'json'
-      data: {raw_text: @get('raw_text')}
-    ).done (data) =>
-      if data.mistake
+    @_findMistake(require_partial_answer: true).done (data) =>
+      unless data.correct
         @set('raw_text', data.mistake.partial_answer)
 
   fetchWords: ->
@@ -58,6 +51,15 @@ app.Models.Challenge = Backbone.Model.extend
       type: 'POST'
       dataType: 'json'
       data: {raw_text: @get('raw_text')}
+    )
+
+  _findMistake: (data) ->
+    data = _.extend({raw_text: @get('raw_text')}, data)
+
+    $.ajax("#{@url()}/mistake",
+      type: 'POST'
+      dataType: 'json'
+      data: data
     )
 
 app.Collections.ChallengeCollection = Backbone.Collection.extend
