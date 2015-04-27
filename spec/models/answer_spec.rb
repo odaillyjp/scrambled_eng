@@ -117,12 +117,11 @@ RSpec.describe Answer, type: :model do
         end
 
         it 'hintが最初に誤っている単語を表示された解答を持っていること' do
-          text = 'She sells seashalls on the sxxxxxxx.'
-          expect(answer.hint.answer_text_with_next_word).to eq text
+          expect(answer.hint.answer_text).to eq 'She sells seashalls on the sxxxxxxx.'
         end
 
         it 'hintが最初に誤っている単語を表示されたcloze_textを持っていること' do
-          expect(answer.hint.cloze_text_with_next_word).to eq 'She sells seash_lls __ the s_______.'
+          expect(answer.hint.cloze_text).to eq 'She sells seash_lls __ the s_______.'
         end
 
         it 'mistakeのcloze_textは何も変わらないこと' do
@@ -246,11 +245,11 @@ RSpec.describe Answer, type: :model do
         end
 
         it 'hintが次の単語を解答に加えた文字列を持っていること' do
-          expect(answer.hint.answer_text_with_next_word).to eq 'She sells seashells by'
+          expect(answer.hint.answer_text).to eq 'She sells seashells by'
         end
 
         it 'hintが次の単語をcloze_textに加えた文字列を持っていること' do
-          expect(answer.hint.cloze_text_with_next_word).to eq 'She sells seashells by ___ ________.'
+          expect(answer.hint.cloze_text).to eq 'She sells seashells by ___ ________.'
         end
 
         it 'mistakeのcloze_textは何も変わらないこと' do

@@ -1,14 +1,18 @@
 class Answer
   class Hint
-    attr_accessor :answer_text_with_next_word, :cloze_text_with_next_word, :next_word
+    attr_reader :next_word, :answer_text, :cloze_text
 
     include WordExtractable
 
     def initialize(answer)
       @answer = answer
       @next_word = fetch_next_word
-      @answer_text_with_next_word = fetch_answer_text_with_next_word
-      @cloze_text_with_next_word = fetch_cloze_text_with_next_word
+      @answer_text = fetch_answer_text_with_next_word
+      @cloze_text = fetch_cloze_text_with_next_word
+    end
+
+    def as_json(opts = {})
+      { next_word: next_word, answer_text: answer_text, cloze_text: cloze_text }
     end
 
     private
