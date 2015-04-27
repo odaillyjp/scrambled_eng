@@ -63,6 +63,14 @@ class Answer
           [@answer_text, @mistake.next_word].reject(&:blank?).join(' ')
         end
       end
+
+      cloze_words = scan_word(@mistake.cloze_text)
+      if @mistake.position.present?
+        cloze_words[@mistake.position] = @mistake.next_word
+      else
+        cloze_words[@answer_words.size] = @mistake.next_word
+      end
+      @mistake.cloze_text = @correct_text.gsub(WORD_REGEXP, '%s') % cloze_words
     end
   end
 

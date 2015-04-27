@@ -29,6 +29,7 @@ app.Models.Challenge = Backbone.Model.extend
     @_findMistake(require_partial_answer: true).done (data) =>
       unless data.correct
         @set('raw_text', data.mistake.partial_answer)
+        @set('cloze_text', data.mistake.cloze_text)
 
   fetchWords: ->
     $.ajax(@url(),
