@@ -13,7 +13,7 @@ app.Models.Challenge = Backbone.Model.extend
     "#{ja_text.substr(0, maxLength)}..." if ja_text
 
   submitRawText: ->
-    @_findMistake().done (data) =>
+    @_resolveRawText().done (data) =>
       if data.correct
         @set('cloze_text', data.challenge.en_text)
         @trigger('correct', data)
