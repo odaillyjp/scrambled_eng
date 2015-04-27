@@ -40,12 +40,17 @@ RSpec.describe Answer, type: :model do
         end
       end
 
-      describe '#detect_partial_answer!' do
-        it { expect(answer.detect_partial_answer!).to be_nil }
+      describe '#require_hint!' do
+        it { expect(answer.require_hint!).to be_nil }
 
         it 'MistakeがNullのままであること' do
-          answer.detect_partial_answer!
+          answer.require_hint!
           expect(answer.mistake).to be_nil
+        end
+
+        it 'HintがNullのままであること' do
+          answer.require_hint!
+          expect(answer.hint).to be_nil
         end
       end
 
@@ -104,15 +109,20 @@ RSpec.describe Answer, type: :model do
         end
       end
 
-      describe '#detect_partial_answer!' do
-        before { answer.send(:detect_partial_answer!) }
+      describe '#require_hint!' do
+        before { answer.send(:require_hint!) }
 
-        it 'mistakeが最初に誤っている単語を持っていること' do
-          expect(answer.mistake.next_word).to eq 'sells'
+        it 'hintが最初に誤っている単語を持っていること' do
+          expect(answer.hint.next_word).to eq 'sells'
         end
 
-        it 'mistakeが最初に誤っている単語を表示された解答を持っていること' do
-          expect(answer.mistake.partial_answer).to eq 'She sells seashalls on the sxxxxxxx.'
+        it 'hintが最初に誤っている単語を表示された解答を持っていること' do
+          text = 'She sells seashalls on the sxxxxxxx.'
+          expect(answer.hint.answer_text_with_next_word).to eq text
+        end
+
+        it 'hintが最初に誤っている単語を表示されたcloze_textを持っていること' do
+          expect(answer.hint.cloze_text_with_next_word).to eq 'She sells seash_lls __ the s_______.'
         end
 
         it 'mistakeのcloze_textは何も変わらないこと' do
@@ -228,15 +238,19 @@ RSpec.describe Answer, type: :model do
     context '解答の単語が少な過ぎるとき' do
       let(:answer) { challenge.build_answer('She sells seashells') }
 
-      describe '#detect_partial_answer!' do
-        before { answer.send(:detect_partial_answer!) }
+      describe '#require_hint!' do
+        before { answer.require_hint! }
 
-        it 'mistakeが次の単語を持っていること' do
-          expect(answer.mistake.next_word).to eq 'by'
+        it 'hintが次の単語を持っていること' do
+          expect(answer.hint.next_word).to eq 'by'
         end
 
-        it 'mistakeが次の単語を加えた文字列を持っていること' do
-          expect(answer.mistake.partial_answer).to eq 'She sells seashells by'
+        it 'hintが次の単語を解答に加えた文字列を持っていること' do
+          expect(answer.hint.answer_text_with_next_word).to eq 'She sells seashells by'
+        end
+
+        it 'hintが次の単語をcloze_textに加えた文字列を持っていること' do
+          expect(answer.hint.cloze_text_with_next_word).to eq 'She sells seashells by ___ ________.'
         end
 
         it 'mistakeのcloze_textは何も変わらないこと' do

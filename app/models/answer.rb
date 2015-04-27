@@ -1,11 +1,12 @@
 class Answer
-  attr_reader :checked, :mistake
+  attr_reader :correct_text, :correct_words, :answer_text, :answer_words, :checked, :mistake, :hint
   alias_method :checked?, :checked
 
   include ActiveSupport::Callbacks
   include WordExtractable
 
-  define_callbacks :before_check
+  define_callbacks :after_checking, :before_check
+  set_callback :after_checking, :after, -> { @checked = true }
   set_callback :before_check, :before, :check!, unless: :checked?
 
   def initialize(base, correct_text, answer_text)
@@ -16,6 +17,7 @@ class Answer
     @answer_words = scan_word(answer_text)
     @checked = false
     @mistake = nil
+    @hint = nil
   end
 
   def correct?
@@ -25,19 +27,19 @@ class Answer
   end
 
   def check!
-    result = if correct?
-               true
-             else
-               if @correct_words.size > 1
-                 detect_mistake_of_text
-               else
-                 detect_mistake_of_word
-               end
-               false
-             end
+    run_callbacks :after_checking do
+      if correct?
+        true
+      else
+        if @correct_words.size > 1
+          detect_mistake_of_text
+        else
+          detect_mistake_of_word
+        end
 
-    @checked = true
-    result
+        false
+      end
+    end
   end
 
   def fetch_cloze_text!
@@ -46,38 +48,16 @@ class Answer
     end
   end
 
-  def detect_partial_answer!
+  def require_hint!
     return nil if correct?
-
-    run_callbacks :before_check do
-      @mistake.partial_answer = begin
-        if @mistake.position.present?
-          # 文の途中に誤りがある場合は、誤りがあった単語の位置に正しい単語を入れる
-          @mistake.next_word = @correct_words[@mistake.position]
-          replaced_words = @answer_words.clone
-          replaced_words[@mistake.position] = @mistake.next_word
-          @answer_text.gsub(WORD_REGEXP, '%s') % replaced_words
-        else
-          # 文の途中に誤りがない場合は、次の正しい単語を加える
-          @mistake.next_word = @correct_words[@answer_words.size]
-          [@answer_text, @mistake.next_word].reject(&:blank?).join(' ')
-        end
-      end
-
-      cloze_words = scan_word(@mistake.cloze_text)
-      if @mistake.position.present?
-        cloze_words[@mistake.position] = @mistake.next_word
-      else
-        cloze_words[@answer_words.size] = @mistake.next_word
-      end
-      @mistake.cloze_text = @correct_text.gsub(WORD_REGEXP, '%s') % cloze_words
-    end
+    run_callbacks(:before_check) { @hint = Answer::Hint.new(self) }
+    @hint
   end
 
   private
 
   def detect_mistake_of_text
-    @mistake = Mistake.new
+    @mistake = Answer::Mistake.new
     ziped_words = @correct_words.zip(@answer_words)
 
     result_words = ziped_words.map.with_index do |(correct_word, answer_word), idx|
@@ -99,7 +79,8 @@ class Answer
   end
 
   def detect_mistake_of_word
-    @mistake = Mistake.new
+    @mistake = Answer::Mistake.new
+
     # 解答の単語が空文字の場合は、全ての文字をブランク文字に置換した単語を返す
     if @answer_text.blank?
       @mistake.cloze_text = @correct_text.gsub(/./, CLOZE_MARK)
@@ -153,18 +134,5 @@ class Answer
     end
 
     replaced_chars.join
-  end
-
-  # 誤り情報を扱うオブジェクト
-  class Mistake
-    attr_accessor :cloze_text, :message, :position, :next_word, :partial_answer
-
-    def initialize
-      @cloze_text = nil
-      @message = nil
-      @position = nil
-      @next_word = nil
-      @partial_answer = nil
-    end
   end
 end
