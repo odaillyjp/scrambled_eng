@@ -4,9 +4,7 @@ app.Models ?= {}
 app.Models.Challenge = Backbone.Model.extend
   initialize: ->
     Backbone.Select.Me.applyTo(@)
-    @listenTo @, 'change:raw_text', _.debounce =>
-      @fetchHiddenText()
-    , 300
+    @_defineChangeRawTextEvent()
 
   textToLead: (maxLength = 8) ->
     ja_text = @get('ja_text')
@@ -28,8 +26,10 @@ app.Models.Challenge = Backbone.Model.extend
   fetchPartialAnswer: ->
     @_findMistake(require_hint: true).done (data) =>
       unless data.correct
+        @stopListening(@, 'change:raw_text')
         @set('raw_text', data.hint.answer_text)
         @set('cloze_text', data.hint.cloze_text)
+        @_defineChangeRawTextEvent()
 
   fetchWords: ->
     $.ajax(@url(),
@@ -46,6 +46,11 @@ app.Models.Challenge = Backbone.Model.extend
       data: {require_correct_text: true}
     ).done (data) =>
       @set('correct_text', data.correct_text)
+
+  _defineChangeRawTextEvent: ->
+    @listenTo @, 'change:raw_text', _.debounce =>
+      @fetchHiddenText()
+    , 300
 
   _resolveRawText: ->
     $.ajax("#{@url()}/resolving",
