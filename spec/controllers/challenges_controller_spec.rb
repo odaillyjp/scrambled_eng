@@ -39,16 +39,6 @@ RSpec.describe ChallengesController, type: :controller do
     it_behaves_like '#fetch_challenge'
   end
 
-  describe 'GET #new' do
-    before do
-      get :new, course_id: challenge.course
-    end
-
-    it 'returns http success' do
-      expect(response).to have_http_status(:success)
-    end
-  end
-
   describe 'POST #resolve' do
     context 'テキストに誤りがあるリクエストだったとき' do
       before do
@@ -85,9 +75,9 @@ RSpec.describe ChallengesController, type: :controller do
     end
   end
 
-  describe 'POST #teach_partial_answer' do
+  describe 'POST #find_mistake' do
     before do
-      post :teach_partial_answer,
+      post :find_mistake,
         course_id: challenge.course,
         sequence_number: challenge,
         raw_text: 'foo'

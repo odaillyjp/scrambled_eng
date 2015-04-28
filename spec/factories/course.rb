@@ -4,7 +4,7 @@ FactoryGirl.define do
     description Faker::Lorem.sentence
     level       1
     user
-    state       :secret
+    state       :overtness
     updatable   false
   end
 end
