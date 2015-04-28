@@ -1,6 +1,6 @@
 .lp-header {
   background: $main_medium_color;
-  @include rem('padding-bottom', 50);
+  @include rem('padding-bottom', 30);
   @include rem('padding-left', 16);
   @include rem('padding-right', 16);
   @include rem('padding-top', 40);
@@ -104,4 +104,16 @@
   @extend .btn-m;
   background: $sub_medium_color;
   @include rem('margin-top', 24);
+}
+
+.lp-header__note {
+  color: $main_high_light_color;
+  @include rem('font-size', 14);
+  font-weight: bold;
+  @include rem('margin-top', 20);
+  text-align: center;
+
+  span {
+    color: $sub_low_light_color;
+  }
 }
