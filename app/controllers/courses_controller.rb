@@ -23,7 +23,7 @@ class CoursesController < ApplicationController
 
     if @course.save
       flash[:notice] = I18n.t('activerecord.notices.models.course.create')
-      redirect_to :manage
+      redirect_to management_course_path(@course)
     else
       render action: 'new'
     end
