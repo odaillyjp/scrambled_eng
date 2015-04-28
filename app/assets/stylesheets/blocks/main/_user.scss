@@ -35,6 +35,10 @@
   @extend .user__headline;
 }
 
+.user__manageable-course {
+  @include rem('margin-bottom', 20);
+}
+
 .user__manageable-course-headline {
   @extend .user__headline;
 }

@@ -27,3 +27,6 @@
     - @manageable_courses.each do |course|
       .user__manageable-course-name
         = link_to course.name, course_path(course), class: 'user__manageable-course-link'
+
+  - if @user == current_user
+    = link_to 'アカウントを削除する', '', class: 'user__delete-user-link'

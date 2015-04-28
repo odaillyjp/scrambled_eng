@@ -25,3 +25,8 @@ app.Routers.UsersRouter = Backbone.Router.extend
       legend: [4, 8, 12, 16, 20],
       start: _common.add_month(new Date(), (1 - monthRange))
     )
+
+    $(document).on 'click', '.user__delete-user-link', ->
+      deleteConfirmModalView = new app.Views.Users.DeleteConfirmModalView(user_id: user_id)
+      $('.user').append(deleteConfirmModalView.render().el)
+      false

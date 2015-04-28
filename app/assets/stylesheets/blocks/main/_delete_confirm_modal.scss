@@ -31,6 +31,17 @@ $delete-modal-width: 320;
   overflow: hidden;
 }
 
+.delete-confirm-modal__notification-list {
+  @include rem('height', 60);
+  @include rem('margin', 12);
+}
+
+.delete-confirm-modal__notification-item {
+  @include rem('font-size', 14);
+  @include rem('line-height', 20);
+  text-align: left;
+}
+
 .course-confirm-modal__footer {
   @extend .article-box__footer;
   @include rem('width', ($delete-modal-width - 24));

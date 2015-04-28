@@ -1,0 +1,18 @@
+.popup
+  .delete-confirm-modal__inner
+    %h1.delete-confirm-modal__headline
+      ユーザーを削除します
+    %ul.delete-confirm-modal__notification-list
+      %li.delete-confirm-modal__notification-item
+        あなたが作成した問題も削除されます。
+      %li.delete-confirm-modal__notification-item
+        削除したユーザーの情報を復活させることはできません。
+    %footer.course-confirm-modal__footer
+      .delete-confirm-modal__button-group
+        %a.delete-confirm-modal__delete-button{ href: "/users/{{user_id}}", 'data-method' => :delete }
+          削除
+        %a.delete-confirm-modal__cancel-button
+          キャンセル
+      .clearfix
+
+.overlay

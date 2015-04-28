@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: %i(show)
+  resources :users, only: %i(show destroy)
 
   get 'histories/heatmap', to: 'histories#heatmap'
 
