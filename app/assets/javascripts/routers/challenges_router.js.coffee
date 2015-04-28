@@ -31,3 +31,4 @@ app.Routers.ChallengesRouter = Backbone.Router.extend
     @challenges.select(@challenge)
     challengeView = new app.Views.Challenges.ChallengeView(model: @challenge)
     @layout.setMainView(challengeView)
+    challengeView.setFocus()

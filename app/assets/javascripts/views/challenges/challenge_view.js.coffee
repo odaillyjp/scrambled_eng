@@ -30,6 +30,9 @@ app.Views.Challenges.ChallengeView = Backbone.View.extend
     @stickit()
     @
 
+  setFocus: ->
+    @$('.editer-panel__raw-textarea').focus()
+
   renderClozeTextPanel: ->
     @$('.challenge-tab-item__hints-link').removeClass('is-current')
     @$('.challenge-tab-item__cloze-text-link').addClass('is-current')
