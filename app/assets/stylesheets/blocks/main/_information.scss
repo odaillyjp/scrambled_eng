@@ -10,6 +10,11 @@ $information-width: 400;
   @extend .article-box__headline;
 }
 
+.information__course_description {
+  @include rem('margin-top', 20);
+  @include rem('font-size', 16);
+}
+
 .information__footer {
   @extend .article-box__footer;
   @include rem('width', $information-width);
