@@ -19,6 +19,7 @@ app.Views.Challenges.InformationView = Backbone.View.extend
     firstChallenge = @collection.first()
     _.extend(context, firstChallengeUrl: firstChallenge.get('url'))
     _.extend(context, courseName: firstChallenge.get('course_name'))
+    _.extend(context, courseDescription: firstChallenge.get('course_description'))
     @$el.html(@template(context))
     @
 
