@@ -25,5 +25,5 @@
     %h1.user__manageable-course-headline
       = t('views.users.show.manageable_courses')
     - @manageable_courses.each do |course|
-      .user__manageable-course-headline
+      .user__manageable-course-name
         = link_to course.name, course_path(course), class: 'user__manageable-course-link'

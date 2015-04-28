@@ -11,14 +11,30 @@
   @include rem('padding', 8);
 }
 
-.user__profile-headline {
-  display: inline;
+.user__headline {
   color: $main_high_dark_color;
   @include rem('font-size', 18);
   font-weight: bold;
 }
 
+.user__profile-headline {
+  display: inline;
+  @extend .user__headline;
+}
+
 .user__heatmap-box {
   @include rem('margin-top', 10);
   @include rem('margin-bottom', 10);
+}
+
+.user__recently-played {
+  @include rem('margin-bottom', 20);
+}
+
+.user__recently-played-headline {
+  @extend .user__headline;
+}
+
+.user__manageable-course-headline {
+  @extend .user__headline;
 }
