@@ -16,9 +16,8 @@
   %section.user__recently-played
     %h1.user__recently-played-headline
       = t('views.users.show.recently_played')
-    - @recently_histories.each do |history|
+    - @recently_played_courses.each do |course|
       .user__recently-played-course-name
-        - course = history.challenge.course
         = link_to course.name, course_path(course), class: 'user__recently-played-course-link'
 
   %section.user__manageable-course

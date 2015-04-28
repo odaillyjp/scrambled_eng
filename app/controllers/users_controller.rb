@@ -3,11 +3,10 @@ class UsersController < ApplicationController
   before_action :check_forbidden, only: %i(destroy)
 
   def show
-    @recently_histories = History.where(user: @user)
-                            .joins(:challenge)
-                            .includes(challenge: :course)
-                            .group('challenges.course_id')
-                            .limit(5)
+    @recently_played_courses = Course.joins(:challenges)
+                                 .joins(challenges: :histories)
+                                 .where('histories.user_id = ?', @user)
+                                 .limit(5)
     @manageable_courses = Course.where(user: @user)
   end
 
