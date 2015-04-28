@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :courses
-  has_many :challenges
+  has_many :courses, dependent: :destroy
+  has_many :challenges, dependent: :destroy
   has_many :histories
 
   validates :uid, presence: true, uniqueness: { scope: :provider }

@@ -14,7 +14,7 @@
 #
 
 class Course < ActiveRecord::Base
-  has_many :challenges
+  has_many :challenges, dependent: :destroy
   belongs_to :user
 
   validates :name, presence: true, length: { maximum: 40 }
