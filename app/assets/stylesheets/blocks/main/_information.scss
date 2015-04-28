@@ -11,8 +11,12 @@ $information-width: 400;
 }
 
 .information__course_description {
+  @include rem('font-size', 14);
+  @include rem('line-height', 20);
   @include rem('margin-top', 20);
-  @include rem('font-size', 16);
+  @include rem('margin-left', 10);
+  @include rem('margin-right', 10);
+  text-align: left;
 }
 
 .information__footer {
