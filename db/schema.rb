@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150426063657) do
+ActiveRecord::Schema.define(version: 20150503062207) do
 
   create_table "challenges", force: :cascade do |t|
     t.text     "en_text",         null: false
@@ -43,12 +43,15 @@ ActiveRecord::Schema.define(version: 20150426063657) do
 
   create_table "histories", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "challenge_id", null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "challenge_id",              null: false
+    t.integer  "unix_timestamp", limit: 10, null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   add_index "histories", ["challenge_id"], name: "index_histories_on_challenge_id"
+  add_index "histories", ["unix_timestamp", "challenge_id"], name: "index_histories_on_unix_timestamp_and_challenge_id"
+  add_index "histories", ["unix_timestamp", "user_id"], name: "index_histories_on_unix_timestamp_and_user_id"
   add_index "histories", ["user_id"], name: "index_histories_on_user_id"
 
   create_table "users", force: :cascade do |t|
