@@ -130,7 +130,7 @@ class ChallengesController < ApplicationController
   def create_history!
     @history = if user_sign_in?
                  # ユーザー1人あたり、1つの問題につき1日1回しか履歴を作らない
-                 History.where('updated_at >= ?', Time.current.beginning_of_day)
+                 History.where('created_at >= ?', Time.current.beginning_of_day)
                    .find_or_initialize_by(user: current_user, challenge: @challenge)
                else
                  # ログインしていないユーザーの場合、何度でも新しい履歴を作れる
