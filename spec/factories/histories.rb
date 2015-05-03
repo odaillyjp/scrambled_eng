@@ -14,6 +14,5 @@ FactoryGirl.define do
   factory :history do
     user
     challenge
-    unix_timestamp Time.now.beginning_of_day.to_i
   end
 end
