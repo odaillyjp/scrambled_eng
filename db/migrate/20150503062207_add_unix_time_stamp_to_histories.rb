@@ -1,6 +1,7 @@
 class AddUnixTimeStampToHistories < ActiveRecord::Migration
   def up
-    add_column :histories, :unix_timestamp, :integer, limit: 10, after: :challenge_id
+    # PostgreSQLのintegerにlimitを指定するとエラーとなるので、とりあえずlimit指定は無しにする
+    add_column :histories, :unix_timestamp, :integer, after: :challenge_id
     add_index :histories, [:unix_timestamp, :user_id]
     add_index :histories, [:unix_timestamp, :challenge_id]
 
