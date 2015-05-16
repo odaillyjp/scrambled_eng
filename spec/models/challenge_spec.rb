@@ -28,6 +28,9 @@ RSpec.describe Challenge, type: :model do
   it { is_expected.to validate_uniqueness_of(:sequence_number).scoped_to(:course_id) }
   it { is_expected.to respond_to(:to_key) }
   it { is_expected.to respond_to(:to_param) }
+  it { is_expected.to respond_to(:course_name) }
+  it { is_expected.to respond_to(:course_description) }
+  it { is_expected.to respond_to(:course_level) }
 
   describe '#cloze_text' do
     it '区切り文字以外の全ての文字をブランク文字に置換した文字列を返すこと' do

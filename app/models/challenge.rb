@@ -23,6 +23,8 @@ class Challenge < ActiveRecord::Base
   validates :sequence_number, presence: true, uniqueness: { scope: :course_id }
   validates :user_id, presence: true
 
+  delegate :name, :description, :level, to: :course, prefix: :course
+
   include WordExtractable
   include OrderQuery
   order_query :order_course, [:sequence_number, :asc]
