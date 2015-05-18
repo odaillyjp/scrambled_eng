@@ -44,9 +44,9 @@ ActiveRecord::Schema.define(version: 20150503062207) do
   create_table "histories", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "challenge_id",   null: false
-    t.integer  "unix_timestamp", null: false
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "unix_timestamp", null: false
   end
 
   add_index "histories", ["challenge_id"], name: "index_histories_on_challenge_id"
