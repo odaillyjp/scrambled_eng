@@ -17,7 +17,6 @@ class Answer
     @answer_words = scan_word(answer_text)
     @checked = false
     @mistake = nil
-    @hint = nil
   end
 
   def correct?
@@ -50,8 +49,7 @@ class Answer
 
   def require_hint!
     return nil if correct?
-    run_callbacks(:before_check) { @hint = Answer::Hint.new(self) }
-    @hint
+    run_callbacks(:before_check) { Answer::Hint.new(self) }
   end
 
   private

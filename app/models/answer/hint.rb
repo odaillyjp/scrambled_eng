@@ -11,10 +11,6 @@ class Answer
       @cloze_text = fetch_cloze_text_with_next_word
     end
 
-    def as_json(opts = {})
-      { next_word: next_word, answer_text: answer_text, cloze_text: cloze_text }
-    end
-
     private
 
     def fetch_next_word

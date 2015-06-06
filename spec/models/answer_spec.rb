@@ -110,18 +110,19 @@ RSpec.describe Answer, type: :model do
       end
 
       describe '#require_hint!' do
-        before { answer.send(:require_hint!) }
+        before { answer.check! }
+        subject { answer.require_hint! }
 
-        it 'hintが最初に誤っている単語を持っていること' do
-          expect(answer.hint.next_word).to eq 'sells'
+        it '直近で誤っている単語を持つヒントが返ってくること' do
+          expect(subject.next_word).to eq 'sells'
         end
 
-        it 'hintが最初に誤っている単語を表示された解答を持っていること' do
-          expect(answer.hint.answer_text).to eq 'She sells seashalls on the sxxxxxxx.'
+        it '直近で誤っている単語を表示させたヒントが返ってくること' do
+          expect(subject.answer_text).to eq 'She sells seashalls on the sxxxxxxx.'
         end
 
-        it 'hintが最初に誤っている単語を表示されたcloze_textを持っていること' do
-          expect(answer.hint.cloze_text).to eq 'She sells seash_lls __ the s_______.'
+        it '直近で誤っている単語を表示させたcloze_textを持つヒントが返ってくるk' do
+          expect(subject.cloze_text).to eq 'She sells seash_lls __ the s_______.'
         end
 
         it 'mistakeのcloze_textは何も変わらないこと' do
@@ -238,18 +239,19 @@ RSpec.describe Answer, type: :model do
       let(:answer) { challenge.build_answer('She sells seashells') }
 
       describe '#require_hint!' do
-        before { answer.require_hint! }
+        before { answer.check! }
+        subject { answer.require_hint! }
 
-        it 'hintが次の単語を持っていること' do
-          expect(answer.hint.next_word).to eq 'by'
+        it '次の単語を持つヒントが返ってくること' do
+          expect(subject.next_word).to eq 'by'
         end
 
-        it 'hintが次の単語を解答に加えた文字列を持っていること' do
-          expect(answer.hint.answer_text).to eq 'She sells seashells by'
+        it '次の単語に解答を加えたヒントが返ってくること' do
+          expect(subject.answer_text).to eq 'She sells seashells by'
         end
 
-        it 'hintが次の単語をcloze_textに加えた文字列を持っていること' do
-          expect(answer.hint.cloze_text).to eq 'She sells seashells by ___ ________.'
+        it '次の単語にcloze_textを加えたヒントが返ってくること' do
+          expect(subject.cloze_text).to eq 'She sells seashells by ___ ________.'
         end
 
         it 'mistakeのcloze_textは何も変わらないこと' do
