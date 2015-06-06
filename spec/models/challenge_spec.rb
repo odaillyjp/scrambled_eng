@@ -1,17 +1,3 @@
-# == Schema Information
-#
-# Table name: challenges
-#
-#  id              :integer          not null, primary key
-#  en_text         :text             not null
-#  ja_text         :text             not null
-#  course_id       :integer          not null
-#  sequence_number :integer          not null
-#  user_id         :integer          not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#
-
 require 'rails_helper'
 
 RSpec.describe Challenge, type: :model do
