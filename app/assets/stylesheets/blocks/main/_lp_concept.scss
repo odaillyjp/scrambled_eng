@@ -23,7 +23,7 @@
 .lp-concept__list {
   margin-left: auto;
   margin-right: auto;
-  @include rem('width', 700);
+  @include rem('width', 720);
 
   @media screen and (max-width: $lp_break_small) {
     width: 100%;
