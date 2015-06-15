@@ -5,3 +5,4 @@
 !/log/.keep
 /tmp
 /vendor/bundle
+/coverage
