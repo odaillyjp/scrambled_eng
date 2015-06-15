@@ -3,6 +3,7 @@
 まだ作り途中なんです:sweat_drops:
 
 ![CircleCI badge](https://circleci.com/gh/odaillyjp/scrambled_eng.svg?style=shield&circle-token=80b0afb87b9d64dbf2f3f303215e244e349d4211)
+[![Coverage Status](https://coveralls.io/repos/odaillyjp/scrambled_eng/badge.svg?branch=master)](https://coveralls.io/r/odaillyjp/scrambled_eng?branch=master)
 
 # 概要
 
