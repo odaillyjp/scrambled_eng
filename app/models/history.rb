@@ -10,7 +10,7 @@ class History < ActiveRecord::Base
 
   def create_with_unix_timestamp
     if unix_timestamp.nil?
-      current_day_unix_time = current_time_from_proper_timezone.beginning_of_day.to_i
+      current_day_unix_time = Time.current.beginning_of_day.to_i
       write_attribute(:unix_timestamp, current_day_unix_time)
     end
   end
