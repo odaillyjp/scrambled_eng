@@ -2,6 +2,8 @@
 
 まだ作り途中なんです:sweat_drops:
 
+![CircleCI badge](https://circleci.com/gh/odaillyjp/scrambled_eng.svg?style=shield&circle-token=80b0afb87b9d64dbf2f3f303215e244e349d4211)
+
 # 概要
 
 Scrambled Eng は、好きなフレーズを使って英語を学習できるアプリです。あなたが登録したフレーズを元に、穴埋め問題を作成します。
