@@ -47,7 +47,7 @@ class Answer
     end
   end
 
-  def require_hint!
+  def correct_hint!
     return nil if correct?
     run_callbacks(:before_check) { Answer::Hint.new(self) }
   end

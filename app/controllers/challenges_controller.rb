@@ -83,7 +83,7 @@ class ChallengesController < ApplicationController
     result[:correct] = @answer.correct?
     result[:mistake] = @answer.mistake
     result[:cloze_text] = @answer.fetch_cloze_text! if params[:require_cloze_text]
-    result[:hint] = @answer.require_hint! if params[:require_hint]
+    result[:hint] = @answer.collect_hint! if params[:require_hint]
 
     render json: result
   end

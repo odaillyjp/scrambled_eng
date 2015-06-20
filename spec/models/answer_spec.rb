@@ -40,16 +40,16 @@ RSpec.describe Answer, type: :model do
         end
       end
 
-      describe '#require_hint!' do
-        it { expect(answer.require_hint!).to be_nil }
+      describe '#correct_hint!' do
+        it { expect(answer.correct_hint!).to be_nil }
 
         it 'MistakeがNullのままであること' do
-          answer.require_hint!
+          answer.correct_hint!
           expect(answer.mistake).to be_nil
         end
 
         it 'HintがNullのままであること' do
-          answer.require_hint!
+          answer.correct_hint!
           expect(answer.hint).to be_nil
         end
       end
@@ -109,9 +109,9 @@ RSpec.describe Answer, type: :model do
         end
       end
 
-      describe '#require_hint!' do
+      describe '#correct_hint!' do
         before { answer.check! }
-        subject { answer.require_hint! }
+        subject { answer.correct_hint! }
 
         it '直近で誤っている単語を持つヒントが返ってくること' do
           expect(subject.next_word).to eq 'sells'
@@ -238,9 +238,9 @@ RSpec.describe Answer, type: :model do
     context '解答の単語が少な過ぎるとき' do
       let(:answer) { challenge.build_answer('She sells seashells') }
 
-      describe '#require_hint!' do
+      describe '#correct_hint!' do
         before { answer.check! }
-        subject { answer.require_hint! }
+        subject { answer.correct_hint! }
 
         it '次の単語を持つヒントが返ってくること' do
           expect(subject.next_word).to eq 'by'
