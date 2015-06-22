@@ -49,13 +49,13 @@ class AnswerChecker::Text
 
   def correct_hint!
     return nil if correct?
-    run_callbacks(:before_check) { Answer::Hint.new(self) }
+    run_callbacks(:before_check) { AnswerChecker::Models::Hint.new(self) }
   end
 
   private
 
   def detect_mistake_of_text
-    @mistake = Answer::Mistake.new
+    @mistake = AnswerChecker::Models::Mistake.new
     ziped_words = @correct_words.zip(@answer_words)
 
     result_words = ziped_words.map.with_index do |(correct_word, answer_word), idx|
@@ -77,7 +77,7 @@ class AnswerChecker::Text
   end
 
   def detect_mistake_of_word
-    @mistake = Answer::Mistake.new
+    @mistake = AnswerChecker::Models::Mistake.new
 
     # 解答の単語が空文字の場合は、全ての文字をブランク文字に置換した単語を返す
     if @answer_text.blank?

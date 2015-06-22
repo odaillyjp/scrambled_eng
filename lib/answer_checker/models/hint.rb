@@ -1,4 +1,4 @@
-module Answer
+module AnswerChecker::Models
   class Hint
     attr_reader :next_word, :answer_text, :cloze_text
 

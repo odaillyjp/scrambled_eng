@@ -1,4 +1,4 @@
-module Answer
+module AnswerChecker::Models
   class Mistake
     attr_accessor :cloze_text, :message, :position
 
