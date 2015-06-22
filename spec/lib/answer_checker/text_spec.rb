@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe AnswerChecker, type: :model do
+RSpec.describe AnswerChecker::Text do
   context '問題が文章のとき' do
     let(:challenge) { build(:challenge) }
 
