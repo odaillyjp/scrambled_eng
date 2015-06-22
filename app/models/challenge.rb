@@ -27,7 +27,7 @@ class Challenge < ActiveRecord::Base
   end
 
   def build_answer(answer_text)
-    Answer.new(self, en_text, answer_text)
+    AnswerChecker.new(self, en_text, answer_text)
   end
 
   def to_key

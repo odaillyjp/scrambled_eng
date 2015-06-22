@@ -1,4 +1,4 @@
-class Answer
+class AnswerChecker
   attr_reader :correct_text, :correct_words, :answer_text, :answer_words, :checked, :mistake, :hint
   alias_method :checked?, :checked
 
@@ -60,7 +60,7 @@ class Answer
 
     result_words = ziped_words.map.with_index do |(correct_word, answer_word), idx|
       answer_word = '' if answer_word.blank?
-      answer = Answer.new(@base, correct_word, answer_word)
+      answer = AnswerChecker.new(@base, correct_word, answer_word)
 
       next correct_word if answer.check!
 

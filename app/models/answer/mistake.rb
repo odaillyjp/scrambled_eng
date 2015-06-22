@@ -1,4 +1,4 @@
-class Answer
+module Answer
   class Mistake
     attr_accessor :cloze_text, :message, :position
 
