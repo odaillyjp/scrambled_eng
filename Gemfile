@@ -26,7 +26,7 @@ source 'https://rubygems.org' do
   group :development, :test do
     gem 'coveralls', require: false
     gem 'factory_girl_rails'
-    gem 'faker'
+    gem 'ffaker'
     gem 'pry-rails'
     gem 'pry-doc'
     gem 'pry-byebug'

@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :course do
-    name        Faker::Lorem.word
-    description Faker::Lorem.sentence
+    name        FFaker::Lorem.word
+    description FFaker::Lorem.sentence
     level       1
     user
     state       :overtness
