@@ -34,7 +34,7 @@ app.Routers.CoursesRouter = Backbone.Router.extend
       @__fetchChallenges(course_id)
       @__renderSidebarView(course_id)
     informationView = new app.Views.Challenges.InformationView(collection: @challenges)
-    @layout.setMainView(informationView)
+    @layout.setViewToMainContainer(informationView)
 
   __fetchChallenges: (course_id) ->
     @challenges = new app.Collections.ChallengeCollection(course_id)
@@ -42,4 +42,4 @@ app.Routers.CoursesRouter = Backbone.Router.extend
 
   __renderSidebarView: (course_id) ->
     sidebarView = new app.Views.Challenges.SidebarView(collection: @challenges)
-    @layout.setSidebarView(sidebarView)
+    @layout.setViewToSidebarContainer(sidebarView)

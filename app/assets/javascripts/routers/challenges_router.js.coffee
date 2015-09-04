@@ -24,11 +24,11 @@ app.Routers.ChallengesRouter = Backbone.Router.extend
 
   __renderSidebarView: (course_id) ->
     sidebarView = new app.Views.Challenges.SidebarView(collection: @challenges)
-    @layout.setSidebarView(sidebarView)
+    @layout.setViewToSidebarContainer(sidebarView)
 
   __renderChallengeView: (challenge_id) ->
     @challenge = @challenges.get(challenge_id)
     @challenges.select(@challenge)
     challengeView = new app.Views.Challenges.ChallengeView(model: @challenge)
-    @layout.setMainView(challengeView)
+    @layout.setViewToMainContainer(challengeView)
     challengeView.setFocus()

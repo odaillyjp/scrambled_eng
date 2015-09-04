@@ -2,18 +2,23 @@ app = @ScrambledEng
 app.Views ?= {}
 
 app.Views.LayoutView = Backbone.View.extend
-  mainViewContainer: '#main-container'
-  sidebarViewContainer: '#sidebar-container'
+  mainSelector: '#main'
+  mainContainerSelector: '#main-container'
+  sidebarContainerSelector: '#sidebar-container'
   currentMainView: null
+  currentMainContainerView: null
   currentSidebarView: null
 
-  setMainView: (mainView) ->
-    @_setView(@mainViewContainer, 'currentMainView', mainView)
+  setViewToMain: (view) ->
+    @_set(@mainSelector, 'currentMainView', view)
 
-  setSidebarView: (sidebarView) ->
-    @_setView(@sidebarViewContainer, 'currentSidebarView', sidebarView)
+  setViewToMainContainer: (view) ->
+    @_setView(@mainContainerSelector, 'currentMainContainerView', view)
 
-  _setView: (viewContainer, currentView, view) ->
-    @[currentView].remove() if @[currentView]
-    @[currentView] = view
-    @$(viewContainer).html(view.render().el)
+  setViewToSidebarContainer: (view) ->
+    @_setView(@sidebarContainerSelector, 'currentSidebarContainerView', view)
+
+  _setView: (selector, memorizationId, view) ->
+    @[memorizationId].remove() if @[memorizationId]
+    @[memorizationId] = view
+    @$(selector).html(view.render().el)
