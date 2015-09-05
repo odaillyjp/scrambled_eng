@@ -4,7 +4,7 @@ app.Routers ?= {}
 app.Routers.CoursesRouter = Backbone.Router.extend
   routes:
     'courses/:course_id/management': 'manageCourse'
-    'courses/:course_id': 'indexCourse'
+    'courses/:course_id': 'showCourse'
 
   initialize: (@layout, @challenges) ->
 
@@ -26,7 +26,7 @@ app.Routers.CoursesRouter = Backbone.Router.extend
 
     new app.Views.Challenges.ManagementListView()
 
-  indexCourse: (course_id) ->
+  showCourse: (course_id) ->
     # new や edit の場合は処理しない
     return false unless _common.is_number(course_id)
 
