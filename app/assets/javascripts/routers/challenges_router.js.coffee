@@ -17,6 +17,7 @@ app.Routers.ChallengesRouter = Backbone.Router.extend
       @__fetchChallenges(course_id).success =>
         @__renderSidebarView(course_id)
         @__renderChallengeView(challenge_id)
+        $('#splash').fadeOut(500)
 
   __fetchChallenges: (course_id) ->
     @challenges = new app.Collections.ChallengeCollection(course_id)

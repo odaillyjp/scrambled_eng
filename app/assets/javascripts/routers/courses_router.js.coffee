@@ -7,8 +7,6 @@ app.Routers.CoursesRouter = Backbone.Router.extend
     'courses/:course_id': 'indexCourse'
 
   initialize: (@layout, @challenges) ->
-    $(window).load ->
-      $('#splash').fadeOut(500)
 
   manageCourse: (course_id) ->
     monthRange = 3
@@ -33,8 +31,9 @@ app.Routers.CoursesRouter = Backbone.Router.extend
     return false unless _common.is_number(course_id)
 
     unless @challenges
-      @__fetchChallenges(course_id)
-      @__renderSidebarView(course_id)
+      @__fetchChallenges(course_id).success =>
+        @__renderSidebarView(course_id)
+        $('#splash').fadeOut(500)
     informationView = new app.Views.Challenges.InformationView(collection: @challenges)
     @layout.setViewToMainContainer(informationView)
 
