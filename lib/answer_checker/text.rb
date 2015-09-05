@@ -47,7 +47,7 @@ class AnswerChecker::Text
     end
   end
 
-  def correct_hint!
+  def collect_hint!
     return nil if correct?
     run_callbacks(:before_check) { AnswerChecker::Models::Hint.new(self) }
   end
