@@ -7,6 +7,8 @@ app.Routers.CoursesRouter = Backbone.Router.extend
     'courses/:course_id': 'indexCourse'
 
   initialize: (@layout, @challenges) ->
+    $(window).load ->
+      $('#splash').fadeOut(500)
 
   manageCourse: (course_id) ->
     monthRange = 3
