@@ -1,10 +1,20 @@
 #splash {
-  background-color: $grayish_darkest_color;
-  color: $grayish_lightest_color;
+  background-color: $grayish_medium_light_color;
+  border-top: solid 1px $grayish_darkest_color;
   height: 100%;
   left: 0;
   position: absolute;
-  top: 0;
+  text-align: center;
   width: 100%;
   z-index: 10;
+}
+
+.splash__title-area {
+  color: $grayish_darkest_color;
+  @include rem('padding', 20);
+  @include rem('font-size', 6);
+}
+
+.splash__site-logo {
+  @extend .site-logo;
 }

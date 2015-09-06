@@ -16,21 +16,7 @@
 }
 
 .lp-header__site-logo {
-  $logo_image_size: 64;
-  border: ($logo_image_size / 14) + px solid $white_color;
-  @include rem('border-radius', $logo_image_size);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-  box-sizing: border-box;
-  @include rem('height', $logo_image_size);
-  vertical-align: bottom;
-  @include rem('width', $logo_image_size);
-
-  @media screen and (max-width: $lp_break_small) {
-    border: ($logo_image_size / 14 * 0.5) + px solid $white_color;
-    @include rem('border-radius', $logo_image_size * 0.5);
-    @include rem('height', $logo_image_size * 0.5);
-    @include rem('width', $logo_image_size * 0.5);
-  }
+  @extend .site-logo;
 }
 
 .lp-header__site-name {
